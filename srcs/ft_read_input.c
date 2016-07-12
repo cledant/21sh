@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prog_main.c                                     :+:      :+:    :+:   */
+/*   ft_read_input.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/20 10:32:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/12 21:02:10 by cledant          ###   ########.fr       */
+/*   Created: 2016/07/12 18:53:26 by cledant           #+#    #+#             */
+/*   Updated: 2016/07/12 23:20:49 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-void			ft_prog_main(t_env *env)
+void	ft_read_input(t_env *env)
 {
-	struct termios	term;
+	char	buff[4];
 
-	if (tcgetattr(0, &term) == -1)
-		ft_handler(20000);
-	term.c_lflag &= ~(ICANON | ECHO);
-	term.c_cc[VMIN] = 1;
-	term.c_cc[VTIME] = 0;
-	if (tcsetattr(0, TCSANOW, &term) == -1)
-		ft_handler(20000);
-	ft_putstr_fd(env->cl, env->fd_tty);
-//	ft_putstr_fd(env->vi, env->fd_tty);
-	ft_read_input(env);
-	ft_handler(10000);
+	while (1)
+	{
+		ft_bzero(buff, sizeof(char) * 4);
+		while (read(0, buff, 4) != 0)
+		{
+			ft_putnbrendl(buff[0]);
+			ft_putnbrendl(buff[1]);
+			ft_putnbrendl(buff[2]);
+			ft_putnbrendl(buff[3]);
+			ft_wputchar_int_fd(buff, env->fd_tty);
+			ft_bzero(buff, sizeof(char) * 4);
+		}
+	}
 }

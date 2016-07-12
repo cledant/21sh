@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prog_main.c                                     :+:      :+:    :+:   */
+/*   ft_wputchar_buffer_fd.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/20 10:32:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/12 21:02:10 by cledant          ###   ########.fr       */
+/*   Created: 2016/07/12 20:01:36 by cledant           #+#    #+#             */
+/*   Updated: 2016/07/12 20:05:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-void			ft_prog_main(t_env *env)
+void	ft_wputchar_buffer_fd(char s[4], int fd)
 {
-	struct termios	term;
-
-	if (tcgetattr(0, &term) == -1)
-		ft_handler(20000);
-	term.c_lflag &= ~(ICANON | ECHO);
-	term.c_cc[VMIN] = 1;
-	term.c_cc[VTIME] = 0;
-	if (tcsetattr(0, TCSANOW, &term) == -1)
-		ft_handler(20000);
-	ft_putstr_fd(env->cl, env->fd_tty);
-//	ft_putstr_fd(env->vi, env->fd_tty);
-	ft_read_input(env);
-	ft_handler(10000);
+	write(fd, &s[0], 1);
+	write(fd, &s[1], 1);
+	write(fd, &s[2], 1);
+	write(fd, &s[3], 1);
 }

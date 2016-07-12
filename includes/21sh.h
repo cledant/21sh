@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/12 15:52:41 by cledant          ###   ########.fr       */
+/*   Updated: 2016/07/12 23:30:56 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ void					ft_init_signal(void);
 void					ft_change_termsize(t_env *env);
 void					ft_background(struct termios cpy_term, t_env **env);
 void					ft_foreground(t_env *env);
+void					ft_read_input(t_env *env);
+void					ft_wputchar_int_fd(char buff[4], int fd);
 
 #endif
