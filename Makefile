@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/07/13 09:39:09 by cledant          ###   ########.fr        #
+#    Updated: 2016/07/13 11:32:56 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRC_NAME = main.c ft_get_term.c ft_get_termcap_function.c ft_init_signal.c \
 		   ft_handler.c ft_env_init.c ft_env_destroy.c ft_prog_main.c \
 		   ft_change_termsize.c ft_exit_mess.c ft_background.c ft_foreground.c \
 		   ft_read_input.c ft_wputchar_char_fd.c ft_lstnewpushback.c \
-		   ft_list_wputendl_fd.c
+		   ft_list_wputendl_fd.c ft_hist_destroy.c ft_is_special_char.c \
+		   ft_lstnewpushback_list.c
 
 SRC_PATH = ./srcs/
 

@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnewpushback.c                                :+:      :+:    :+:   */
+/*   ft_hist_destroy.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 12:20:04 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/13 11:13:21 by cledant          ###   ########.fr       */
+/*   Created: 2016/07/13 11:22:39 by cledant           #+#    #+#             */
+/*   Updated: 2016/07/13 11:26:20 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-t_list		*ft_lstnewpushback(t_list *new, void *buff, size_t size)
+void	ft_hist_destroy(t_list **alst)
 {
-	t_list	*after;
+	t_list	**ptr_first;
+	t_list	*previous_lst;
 
-	if (new == NULL)
+	ptr_first = alst;
+	*ptr_first = *alst;
+	while (*alst != NULL)
 	{
-		if ((new = ft_lstnew(buff, size)) == NULL)
-			return (NULL);
+		ft_lstdel((t_list **)&(*alst)->content, &ft_lstfree_malloc);
+		previous_lst = *alst;
+		*alst = (*alst)->next;
+		free(previous_lst);
 	}
-	else
-	{
-		if ((after = ft_lstnew(buff, size)) == NULL)
-		{
-			ft_lstdel(&new, &ft_lstfree_malloc);
-			return (NULL);
-		}
-		ft_lstpushback(new, after);
-	}
-	return (new);
+	free(*ptr_first);
+	*ptr_first = NULL;
 }

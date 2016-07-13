@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 18:05:17 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/12 15:42:36 by cledant          ###   ########.fr       */
+/*   Updated: 2016/07/13 10:25:56 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static inline void		ft_env_init_val(t_env *new)
 	new->fd_tty = -1;
 	new->col = 0;
 	new->line = 0;
+	new->hist = NULL;
+	new->cur = NULL;
 }
 
 t_env					*ft_env_init(void)

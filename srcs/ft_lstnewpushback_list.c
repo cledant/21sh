@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnewpushback.c                                :+:      :+:    :+:   */
+/*   ft_lstnewpushback_list.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 12:20:04 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/13 11:13:21 by cledant          ###   ########.fr       */
+/*   Created: 2016/07/13 10:38:02 by cledant           #+#    #+#             */
+/*   Updated: 2016/07/13 12:07:06 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-t_list		*ft_lstnewpushback(t_list *new, void *buff, size_t size)
+t_list		*ft_lstnewpushback_list(t_list *new, t_list *cont)
 {
 	t_list	*after;
 
 	if (new == NULL)
 	{
-		if ((new = ft_lstnew(buff, size)) == NULL)
+		if ((new = ft_lstnew(NULL, 0)) == NULL)
 			return (NULL);
+		new->content = cont;
 	}
 	else
 	{
-		if ((after = ft_lstnew(buff, size)) == NULL)
-		{
-			ft_lstdel(&new, &ft_lstfree_malloc);
+		if ((after = ft_lstnew(NULL, 0)) == NULL)
 			return (NULL);
-		}
+		after->content = cont;
 		ft_lstpushback(new, after);
 	}
 	return (new);

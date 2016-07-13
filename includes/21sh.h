@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/13 09:38:03 by cledant          ###   ########.fr       */
+/*   Updated: 2016/07/13 11:32:01 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct			s_env
 	char				*doo;
 	int					col;
 	int					line;
+	t_list				*hist;
+	t_list				*cur;
 }						t_env;
 
 t_env					*ft_env_init(void);
@@ -54,5 +56,8 @@ void					ft_read_input(t_env *env);
 void					ft_wputchar_char_fd(char buff[4], int fd);
 void					ft_list_wputendl_fd(t_list *list, int fd);
 t_list					*ft_lstnewpushback(t_list *new, void *buff, size_t size);
+t_list					*ft_lstnewpushback_list(t_list *new, t_list *cont);
+int						ft_is_special_char(char s[4], t_env *env);
+void					ft_hist_destroy(t_list **alst);
 
 #endif

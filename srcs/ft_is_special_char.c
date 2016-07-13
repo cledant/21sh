@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnewpushback.c                                :+:      :+:    :+:   */
+/*   ft_is_special_char.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/23 12:20:04 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/13 11:13:21 by cledant          ###   ########.fr       */
+/*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
+/*   Updated: 2016/07/13 11:32:20 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-t_list		*ft_lstnewpushback(t_list *new, void *buff, size_t size)
+int		ft_is_special_char(char s[4], t_env *env)
 {
-	t_list	*after;
-
-	if (new == NULL)
+	if ((s[0] == 10 && s[1] == 0 && s[2] == 0 && s[3] == 0))
 	{
-		if ((new = ft_lstnew(buff, size)) == NULL)
-			return (NULL);
+		write(env->fd_tty, "\n", 1);
+		ft_list_wputendl_fd(env->cur, env->fd_tty);
+		if ((env->hist = ft_lstnewpushback_list(env->hist, env->cur)) == NULL)
+			ft_handler(20000);
+		write(env->fd_tty, "$>", 2);
+		return (1);
 	}
-	else
-	{
-		if ((after = ft_lstnew(buff, size)) == NULL)
-		{
-			ft_lstdel(&new, &ft_lstfree_malloc);
-			return (NULL);
-		}
-		ft_lstpushback(new, after);
-	}
-	return (new);
+	if ((s[0] == 4 && s[1] == 0 && s[2] == 0 && s[3] == 0))
+		ft_handler(10000);
+	return (0);
 }
