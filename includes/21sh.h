@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/13 15:31:12 by cledant          ###   ########.fr       */
+/*   Updated: 2016/07/13 19:13:36 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@ typedef struct			s_env
 	char				*doo;
 	int					col;
 	int					line;
-	t_list				*hist;
-	t_list				*cur;
+	t_btree				*first;
+	t_btree				*last;
+	t_btree				*cur;
+	t_btree				*cur_il;
+	size_t				cur_char;
 }						t_env;
 
 t_env					*ft_env_init(void);
@@ -54,8 +57,9 @@ void					ft_background(struct termios cpy_term, t_env **env);
 void					ft_foreground(t_env *env);
 void					ft_read_input(t_env *env);
 void					ft_wputchar_char_fd(char buff[4], int fd);
-void					ft_list_wputendl_fd(t_list *list, int fd);
-t_list					*ft_lstnewpushback(t_list *new, void *buff, size_t size);
+void					ft_btree_wputendl_fd(t_btree *root, int fd);
+t_btree					*ft_btree_insert_node(t_btree *new, void *buff,
+							size_t size);
 t_list					*ft_lstnewpushback_list(t_list *new, t_list *cont);
 int						ft_is_special_char(char s[4], t_env *env);
 void					ft_hist_destroy(t_list **alst);
