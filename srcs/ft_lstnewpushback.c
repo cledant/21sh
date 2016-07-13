@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wputchar_int_fd.c                               :+:      :+:    :+:   */
+/*   ft_lstnewpushback.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/12 21:57:10 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/12 23:21:02 by cledant          ###   ########.fr       */
+/*   Created: 2016/05/23 12:20:04 by cledant           #+#    #+#             */
+/*   Updated: 2016/07/13 09:32:49 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-void		ft_wputchar_int_fd(char buff[4], int fd)
+t_list		*ft_lstnewpushback(t_list *new, void *buff, size_t size)
 {
-	write(fd, &buff[0], 1);
-	write(fd, &buff[1], 1);
-	write(fd, &buff[2], 1);
-	write(fd, &buff[3], 1);
+	t_list	*after;
+
+	if (new == NULL)
+	{
+		if ((new = ft_lstnew(buff, size)) == NULL)
+			return (NULL);
+	}
+	else
+	{
+		if ((after = ft_lstnew(buff, size)) == NULL)
+		{
+			ft_lstdel(&new, &ft_free_content);
+			return (NULL);
+		}
+		ft_lstpushback(new, after);
+	}
+	return (new);
 }

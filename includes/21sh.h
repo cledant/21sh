@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/12 23:30:56 by cledant          ###   ########.fr       */
+/*   Updated: 2016/07/13 09:38:03 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void					ft_change_termsize(t_env *env);
 void					ft_background(struct termios cpy_term, t_env **env);
 void					ft_foreground(t_env *env);
 void					ft_read_input(t_env *env);
-void					ft_wputchar_int_fd(char buff[4], int fd);
+void					ft_wputchar_char_fd(char buff[4], int fd);
+void					ft_list_wputendl_fd(t_list *list, int fd);
+t_list					*ft_lstnewpushback(t_list *new, void *buff, size_t size);
 
 #endif
