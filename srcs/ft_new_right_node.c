@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_read_input.c                                    :+:      :+:    :+:   */
+/*   ft_new_right_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/12 18:53:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/14 11:29:00 by cledant          ###   ########.fr       */
+/*   Created: 2016/07/14 11:58:18 by cledant           #+#    #+#             */
+/*   Updated: 2016/07/14 12:07:38 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-void	ft_read_input(t_env *env)
+t_btree		*ft_new_right_node(t_env *env)
 {
-	char	s[4];
+	t_btree		*new;
+	t_btree		*cont;
 
-	ft_bzero(s, sizeof(char) * 4);
-	write(env->fd_tty, "$>", 2);
-	env->cur_char = 2;
-	while (1)
+	if ((new = ft_btree_new(NULL, 0)) == NULL)
+		return (NULL);
+	if ((cont = ft_btree_new(NULL, 0)) == NULL)
 	{
-		if (read(0, s, 4) != 0)
-		{
-			if (ft_is_special_char(s, env) != 1)
-			{
-				ft_wputchar_char_fd(s, env->fd_tty);
-				if ((env->cur_il = ft_btree_insert_node(env->cur_il, s, 4))
-						== NULL)
-					ft_handler(20000);
-				env->cur_char++;
-			}
-			ft_bzero(s, sizeof(char) * 4);
-		}
+		free(new);
+		return (NULL);
 	}
+	new->content = cont;
+	env->last->right = new;
+	new->left = env->last;
+	env->last = new;
+	env->cur = env->last;
+	env->cur_char = 2;
+	env->cur_il = cont;
 }

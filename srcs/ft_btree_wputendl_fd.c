@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_read_input.c                                    :+:      :+:    :+:   */
+/*   ft_btree_wputendl_fd.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/12 18:53:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/14 11:29:00 by cledant          ###   ########.fr       */
+/*   Created: 2016/07/14 09:04:12 by cledant           #+#    #+#             */
+/*   Updated: 2016/07/14 09:10:26 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-void	ft_read_input(t_env *env)
+void	ft_btree_wputendl_fd(t_btree *root, int fd)
 {
-	char	s[4];
+	size_t	size;
 
-	ft_bzero(s, sizeof(char) * 4);
-	write(env->fd_tty, "$>", 2);
-	env->cur_char = 2;
-	while (1)
+	size = 0;
+	while (root != NULL)
 	{
-		if (read(0, s, 4) != 0)
+		if (root->content != NULL)
 		{
-			if (ft_is_special_char(s, env) != 1)
-			{
-				ft_wputchar_char_fd(s, env->fd_tty);
-				if ((env->cur_il = ft_btree_insert_node(env->cur_il, s, 4))
-						== NULL)
-					ft_handler(20000);
-				env->cur_char++;
-			}
-			ft_bzero(s, sizeof(char) * 4);
+			ft_wputchar_char_fd(root->content, fd);
+			size++;
 		}
+		root = root->right;
 	}
+	if (size != 0)
+		write(fd, "\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/13 19:27:26 by cledant          ###   ########.fr       */
+/*   Updated: 2016/07/14 12:24:02 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,17 @@ int		ft_is_special_char(char s[4], t_env *env)
 		if ((env->last = ft_new_right_node(env)) == NULL)
 			ft_handler(20000);
 		write(env->fd_tty, "$>", 2);
-		env->cur = NULL;
 		return (1);
 	}
 	else if ((s[0] == 4 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*CTRL + D*/
 		ft_handler(10000);
-	else if ((s[0] == 0 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*UP*/
+	else if ((s[0] == 27 && s[1] == 91 && s[2] == 65 && s[3] == 0)) /*UP*/
 		return (ft_hist_up(env));
-	else if ((s[0] == 0 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*DOWN*/
+	else if ((s[0] == 27 && s[1] == 91 && s[2] == 66 && s[3] == 0)) /*DOWN*/
 		return (ft_hist_down(env));
-	else if ((s[0] == 4 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*RIGHT*/
+	else if ((s[0] == 27 && s[1] == 91 && s[2] == 67 && s[3] == 0)) /*RIGHT*/
 		return (ft_cursor_right(env));
-	else if ((s[0] == 4 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*LEFT*/
+	else if ((s[0] == 27 && s[1] == 91 && s[2] == 68 && s[3] == 0)) /*LEFT*/
 		return (ft_cursor_left(env));
 	return (0);
 }
