@@ -6,26 +6,38 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 11:22:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/13 14:03:29 by cledant          ###   ########.fr       */
+/*   Updated: 2016/07/15 10:07:48 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-void	ft_hist_destroy(t_list **alst)
+static void		ft_btree_clear_content(t_btree **root)
 {
-	t_list	**ptr_first;
-	t_list	*previous_lst;
+	t_btree		*prev;
 
-	ptr_first = alst;
-	*ptr_first = *alst;
-	while (*alst != NULL)
+	while (*root != NULL)
 	{
-		ft_lstdel((t_list **)&(*alst)->content, &ft_lstfree_malloc);
-		previous_lst = *alst;
-		*alst = (*alst)->next;
-		free(previous_lst);
+		if ((*root)->content != NULL)
+			free((*root)->content);
+		*previous = *root;
+		*root = (*root)->right;
+		free(*previous);
+		previous = NULL;
 	}
-	free(*ptr_first);
-	*ptr_first = NULL;
+}
+
+void			ft_hist_destroy(t_btree **root)
+{
+	t_btree		*previous;
+
+	while (*root != NULL)
+	{
+		if ((*root)->content != NULL)
+			ft_btree_clear_content(&(*root)->content);
+		*previous = *root;
+		*root = (*root)->right;
+		free(*previous);
+		previous = NULL;
+	}
 }

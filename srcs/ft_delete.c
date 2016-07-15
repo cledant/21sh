@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env_destroy.c                                   :+:      :+:    :+:   */
+/*   ft_delete.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/17 18:14:34 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/15 10:10:45 by cledant          ###   ########.fr       */
+/*   Created: 2016/07/15 11:35:44 by cledant           #+#    #+#             */
+/*   Updated: 2016/07/15 13:02:02 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-void	ft_env_destroy(t_env *env)
+int		ft_delete(t_env *env)
 {
-	if (env->term_cap != NULL)
-		ft_strdel(&(env->term_cap));
-	if (env->first != NULL)
-		ft_hist_destroy(&(env->last));
-	ft_memdel((void **)&env);
+	
 }

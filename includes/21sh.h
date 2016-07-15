@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/14 13:01:38 by cledant          ###   ########.fr       */
+/*   Updated: 2016/07/15 13:01:58 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct			s_env
 	char				*nd;
 	char				*cr;
 	char				*doo;
+
 	int					col;
 	int					line;
 	t_btree				*first;
@@ -61,6 +62,9 @@ void					ft_btree_wputendl_fd(t_btree *root, int fd);
 t_btree					*ft_btree_insert_node(t_btree *new, void *buff,
 							size_t size);
 int						ft_is_special_char(char s[4], t_env *env);
-void					ft_hist_destroy(t_list **alst);
+void					ft_hist_destroy(t_btree **root);
+void					ft_reprint_prompt(char s[4], t_env *env);
+int						ft_hist_up(t_env *env);
+int						ft_delete(t_env *env);
 
 #endif

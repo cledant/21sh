@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 18:53:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/14 11:29:00 by cledant          ###   ########.fr       */
+/*   Updated: 2016/07/15 10:59:30 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,15 @@ void	ft_read_input(t_env *env)
 		{
 			if (ft_is_special_char(s, env) != 1)
 			{
-				ft_wputchar_char_fd(s, env->fd_tty);
+				if (cur_il->content != NULL)
+					ft_reprint_prompt(s, env);
+				else
+					ft_wputchar_char_fd(s, env->fd_tty);
 				if ((env->cur_il = ft_btree_insert_node(env->cur_il, s, 4))
 						== NULL)
 					ft_handler(20000);
 				env->cur_char++;
+				env->cur = env->last;
 			}
 			ft_bzero(s, sizeof(char) * 4);
 		}
