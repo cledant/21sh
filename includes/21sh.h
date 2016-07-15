@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/15 13:01:58 by cledant          ###   ########.fr       */
+/*   Updated: 2016/07/15 15:28:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct			s_env
 	char				*nd;
 	char				*cr;
 	char				*doo;
-
 	int					col;
 	int					line;
 	t_btree				*first;
@@ -43,6 +42,9 @@ typedef struct			s_env
 	t_btree				*cur;
 	t_btree				*cur_il;
 	size_t				cur_char;
+	size_t				first_char;
+	size_t				last_char;
+	size_t				block;
 }						t_env;
 
 t_env					*ft_env_init(void);
