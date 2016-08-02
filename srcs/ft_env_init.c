@@ -19,7 +19,7 @@ static inline int		ft_env_init_btree(t_env *new)
 	if ((new->first->content = ft_btree_new(NULL, 0)) == NULL)
 	{
 		free(new->first);
-		return (-1)
+		return (-1);
 	}
 	new->last = new->first;
 	new->cur = new->first;
@@ -42,6 +42,9 @@ static inline void		ft_env_init_val(t_env *new)
 	new->nd = NULL;
 	new->doo = NULL;
 	new->cr = NULL;
+	new->cd = NULL;
+	new->up = NULL;
+	new->le = NULL;
 	new->fd_tty = -1;
 	new->col = 0;
 	new->line = 0;

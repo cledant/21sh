@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "21sh.h"
-
+/*
 static void	ft_over_cap(char s[4], t_env *env)
 {
 	size_t	disp;
@@ -31,21 +31,21 @@ static void	ft_over_cap(char s[4], t_env *env)
 	else
 		env->block = 1;
 }
-
+*/
 void		ft_print_data(char s[4], t_env *env)
 {
-	long int	cap;
-	size_t		len;
+//	long int	cap;
+//	size_t		len;
 
-	cap = env->line * env->col;
-	len = ft_btree_length(env->last);
-	if (len + 2 > cap)
-		ft_over_cap(s, env);
-	else
-	{
-		if (env->cur_il->content != NULL)
-			ft_reprint_prompt(s, env);
-		else
+//	cap = env->line * env->col;
+//	len = ft_btree_length(env->last);
+//	if (len + 2 > cap)
+//		ft_over_cap(s, env);
+//	else
+//	{
+//		if (env->cur_il->content != NULL)
+//			ft_reprint_prompt(s, env);
+//		else
 			ft_wputchar_char_fd(s, env->fd_tty);
-	}
+//	}
 }

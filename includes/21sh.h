@@ -35,6 +35,9 @@ typedef struct			s_env
 	char				*nd;
 	char				*cr;
 	char				*doo;
+	char				*cd;
+	char				*up;
+	char				*le;
 	int					col;
 	int					line;
 	t_btree				*first;
@@ -61,12 +64,17 @@ void					ft_foreground(t_env *env);
 void					ft_read_input(t_env *env);
 void					ft_wputchar_char_fd(char buff[4], int fd);
 void					ft_btree_wputendl_fd(t_btree *root, int fd);
-t_btree					*ft_btree_insert_node(t_btree *new, void *buff,
-							size_t size);
+void					ft_btree_wputstr_fd(t_btree *root, int fd);
+t_btree					*ft_btree_insert_node(t_btree *node, char s[4]);
 int						ft_is_special_char(char s[4], t_env *env);
 void					ft_hist_destroy(t_btree **root);
 void					ft_reprint_prompt(char s[4], t_env *env);
 int						ft_hist_up(t_env *env);
-int						ft_delete(t_env *env);
+void					ft_delete_cur_prompt(t_env *env);
+t_btree					*ft_new_right_node(t_env *env);
+t_btree					*ft_btree_cpy_cur(t_btree *previous, t_env *env);
+t_btree					*ft_btree_pushback_cpy_node(t_btree *src,
+							t_btree *cpy, t_env *env);
+void					ft_print_data(char s[4], t_env *env);
 
 #endif

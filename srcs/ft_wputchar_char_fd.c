@@ -14,8 +14,8 @@
 
 void		ft_wputchar_char_fd(char buff[4], int fd)
 {
-	write(fd, &buff[0], 1);
-	write(fd, &buff[1], 1);
-	write(fd, &buff[2], 1);
-	write(fd, &buff[3], 1);
+	write(fd, &(buff[0]), 1);
+	write(fd, &(buff[1]), 1);
+	write(fd, &(buff[2]), 1);
+	write(fd, &(buff[3]), 1);
 }

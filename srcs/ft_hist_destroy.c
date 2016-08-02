@@ -20,10 +20,10 @@ static void		ft_btree_clear_content(t_btree **root)
 	{
 		if ((*root)->content != NULL)
 			free((*root)->content);
-		*previous = *root;
+		prev = *root;
 		*root = (*root)->right;
-		free(*previous);
-		previous = NULL;
+		free(prev);
+		prev= NULL;
 	}
 }
 
@@ -34,10 +34,10 @@ void			ft_hist_destroy(t_btree **root)
 	while (*root != NULL)
 	{
 		if ((*root)->content != NULL)
-			ft_btree_clear_content(&(*root)->content);
-		*previous = *root;
+			ft_btree_clear_content((t_btree **)&(*root)->content);
+		previous = *root;
 		*root = (*root)->right;
-		free(*previous);
+		free(previous);
 		previous = NULL;
 	}
 }

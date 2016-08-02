@@ -25,9 +25,12 @@ void	ft_read_input(t_env *env)
 			if (ft_is_special_char(s, env) != 1)
 			{
 				ft_print_data(s, env);
-				if ((env->cur_il = ft_btree_insert_node(env->cur_il, s, 4))
+				if ((env->cur_il = ft_btree_insert_node(env->cur_il, s))
 						== NULL)
+				{
+					ft_hist_destroy(&(env->first));
 					ft_handler(20000);
+				}
 				env->cur_char++;
 				env->last_char++;
 				env->cur = env->last;

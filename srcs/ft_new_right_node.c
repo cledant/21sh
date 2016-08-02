@@ -31,4 +31,5 @@ t_btree		*ft_new_right_node(t_env *env)
 	env->cur = env->last;
 	env->cur_char = 2;
 	env->cur_il = cont;
+	return (new);
 }

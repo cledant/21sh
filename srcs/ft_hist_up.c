@@ -20,8 +20,12 @@ int		ft_hist_up(t_env *env)
 		return (1);
 	env->cur = env->cur->left;
 	previous = env->last->left;
+//	ft_delete_cur_prompt(env);
+	ft_putendl_fd("", env->fd_tty);
 	ft_hist_destroy(&(env->last));
 	if ((env->last = ft_btree_cpy_cur(previous, env)) == NULL)
 		ft_handler(20000);
+	write(env->fd_tty, "$>", 2);
+	ft_btree_wputstr_fd(env->last->content, env->fd_tty);
 	return (1);
 }

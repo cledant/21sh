@@ -12,7 +12,7 @@
 
 CC = gcc
 
-CFLAGS = -Werror -Wall -Wextra
+CFLAGS = -Werror -Wall -Wextra -O2
 
 INCLUDES = ./includes
 
@@ -25,7 +25,9 @@ SRC_NAME = main.c ft_get_term.c ft_get_termcap_function.c ft_init_signal.c \
 		   ft_change_termsize.c ft_exit_mess.c ft_background.c ft_foreground.c \
 		   ft_read_input.c ft_wputchar_char_fd.c ft_new_right_node.c \
 		   ft_btree_wputendl_fd.c ft_hist_destroy.c ft_is_special_char.c \
-		   ft_btree_insert_node.c ft_reprint_prompt.c ft_hist_up.c
+		   ft_btree_insert_node.c ft_hist_up.c ft_btree_wputstr_fd.c \
+			ft_delete_cur_prompt.c ft_btree_cpy_cur.c \
+			ft_btree_pushback_copy_node.c ft_print_data.c
 
 SRC_PATH = ./srcs/
 

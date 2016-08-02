@@ -12,7 +12,7 @@
 
 #include "21sh.h"
 
-t_btree		*ft_btree_insert_node(t_btree *node, char s[4], size_t size)
+t_btree		*ft_btree_insert_node(t_btree *node, char s[4])
 {
 	char	*cpy;
 	t_btree	*new;
@@ -23,18 +23,15 @@ t_btree		*ft_btree_insert_node(t_btree *node, char s[4], size_t size)
 			return (NULL);
 		ft_memcpy(cpy, s, 4);
 		node->content = cpy;
-		if ((new = ft_btree_new(NULL, 0)) == NULL)
-			return (NULL);
-		node->right = new;
-		return (new);
+		node->content_size = 4;
+		return (node);
 	}
 	else
 	{
 		if ((new = ft_btree_new(s, 4)) == NULL)
 			return (NULL);
-		new->right = node;
-		new->left = node->left;
-		node->left = new;
-		return (node);
+		new->left = node;
+		node->right = new;
+		return (new);
 	}
 }

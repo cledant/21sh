@@ -55,7 +55,7 @@ static void		ft_else(struct termios cpy_term, t_env **env,
 		sig == SIGALRM || sig == SIGBUS || sig == SIGFPE ||
 		sig == SIGHUP || sig == SIGILL || sig == SIGPIPE ||
 		sig == SIGPROF || sig == SIGQUIT || sig == SIGSEGV ||
-		sig == SIGSYS || sig == SIGTERM || sig == SIGEMT ||
+		sig == SIGSYS || sig == SIGTERM || /*sig == SIGEMT ||*/
 		sig == SIGTRAP || sig == SIGTTOU || sig == SIGUSR1 ||
 		sig == SIGUSR2 || sig == SIGXCPU || sig == SIGXFSZ ||
 		sig == SIGTTIN || sig == SIGVTALRM)
@@ -63,8 +63,8 @@ static void		ft_else(struct termios cpy_term, t_env **env,
 		ft_putstr_fd((*env)->cl, (*env)->fd_tty);
 		ft_quit(cpy_term, env, 1);
 	}
-//	else if (sig == 20000)
-//		ft_quit(cpy_term, env, 1);
+	else if (sig == 20000)
+		ft_quit(cpy_term, env, 1);
 	else if (sig == 30000)
 		ft_quit(cpy_term, env, 2);
 //	else if (sig == SIGCONT)

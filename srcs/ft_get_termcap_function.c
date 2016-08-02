@@ -44,4 +44,10 @@ void			ft_get_termcap_function(t_env *env)
 		ft_error(env);
 	if ((env->doo = tgetstr("do", NULL)) == NULL)
 		ft_error(env);
+	if ((env->cd = tgetstr("cd", NULL)) == NULL)
+		ft_error(env);
+	if ((env->up = tgetstr("up", NULL)) == NULL)
+		ft_error(env);
+	if ((env->le = tgetstr("le", NULL)) == NULL)
+		ft_error(env);
 }
