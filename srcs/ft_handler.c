@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 12:49:22 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/13 13:23:44 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/06 14:43:16 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void		ft_else(struct termios cpy_term, t_env **env,
 		sig == SIGALRM || sig == SIGBUS || sig == SIGFPE ||
 		sig == SIGHUP || sig == SIGILL || sig == SIGPIPE ||
 		sig == SIGPROF || sig == SIGQUIT || sig == SIGSEGV ||
-		sig == SIGSYS || sig == SIGTERM || /*sig == SIGEMT ||*/
+		sig == SIGSYS || sig == SIGTERM || sig == SIGEMT ||
 		sig == SIGTRAP || sig == SIGTTOU || sig == SIGUSR1 ||
 		sig == SIGUSR2 || sig == SIGXCPU || sig == SIGXFSZ ||
 		sig == SIGTTIN || sig == SIGVTALRM)

@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hist_up.c                                       :+:      :+:    :+:   */
+/*   ft_hist_search.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/15 11:03:04 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/15 11:36:19 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/06 17:53:40 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-int		ft_hist_up(t_env *env)
+int		ft_hist_search(t_env *env, int where)
 {
 	t_btree		*previous;
 
-	if (env->cur->left == NULL)
-		return (1);
-	env->cur = env->cur->left;
+	if (where == 0)
+	{
+		if (env->cur->left == NULL)
+			return (1);
+		env->cur = env->cur->left;
+	}
+	else
+	{
+		if (env->cur->right == NULL || env->cur->right == env->last)
+			return (1);
+		env->cur = env->cur->right;
+	}
 	previous = env->last->left;
-//	ft_delete_cur_prompt(env);
-	ft_putendl_fd("", env->fd_tty);
+	ft_delete_cur_prompt(env);
 	ft_hist_destroy(&(env->last));
 	if ((env->last = ft_btree_cpy_cur(previous, env)) == NULL)
 		ft_handler(20000);

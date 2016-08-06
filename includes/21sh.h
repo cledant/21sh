@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/15 15:28:10 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/06 17:20:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_btree					*ft_btree_insert_node(t_btree *node, char s[4]);
 int						ft_is_special_char(char s[4], t_env *env);
 void					ft_hist_destroy(t_btree **root);
 void					ft_reprint_prompt(char s[4], t_env *env);
-int						ft_hist_up(t_env *env);
+int						ft_hist_search(t_env *env, int where);
 void					ft_delete_cur_prompt(t_env *env);
 t_btree					*ft_new_right_node(t_env *env);
 t_btree					*ft_btree_cpy_cur(t_btree *previous, t_env *env);

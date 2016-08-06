@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 14:54:06 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/12 15:50:41 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/06 14:43:34 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_init_signal(void)
 	signal(SIGCONT, (void (*)(int))ft_handler);
 	signal(SIGTSTP, (void (*)(int))ft_handler);
 	signal(SIGABRT, (void (*)(int))ft_handler);
-//	signal(SIGALRM, (void (*)(int))ft_handler);
+	signal(SIGALRM, (void (*)(int))ft_handler);
 //	signal(SIGBUS, (void (*)(int))ft_handler);
 	signal(SIGFPE, (void (*)(int))ft_handler);
 	signal(SIGHUP, (void (*)(int))ft_handler);
@@ -37,6 +37,6 @@ void	ft_init_signal(void)
 	signal(SIGXCPU, (void (*)(int))ft_handler);
 	signal(SIGXFSZ, (void (*)(int))ft_handler);
 	signal(SIGVTALRM, (void (*)(int))ft_handler);
-//	signal(SIGEMT, (void (*)(int))ft_handler);
+	signal(SIGEMT, (void (*)(int))ft_handler);
 	signal(SIGWINCH, (void (*)(int))ft_handler);
 }

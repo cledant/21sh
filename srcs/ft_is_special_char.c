@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/15 15:42:06 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/06 17:21:22 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ int		ft_is_special_char(char s[4], t_env *env)
 		ft_handler(10000);
 	}
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 65 && s[3] == 0)) /*UP*/
-		return (ft_hist_up(env));
+		return (ft_hist_search(env, 0));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 66 && s[3] == 0)) /*DOWN*/
-		return (ft_test_hist(env));
-//		return (ft_hist_down(env));
+		return (ft_hist_search(env, 1));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 67 && s[3] == 0)) /*RIGHT*/
 		return (ft_test_hist_bis(env));
 //		return (ft_cursor_right(env));
-//	else if ((s[0] == 27 && s[1] == 91 && s[2] == 68 && s[3] == 0)) /*LEFT*/
+	else if ((s[0] == 27 && s[1] == 91 && s[2] == 68 && s[3] == 0)) /*LEFT*/
+		return (ft_test_hist(env));
 //		return (ft_cursor_left(env));
 //	else if ((s[0] == 27 && s[1] == 91 && s[2] == 51 && s[3] == 126)) /*DELETE*/
 //		return (ft_delete(env));
