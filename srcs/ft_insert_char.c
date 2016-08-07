@@ -1,18 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_data.c                                    :+:      :+:    :+:   */
+/*   ft_insert_node.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/15 14:27:32 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/07 17:54:53 by cledant          ###   ########.fr       */
+/*   Created: 2016/08/07 16:46:45 by cledant           #+#    #+#             */
+/*   Updated: 2016/08/07 17:35:51 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-void		ft_print_data(char s[4], t_env *env)
+void	ft_insert_char(char s[4], t_env *env)
 {
-	ft_wputchar_char_fd(s, env->fd_tty);
+	if (env->cur_char == env->last_char)
+	{
+		if ((env->cur_il = ft_btree_pushback_node(env->cur_il, s)) == NULL)
+		{
+			ft_hist_destroy(&(env->first));
+			ft_handler(20000);
+		}
+	}
+	else
+	{
+		if ((env->cur_il = ft_btree_insert_node(env, s)) == NULL)
+		{
+			ft_hist_destroy(&(env->first));
+			ft_handler(20000);
+		}
+	}
+	env->cur_char++;
+	env->last_char++;
+	env->cur = env->last;
 }

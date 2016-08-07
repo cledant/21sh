@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_btree_insert_node.c                             :+:      :+:    :+:   */
+/*   ft_cursor_left.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/07 17:09:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/07 18:32:04 by cledant          ###   ########.fr       */
+/*   Created: 2016/08/07 15:13:14 by cledant           #+#    #+#             */
+/*   Updated: 2016/08/07 18:30:28 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-t_btree		*ft_btree_insert_node(t_env *env, char s[4])
+int		ft_cursor_left(t_env *env)
 {
-	t_btree		*new;
+	int		i_col;
 
-	if ((new = ft_btree_new(s, 4)) == NULL)
-		return (NULL);
-	new->left = env->cur_il;
-	new->right = env->cur_il->right;
-	new->right->left = new;
-	new->left->right = new;
+	i_col = 0;
 	if (env->cur_char == 2)
-		env->last->content = new;
-	return (new);
+		return (1);
+	if (env->cur_il->left)
+		env->cur_il = env->cur_il->left;
+	if (env->cur_char % env->col == 0)
+	{
+		ft_putstr_fd(env->up, env->fd_tty);
+		ft_putstr_fd(env->vi, env->fd_tty);
+		while (i_col <= env->col)
+		{
+			ft_putstr_fd(env->nd, env->fd_tty);
+			i_col++;
+		}
+		ft_putstr_fd(env->ve, env->fd_tty);
+	}
+	else
+		ft_putstr_fd(env->le, env->fd_tty);
+	env->cur_char--;
+	return (1);
 }

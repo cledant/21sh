@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/14 11:58:18 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/14 12:07:38 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/07 17:38:35 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_btree		*ft_new_right_node(t_env *env)
 	env->last = new;
 	env->cur = env->last;
 	env->cur_char = 2;
+	env->last_char = 2;
 	env->cur_il = cont;
 	return (new);
 }

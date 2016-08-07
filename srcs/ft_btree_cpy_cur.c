@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/06 17:52:17 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/06 17:52:18 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/07 15:09:12 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_btree		*ft_btree_cpy_cur(t_btree *previous, t_env *env)
 		env->cur_char++;
 	}
 	env->cur_char += 2;
+	env->last_char = env->cur_char;
 	base->content = cpy;
 	previous->right = base;
 	base->left = previous;

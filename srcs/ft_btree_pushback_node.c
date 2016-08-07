@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_data.c                                    :+:      :+:    :+:   */
+/*   ft_btree_insert_node.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/15 14:27:32 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/07 17:54:53 by cledant          ###   ########.fr       */
+/*   Created: 2016/07/14 09:21:04 by cledant           #+#    #+#             */
+/*   Updated: 2016/08/07 16:49:37 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-void		ft_print_data(char s[4], t_env *env)
+t_btree		*ft_btree_pushback_node(t_btree *node, char s[4])
 {
-	ft_wputchar_char_fd(s, env->fd_tty);
+	char	*cpy;
+	t_btree	*new;
+
+	if (node->content == NULL)
+	{
+		if ((cpy = ft_memalloc(4)) == NULL)
+			return (NULL);
+		ft_memcpy(cpy, s, 4);
+		node->content = cpy;
+		node->content_size = 4;
+		return (node);
+	}
+	else
+	{
+		if ((new = ft_btree_new(s, 4)) == NULL)
+			return (NULL);
+		new->left = node;
+		node->right = new;
+		return (new);
+	}
 }
