@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/07 16:54:38 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/08 12:40:07 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,8 @@ void					ft_print_data(char s[4], t_env *env);
 int						ft_cursor_left(t_env *env);
 int						ft_cursor_right(t_env *env);
 void					ft_insert_char(char s[4], t_env *env);
+void					ft_cursor_moveback_to_cur(t_env *env);
+int						ft_cursor_move_to_end(t_env *env);
+int						ft_cursor_move_to_orig(t_env *env);
 
 #endif

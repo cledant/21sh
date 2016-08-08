@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cursor_left.c                                   :+:      :+:    :+:   */
+/*   ft_cursor_move_to_orig.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/07 15:13:14 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/08 12:28:03 by cledant          ###   ########.fr       */
+/*   Created: 2016/08/08 13:17:30 by cledant           #+#    #+#             */
+/*   Updated: 2016/08/08 14:40:38 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-int		ft_cursor_left(t_env *env)
+int		ft_cursor_move_to_orig(t_env *env)
 {
-	int		i_col;
+	int		count;
 
-	i_col = 0;
-	if (env->cur_char == 2)
-		return (1);
-	if (env->cur_il->left != NULL)
-		env->cur_il = env->cur_il->left;
-	if (env->cur_char % env->col == 0)
+	count = 0;
+	while (env->cur_char > 2)
 	{
-		ft_putstr_fd(env->up, env->fd_tty);
-		ft_putstr_fd(env->vi, env->fd_tty);
-		while (i_col <= env->col)
+		if (env->cur_char % env->col == 0)
 		{
-			ft_putstr_fd(env->nd, env->fd_tty);
-			i_col++;
+			ft_putstr_fd(env->up, env->fd_tty);
+			while (count > env->col)
+			{
+				ft_putstr_fd(env->nd, env->fd_tty);
+				count++;
+			}
+			count = 0;
 		}
-		ft_putstr_fd(env->ve, env->fd_tty);
+		else
+			ft_putstr_fd(env->le, env->fd_tty);
+		env->cur_char--;
+		if (env->cur_il->left != NULL)
+			env->cur_il = env->cur_il->left;
 	}
-	else
-		ft_putstr_fd(env->le, env->fd_tty);
-	env->cur_char--;
 	return (1);
 }

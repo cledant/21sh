@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/07 17:49:37 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/08 13:35:26 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ static int		ft_test_hist(t_env *env)
 	t_btree		*test;
 
 	test = env->first;
+	ft_putendl_fd("", env->fd_tty);
 	while (test != NULL)
 	{
 		ft_btree_wputendl_fd(test->content, env->fd_tty);
 		test = test->right;
 	}
+	write(env->fd_tty, "$>", 2);
 	return (1);
 }
 
@@ -30,11 +32,13 @@ static int		ft_test_hist_bis(t_env *env)
 	t_btree		*test;
 
 	test = env->last;
+	ft_putendl_fd("", env->fd_tty);
 	while (test != NULL)
 	{
 		ft_btree_wputendl_fd(test->content, env->fd_tty);
 		test = test->left;
 	}
+	write(env->fd_tty, "$>", 2);
 	return (1);
 }
 
@@ -68,6 +72,10 @@ int		ft_is_special_char(char s[4], t_env *env)
 		return (ft_cursor_right(env));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 68 && s[3] == 0)) /*LEFT*/
 		return (ft_cursor_left(env));
+	else if ((s[0] == 27 && s[1] == 91 && s[2] == 72 && s[3] == 0)) /*HOME*/
+		return (ft_cursor_move_to_orig(env));
+	else if ((s[0] == 27 && s[1] == 91 && s[2] == 70 && s[3] == 0)) /*END*/
+		return (ft_cursor_move_to_end(env));
 //	else if ((s[0] == 27 && s[1] == 91 && s[2] == 51 && s[3] == 126)) /*DELETE*/
 //		return (ft_delete(env));
 //	else if ((s[0] == 127 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*BACK DEL*/
