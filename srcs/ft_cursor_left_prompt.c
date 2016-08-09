@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_n_insert_data.c                           :+:      :+:    :+:   */
+/*   ft_cursor_left_prompt.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/09 11:42:37 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/09 17:02:02 by cledant          ###   ########.fr       */
+/*   Created: 2016/08/09 17:15:29 by cledant           #+#    #+#             */
+/*   Updated: 2016/08/09 17:16:56 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-void		ft_print_n_insert_data(char s[4], t_env *env)
+void	ft_cursor_left_prompt(t_env *env)
 {
-	size_t	bak;
-	
-	if (env->cur_char == env->last_char)
+	int		i_col;
+
+	i_col = 0;
+	if (env->cur_char % env->col == 0)
 	{
-		ft_wputchar_char_fd(s, env->fd_tty);
-		ft_insert_char(s, env);
+		ft_putstr_fd(env->up, env->fd_tty);
+		ft_putstr_fd(env->vi, env->fd_tty);
+		while (i_col <= env->col)
+		{
+			ft_putstr_fd(env->nd, env->fd_tty);
+			i_col++;
+		}
+		ft_putstr_fd(env->ve, env->fd_tty);
 	}
 	else
-	{
-		bak = env->cur_char;
-		ft_delete_cur_prompt(env);
-		env->cur_char = bak;
-		ft_insert_char(s, env);
-		write(env->fd_tty, "$>", 2);
-		ft_btree_wputstr_fd(env->last->content, env->fd_tty);
-		ft_cursor_moveback_to_cur(env);
-	}
+		ft_putstr_fd(env->le, env->fd_tty);
+	env->cur_char--;
 }

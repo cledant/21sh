@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/08 12:11:53 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/08 15:13:07 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/09 17:57:53 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,27 @@
 
 void	ft_cursor_moveback_to_cur(t_env *env)
 {
-	size_t	c;
-	int		count;
+//	int		count;
 	size_t	cpy_cc;
 
-	c = 0;
-	count = 0;
+//	count = 0;
 	cpy_cc = env->last_char;
-	while (c < env->last_char - env->cur_char)
+	while (cpy_cc > env->cur_char)
 	{
 		if (cpy_cc % env->col == 0)
 		{
 			ft_putstr_fd(env->up, env->fd_tty);
-			while (count > env->col)
-			{
-				ft_putstr_fd(env->nd, env->fd_tty);
-				count++;
-			}
-			count = 0;
+//			while (count > env->col)
+//			{
+//				ft_putstr_fd(env->nd, env->fd_tty);
+//				count++;
+//			}
+//			count = 0;
 		}
+//		else if (cpy_cc % env->col == env->col - 1)
+//			write(env->fd_tty, "\n", 1);
 		else
 			ft_putstr_fd(env->le, env->fd_tty);
 		cpy_cc--;
-		c++;
 	}
 }
