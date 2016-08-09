@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/08/08 22:50:01 by cledant          ###   ########.fr        #
+#    Updated: 2016/08/09 11:42:59 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC_NAME = main.c ft_get_term.c ft_get_termcap_function.c ft_init_signal.c \
 		   ft_btree_wputendl_fd.c ft_hist_destroy.c ft_is_special_char.c \
 		   ft_btree_insert_node.c ft_hist_search.c ft_btree_wputstr_fd.c \
 		   ft_delete_cur_prompt.c ft_btree_cpy_cur.c ft_btree_pushback_node.c \
-		   ft_btree_pushback_copy_node.c ft_print_data.c ft_insert_char.c \
+		   ft_btree_pushback_copy_node.c ft_print_n_insert_data.c ft_insert_char.c \
 		   ft_cursor_left.c ft_cursor_right.c ft_cursor_moveback_to_cur.c \
 		   ft_cursor_move_to_orig.c ft_cursor_move_to_end.c
 
