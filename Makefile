@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/08/10 11:07:50 by cledant          ###   ########.fr        #
+#    Updated: 2016/08/10 13:29:30 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ SRC_NAME = main.c ft_get_term.c ft_get_termcap_function.c ft_init_signal.c \
 		   ft_delete_cur_prompt.c ft_btree_cpy_cur.c ft_btree_pushback_node.c \
 		   ft_btree_pushback_copy_node.c ft_print_n_insert_data.c ft_insert_char.c \
 		   ft_cursor_left.c ft_cursor_right.c ft_cursor_moveback_to_cur.c \
-		   ft_cursor_move_to_orig.c ft_cursor_move_to_end.c \
-		   ft_cursor_left_prompt.c ft_move_to_cur_prompt.c
+		   ft_cursor_move_to_orig.c ft_cursor_move_to_end.c ft_delete.c \
+		   ft_cursor_left_prompt.c ft_move_to_cur_prompt.c ft_btree_delete_node.c
 
 SRC_PATH = ./srcs/
 
