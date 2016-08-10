@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/09 11:42:37 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/09 18:31:32 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/10 10:56:50 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ void		ft_print_n_insert_data(char s[4], t_env *env)
 	else
 	{
 		bak = env->cur_char;
-		ft_delete_cur_prompt(env);
+		ft_putstr_fd(env->vi, env->fd_tty);
+		ft_move_to_cur_prompt(env);
 		env->cur_char = bak;
 		ft_insert_char(s, env);
 		write(env->fd_tty, "$>", 2);
 		ft_btree_wputstr_fd(env->last->content, env->fd_tty);
+		ft_putstr_fd(env->ve, env->fd_tty);
 		ft_cursor_moveback_to_cur(env);
 	}
 }
