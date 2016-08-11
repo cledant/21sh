@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 12:41:47 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/11 16:43:55 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/12 01:37:57 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int		ft_delete(t_env *env)
 	ft_putstr_fd(env->vi, env->fd_tty);
 	write(env->fd_tty, "$>", 2);
 	ft_btree_wputstr_fd(env->last->content, env->fd_tty);
+	if (env->last_char % env->col == 0)
+		write(env->fd_tty, "\n", 1);
 	ft_putstr_fd(env->ve, env->fd_tty);
 	ft_cursor_moveback_to_cur(env);
 	return (1);

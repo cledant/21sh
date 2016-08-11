@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/15 11:03:04 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/06 17:53:40 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/12 01:08:28 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ int		ft_hist_search(t_env *env, int where)
 		ft_handler(20000);
 	write(env->fd_tty, "$>", 2);
 	ft_btree_wputstr_fd(env->last->content, env->fd_tty);
+	if (env->cur_char % env->col == 0)
+		write(env->fd_tty, "\n", 1);
 	return (1);
 }
