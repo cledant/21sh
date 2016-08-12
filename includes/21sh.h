@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/10 15:18:12 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/12 13:25:20 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,7 @@ int						ft_cursor_move_to_end(t_env *env);
 int						ft_cursor_move_to_orig(t_env *env);
 int						ft_delete(t_env *env);
 void					ft_btree_delete_node(t_env *env);
+int						ft_backdelete(t_env *env);
+void					ft_btree_backdelete_node(t_env *env);
 
 #endif
