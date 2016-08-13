@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/13 16:47:33 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/13 21:41:33 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,10 @@ int		ft_is_special_char(char s[4], t_env *env)
 		return (ft_delete(env));
 	else if ((s[0] == 127 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*BACK DEL*/
 		return (ft_backdelete(env));
+	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 67)) /*OPT+RIGHT*/
+		return (ft_word_right(env));
+	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 68)) /*OPT+LEFT*/
+		return (ft_word_left(env));
 	else if ((s[0] == 5 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*DEBUG 1*/
 		return (ft_test_hist(env));
 	else if ((s[0] == 18 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*DEBUG 2*/
