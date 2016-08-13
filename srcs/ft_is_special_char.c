@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/12 11:57:18 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/13 11:58:24 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int		ft_is_special_char(char s[4], t_env *env)
 				ft_handler(20000);
 			}
 		}
+		else
+			env->cur = env->last;
 		write(env->fd_tty, "$>", 2);
 		return (1);
 	}
