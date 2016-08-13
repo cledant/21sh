@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 13:05:12 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/13 16:43:09 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/13 17:03:19 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static inline void		ft_new_first(t_env *env)
 	env->first = new;
 	env->cur = new;
 	env->last = new;
+	env->cur_il = new->content;
 	env->cur_char = 2;
 	env->last_char = 2;
 }
