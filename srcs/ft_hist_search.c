@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/15 11:03:04 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/12 01:08:28 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/13 15:50:25 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int		ft_hist_search(t_env *env, int where)
 	}
 	previous = env->last->left;
 	ft_delete_cur_prompt(env);
+	if (env->last->left != NULL)
+		env->last->left->right = NULL;
 	ft_hist_destroy(&(env->last));
 	if ((env->last = ft_btree_cpy_cur(previous, env)) == NULL)
 		ft_handler(20000);

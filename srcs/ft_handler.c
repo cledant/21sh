@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 12:49:22 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/06 14:43:16 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/13 13:17:29 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void		ft_quit(struct termios cpy_term, t_env **env, int mes)
 static void		ft_else(struct termios cpy_term, t_env **env,
 					unsigned long int sig)
 {
-	if (sig == SIGINT || sig == SIGABRT || sig == 20000 ||
+	if (sig == SIGABRT || sig == 20000 ||
 		sig == SIGALRM || sig == SIGBUS || sig == SIGFPE ||
 		sig == SIGHUP || sig == SIGILL || sig == SIGPIPE ||
 		sig == SIGPROF || sig == SIGQUIT || sig == SIGSEGV ||
@@ -63,8 +63,10 @@ static void		ft_else(struct termios cpy_term, t_env **env,
 		ft_putstr_fd((*env)->cl, (*env)->fd_tty);
 		ft_quit(cpy_term, env, 1);
 	}
-	else if (sig == 20000)
-		ft_quit(cpy_term, env, 1);
+	else if (sig == SIGINT)
+		ft_sigint_handler(*env);
+//	else if (sig == 20000)
+//		ft_quit(cpy_term, env, 1);
 	else if (sig == 30000)
 		ft_quit(cpy_term, env, 2);
 //	else if (sig == SIGCONT)
