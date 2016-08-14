@@ -21,7 +21,7 @@ int		ft_cursor_right(t_env *env)
 		return (1);
 	if (env->cur_il->right != NULL && env->cur_char != 2)
 		env->cur_il = env->cur_il->right;
-	if (env->cur_char % env->col == env->col - 1)
+	if (env->cur_char % env->col == (unsigned int)(env->col - 1))
 		write(env->fd_tty, "\n", 1);
 	else
 		ft_putstr_fd(env->nd, env->fd_tty);

@@ -19,6 +19,10 @@
 # include <signal.h>
 # include <fcntl.h>
 
+# ifndef SIGEMT
+# define SIGEMT 20000
+# endif
+
 typedef struct			s_env
 {
 	char				*term_cap;

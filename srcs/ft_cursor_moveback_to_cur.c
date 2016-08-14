@@ -46,7 +46,7 @@ void	ft_cursor_moveback_to_cur(t_env *env)
 	ft_max_left_to_nil(env);
 	while (counter < env->cur_char)
 	{
-		if (counter % env->col == env->col - 1)
+		if (counter % env->col == (unsigned int)(env->col - 1))
 			write(env->fd_tty, "\n", 1);
 		else
 			ft_putstr_fd(env->nd, env->fd_tty);
