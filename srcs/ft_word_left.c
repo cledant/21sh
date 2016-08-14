@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 21:32:52 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/13 21:47:59 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/14 12:15:45 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static inline void		ft_move_cursor(t_env *env, size_t type, size_t dec,
 {
 	size_t	bak;
 
-	if (type == 2)
+	if (type == 3)
 	{
 		bak = env->cur_char;
 		ft_putstr_fd(env->vi, env->fd_tty);
@@ -40,6 +40,17 @@ static inline void		ft_move_cursor(t_env *env, size_t type, size_t dec,
 		ft_putstr_fd(env->ve, env->fd_tty);
 		env->cur_char = bak - dec;
 		env->cur_il = seek;
+		ft_cursor_moveback_to_cur(env);
+	}
+	else if (type == 2 && seek == NULL &&
+				ft_isspace((char)env->last->content) == 0)
+	{
+		bak = env->cur_char;
+		ft_putstr_fd(env->vi, env->fd_tty);
+		ft_move_to_cur_prompt(env);
+		ft_putstr_fd(env->ve, env->fd_tty);
+		env->cur_char = 2;
+		env->cur_il = env->last->content;
 		ft_cursor_moveback_to_cur(env);
 	}
 }
@@ -50,7 +61,7 @@ int						ft_word_left(t_env *env)
 	size_t		type;
 	t_btree		*seek;
 
-	dec = 0;
+	dec = 1;
 	type = 0;
 	seek = env->cur_il;
 	if (seek->content == NULL)
