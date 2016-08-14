@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/13 21:35:09 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/14 17:51:24 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 
 # ifndef SIGEMT
-# define SIGEMT 20000
+#  define SIGEMT 20000
 # endif
 
 typedef struct			s_env

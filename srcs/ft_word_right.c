@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 18:47:56 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/14 15:11:40 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/14 17:49:46 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static inline void		ft_move_cursor(t_env *env, size_t type, size_t dec,
 	{
 		bak = env->cur_char;
 		ft_putstr_fd(env->vi, env->fd_tty);
-		ft_move_to_cur_prompt(env);
+		ft_cursor_move_to_end(env);
 		ft_putstr_fd(env->ve, env->fd_tty);
 		env->cur_char = bak + dec;
 		env->cur_il = seek->left;
