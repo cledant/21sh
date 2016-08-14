@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 21:32:52 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/14 19:26:41 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/15 00:55:19 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,13 @@ int						ft_word_left(t_env *env)
 	size_t		type;
 	t_btree		*seek;
 
-	dec = 0;
-	type = 0;
 	seek = env->cur_il;
-	if (env->cur_char == env->last_char && ft_seek_char(seek->content, type) == 1)
-		type = 2;
 	if (seek->content == NULL)
 		return (1);
+	dec = 0;
+	type = 0;
+	if (env->cur_char == env->last_char && ft_seek_char(seek->content, type) == 1)
+		type = 2;
 	while (seek != NULL)
 	{
 		if (type == 0)
