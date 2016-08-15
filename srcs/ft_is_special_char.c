@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/15 00:12:52 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/15 15:00:01 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int		ft_is_special_char(char s[4], t_env *env)
 	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 65)) /*OPT+UP*/
 		return (ft_line_up(env));
 	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 66)) /*OPT+DOWN*/
-		return (ft_line_up(env));
+		return (ft_line_down(env));
 	else if ((s[0] == 5 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*DEBUG 1*/
 		return (ft_test_hist(env));
 	else if ((s[0] == 18 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*DEBUG 2*/
