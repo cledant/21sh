@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 00:11:59 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/15 01:07:28 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/15 14:15:15 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ int		ft_line_up(t_env *env)
 	if (line == 1 && (col == 0 || col == 1))
 		return (1);
 	bak = env->cur_char;
-	ft_cursor_move_to_end(env);
+	ft_cursor_move_to_end_prompt(env);
 	env->cur_char = bak - env->col;
 	ft_cursor_moveback_to_cur(env);
 	while (c < env->col)
 	{
-		env->cur_il = env->cur_il->left;
+		if (env->cur_il->left != NULL)
+			env->cur_il = env->cur_il->left;
 		c++;
 	}
 	return (1);
