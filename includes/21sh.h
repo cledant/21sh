@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/15 14:09:18 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/15 20:00:52 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ typedef struct			s_env
 	size_t				cur_char;
 	size_t				first_char;
 	size_t				last_char;
-	size_t				block;
+	size_t				mode_copy;
+	t_btree				*begin_copy;
+	size_t				begin_cur_char;
+	t_btree				*cpy;
 }						t_env;
 
 t_env					*ft_env_init(void);
@@ -74,6 +77,7 @@ t_btree					*ft_btree_insert_node(t_env *env, char s[4]);
 t_btree					*ft_btree_cpy_cur(t_btree *previous, t_env *env);
 t_btree					*ft_btree_pushback_cpy_node(t_btree *src,
 							t_btree *cpy, t_env *env);
+void					ft_btree_clear_content(t_btree **root);
 int						ft_is_special_char(char s[4], t_env *env);
 void					ft_hist_destroy(t_btree **root);
 void					ft_reprint_prompt(char s[4], t_env *env);
@@ -100,5 +104,10 @@ int						ft_word_right(t_env *env);
 int						ft_word_left(t_env *env);
 int						ft_line_up(t_env *env);
 int						ft_line_down(t_env *env);
+int						ft_start_copy(t_env *env);
+int						ft_set_copy(t_env *env);
+int						ft_reset_copy(t_env *env);
+int						ft_put_copy(t_env *env);
+t_btree					*ft_btree_set_copy_paste(t_btree *first, int len)
 
 #endif

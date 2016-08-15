@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/15 15:00:01 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/15 20:00:48 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,11 @@ int		ft_is_special_char(char s[4], t_env *env)
 		}
 		return (1);
 	}
-	else if ((s[0] == 27 && s[1] == 91 && s[2] == 65 && s[3] == 0)) /*UP*/
+	else if ((s[0] == 27 && s[1] == 91 && s[2] == 65 && s[3] == 0)
+				&& env->mode_copy == 0) /*UP*/
 		return (ft_hist_search(env, 0));
-	else if ((s[0] == 27 && s[1] == 91 && s[2] == 66 && s[3] == 0)) /*DOWN*/
+	else if ((s[0] == 27 && s[1] == 91 && s[2] == 66 && s[3] == 0)
+				&& env->mode_copy == 0) /*DOWN*/
 		return (ft_hist_search(env, 1));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 67 && s[3] == 0)) /*RIGHT*/
 		return (ft_cursor_right(env));
@@ -82,9 +84,11 @@ int		ft_is_special_char(char s[4], t_env *env)
 		return (ft_cursor_move_to_orig(env));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 70 && s[3] == 0)) /*END*/
 		return (ft_cursor_move_to_end(env));
-	else if ((s[0] == 27 && s[1] == 91 && s[2] == 51 && s[3] == 126)) /*DELETE*/
+	else if ((s[0] == 27 && s[1] == 91 && s[2] == 51 && s[3] == 126)
+				&& env->mode_copy == 0) /*DELETE*/
 		return (ft_delete(env));
-	else if ((s[0] == 127 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*BACK DEL*/
+	else if ((s[0] == 127 && s[1] == 0 && s[2] == 0 && s[3] == 0)
+				&& env->mode_copy == 0) /*BACK DEL*/
 		return (ft_backdelete(env));
 	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 67)) /*OPT+RIGHT*/
 		return (ft_word_right(env));
@@ -94,11 +98,23 @@ int		ft_is_special_char(char s[4], t_env *env)
 		return (ft_line_up(env));
 	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 66)) /*OPT+DOWN*/
 		return (ft_line_down(env));
+	else if ((s[0] == -61  && s[1] == -89 && s[2] == 0 && s[3] == 0) &&
+				env->mode_copy == 0) /*OPT+C start*/
+		return (ft_start_copy(env));
+	else if ((s[0] == -61  && s[1] == -89 && s[2] == 0 && s[3] == 0) &&
+				env->mode_copy == 1) /*OPT+C set*/
+		return (ft_set_copy(env));
+	else if ((s[0] == 27  && s[1] == 0 && s[2] == 0 && s[3] == 0) &&
+				env->mode_copy == 1) /*ESC copy*/
+		return (ft_reset_copy(env));
+	else if ((s[0] == -30  && s[1] == -120 && s[2] == -102 && s[3] == 0) &&
+				env->mode_copy == 0) /*OPT+V*/
+		return (ft_put_copy(env));
 	else if ((s[0] == 5 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*DEBUG 1*/
 		return (ft_test_hist(env));
 	else if ((s[0] == 18 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*DEBUG 2*/
 		return (ft_test_hist_bis(env));
-	else if (ft_isprint(s[0]) == 0)
+	else if ((ft_isprint(s[0]) == 0 && s[1] == 0 && s[2] == 0 && s[3] == 0))
 		return (1);
 	return (0);
 }

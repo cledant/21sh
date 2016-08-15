@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env_destroy.c                                   :+:      :+:    :+:   */
+/*   ft_set_copy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/17 18:14:34 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/15 18:35:23 by cledant          ###   ########.fr       */
+/*   Created: 2016/08/15 18:19:50 by cledant           #+#    #+#             */
+/*   Updated: 2016/08/15 20:00:43 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-void	ft_env_destroy(t_env *env)
+int		ft_set_copy(t_env *env)
 {
-	if (env->term_cap != NULL)
-		ft_strdel(&(env->term_cap));
-	if (env->first != NULL)
-		ft_hist_destroy(&(env->last));
+	int		len;
+
+	if ((len = env->begin_cur_char - env->cur_char) == 0)
+		return (1);
 	if (env->cpy != NULL)
 		ft_btree_clear_content(&env->cpy);
-	ft_memdel((void **)&env);
+	if ((env->cpy = ft_btree_set_copy_paste(env->begin_copy, len)) == NULL)
+		ft_handler(20000);
+	return (1);
 }

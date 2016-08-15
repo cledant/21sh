@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 18:05:17 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/15 15:28:23 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/15 20:00:56 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ static inline void		ft_env_init_val(t_env *new)
 	new->cur_char = 0;
 	new->first_char = 0;
 	new->last_char = 0;
-	new->block = 0;
+	new->mode_copy = 0;
+	new->begin_copy = NULL;
+	new->begin_cur_char = 0;
+	new->cpy = NULL;
 }
 
 t_env					*ft_env_init(void)
