@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 13:05:12 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/13 17:03:19 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/16 22:28:20 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	ft_sigint_handler(t_env *env)
 {
 	size_t		nb_line;
 
+	ft_reset_copy(env);
 	while (env->cur_char > 0)
 		ft_cursor_left_prompt(env);
 	if (env->last_char % env->col == 0)
