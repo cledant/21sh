@@ -1,18 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_btree_pushback_copy_node.c                      :+:      :+:    :+:   */
+/*   ft_btree_pushback_copy_pasta_node.c                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/12 15:52:13 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/16 12:55:12 by cledant          ###   ########.fr       */
+/*   Created: 2016/08/16 12:31:01 by cledant           #+#    #+#             */
+/*   Updated: 2016/08/16 13:22:26 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-t_btree		*ft_btree_pushback_cpy_node(t_btree *src, t_btree *cpy, t_env *env)
+static t_btree		*ft_to_last(size_t sign, t_btree *cpy)
+{
+	if (sign == 0)
+	{
+		while(cpy->right != NULL)
+			cpy = cpy->right;
+	}
+	else
+	{
+		while(cpy->left != NULL)
+			cpy = cpy->left;
+	}
+	return (cpy);
+}
+
+static void			ft_link(size_t sign, t_btree *cpy, t_btree *new)
+{
+	if (sign == 0)
+	{
+		new->left = cpy;
+		cpy->right = new;
+	}
+	else
+	{
+		new->right = cpy;
+		cpy->left = new;	
+	}
+}
+
+t_btree				*ft_btree_pushback_cpy_pasta_node(t_btree *src,
+						t_btree *cpy, size_t sign, t_env *env)
 {
 	t_btree		*new;
 	t_btree		*first;
@@ -21,21 +51,18 @@ t_btree		*ft_btree_pushback_cpy_node(t_btree *src, t_btree *cpy, t_env *env)
 	{
 		if ((first = ft_btree_new(src->content, 4)) == NULL)
 			return (NULL);
-		env->cur_il = first;
 	}
 	else
 	{
 		first = cpy;
-		while(cpy->right != NULL)
-			cpy = cpy->right;
+		cpy = ft_to_last(sign, cpy);
 		if ((new = ft_btree_new(src->content, 4)) == NULL)
 		{
 			ft_btree_del_all_node(&first);
 			return (NULL);
 		}
-		env->cur_il = new;
-		new->left = cpy;
-		cpy->right = new;
+		ft_link(sign, cpy, new);
+		first = (sign == 0) ? first : new;
 	}
 	return (first);
 }
