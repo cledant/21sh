@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 12:31:01 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/16 13:22:26 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/16 16:55:02 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static void			ft_link(size_t sign, t_btree *cpy, t_btree *new)
 	}
 }
 
-t_btree				*ft_btree_pushback_cpy_pasta_node(t_btree *src,
-						t_btree *cpy, size_t sign, t_env *env)
+t_btree				*ft_btree_pushback_copy_pasta_node(t_btree *src,
+						t_btree *cpy, size_t sign)
 {
 	t_btree		*new;
 	t_btree		*first;

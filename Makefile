@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/08/16 13:12:46 by cledant          ###   ########.fr        #
+#    Updated: 2016/08/16 16:44:32 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ SRC_NAME = main.c ft_get_term.c ft_get_termcap_function.c ft_init_signal.c \
 		   ft_word_right.c ft_word_left.c ft_line_up.c ft_cursor_right_prompt.c \
 		   ft_cursor_move_to_end_prompt.c ft_line_down.c ft_start_copy.c \
 		   ft_set_copy.c ft_reset_copy.c ft_put_copy.c ft_btree_set_copy_paste.c \
-		   ft_btree_pushback_cpy_pasta_node.c
+		   ft_btree_pushback_copy_pasta_node.c
 
 SRC_PATH = ./srcs/
 
