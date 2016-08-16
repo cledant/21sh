@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 14:54:27 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/16 19:04:55 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/16 20:32:55 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 static t_btree		*ft_get_end(t_btree *begin, size_t	*size)
 {
+	(*size)++;
 	while (begin->right != NULL)
 	{
 		begin = begin->right;
-		size++;
+		(*size)++;
 	}
 	return (begin);
 }
@@ -65,11 +66,8 @@ int					ft_put_copy(t_env *env)
 		cpy_cpy->left = env->cur_il;
 		env->cur_il = end;
 		env->last_char += size;
-		env->cur_char += size;
+		env->cur_char += (env->cur_char == 2) ? size + 1 : size;
 	}
-//	bak = env->cur_char;
-//	ft_move_to_cur_prompt(env);
-//	env->cur_char = bak;
 	write(env->fd_tty, "$>", 2);
 	ft_btree_wputstr_fd(env->last->content, env->fd_tty);
 	ft_cursor_moveback_to_cur(env);
