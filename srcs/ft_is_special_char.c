@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/17 13:28:57 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/17 15:14:27 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ static int		ft_test_hist_bis(t_env *env)
 
 int		ft_is_special_char(char s[4], t_env *env)
 {
-	if ((s[0] == 10 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*ENTER*/
+	if ((s[0] == 10 && s[1] == 0 && s[2] == 0 && s[3] == 0)
+			&& env->mode_copy == 0) /*ENTER*/
 	{
 		write(env->fd_tty, "\n", 1);
 		if (env->cur_il->content != NULL)
@@ -61,7 +62,8 @@ int		ft_is_special_char(char s[4], t_env *env)
 		write(env->fd_tty, "$>", 2);
 		return (1);
 	}
-	else if ((s[0] == 4 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*CTRL + D*/
+	else if ((s[0] == 4 && s[1] == 0 && s[2] == 0 && s[3] == 0)
+				&& env->mode_copy == 0) /*CTRL + D*/
 	{
 		if (env->cur_il->content == NULL)
 		{

@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 18:19:50 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/17 13:20:25 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/17 16:49:23 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int		ft_set_copy(t_env *env)
 
 	ft_putstr_fd(env->me, env->fd_tty);
 	if ((len = env->begin_cur_char - env->cur_char) == 0)
+	{
+		ft_reset_copy(env, 0);
 		return (1);
+	}
 	if (env->cpy != NULL)
 	{
 		ft_btree_clear_content(&env->cpy);

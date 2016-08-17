@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/17 12:26:43 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/17 13:38:19 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/17 15:30:09 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,17 @@ void	ft_reprint_inverted_selection(t_env *env)
 	{
 		starter = env->begin_cur_char;
 		end = env->cur_char;
+		c = 3;
 	}
 	else
 	{
 		end = env->begin_cur_char;
 		starter = env->cur_char;
+		c = 2;
 	}
 	write(env->fd_tty, "$>", 2);
 	list = env->last->content;
-	c = 2;
+
 	while (list != NULL)
 	{
 		ft_wputchar_char_fd(list->content, env->fd_tty);
