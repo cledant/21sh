@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/16 22:40:48 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/17 13:28:57 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int		ft_is_special_char(char s[4], t_env *env)
 		return (ft_set_copy(env));
 	else if ((s[0] == 27  && s[1] == 0 && s[2] == 0 && s[3] == 0) &&
 				env->mode_copy == 1) /*ESC copy*/
-		return (ft_reset_copy(env));
+		return (ft_reset_copy(env, 1));
 	else if ((s[0] == -30  && s[1] == -120 && s[2] == -102 && s[3] == 0) &&
 				env->mode_copy == 0) /*OPT+V*/
 		return (ft_put_copy(env));
@@ -117,6 +117,8 @@ int		ft_is_special_char(char s[4], t_env *env)
 	else if ((ft_isprint(s[0]) == 0 && s[1] == 0 && s[2] == 0 && s[3] == 0))
 		return (1);
 	else if ((ft_isprint(s[0]) < 0 || s[1] != 0 || s[2] != 0 || s[3] != 0))
+		return (1);
+	if (env->mode_copy == 1)
 		return (1);
 	return (0);
 }

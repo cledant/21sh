@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 12:49:22 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/16 22:32:16 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/17 13:28:22 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void		ft_init_handler(struct termios *cpy_term, t_env **env)
 
 static void		ft_quit(struct termios cpy_term, t_env **env, int mes)
 {
-	ft_reset_copy(*env);
+	ft_reset_copy(*env, 0);
 	if (mes == 1)
 		ft_putendl_fd("Error", 2);
 	else if (mes == 2)

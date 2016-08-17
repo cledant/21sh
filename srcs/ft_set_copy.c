@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 18:19:50 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/16 17:27:48 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/17 13:20:25 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int		ft_set_copy(t_env *env)
 	if ((env->cpy = ft_btree_set_copy_paste(env->begin_copy, len)) == NULL)
 		ft_handler(20000);
 	env->mode_copy = 0;
+	ft_print_line(env);
 	return (1);
 }

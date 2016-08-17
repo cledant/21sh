@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_change_termsize.c                               :+:      :+:    :+:   */
+/*   ft_print_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/22 14:55:08 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/17 13:28:09 by cledant          ###   ########.fr       */
+/*   Created: 2016/08/17 13:35:45 by cledant           #+#    #+#             */
+/*   Updated: 2016/08/17 13:36:15 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-void	ft_change_termsize(t_env *env)
+void	ft_print_line(t_env *env)
 {
-	struct winsize	size;
+	size_t	bak;
+	size_t	c;
+	t_btree	*list;
 
-	if (ioctl(0, TIOCGWINSZ, &size) == -1)
-		ft_handler(20000);
-	env->col = size.ws_col;
-	env->line = size.ws_row;
-	ft_putstr_fd(env->ho, env->fd_tty);
-	ft_putstr_fd(env->cl, env->fd_tty);
-	ft_reset_copy(env, 0);
+	bak = env->cur_char;
+	ft_move_to_cur_prompt(env);
+	env->cur_char = bak;
 	write(env->fd_tty, "$>", 2);
-	ft_btree_wputstr_fd(env->last->content, env->fd_tty);
-	if (env->cur_char != env->last_char)
-		ft_cursor_moveback_to_cur(env);
+	list = env->last->content;
+	c = 2;
+	while (list != NULL)
+	{
+		ft_wputchar_char_fd(list->content, env->fd_tty);
+		list = list->right;
+		c++;
+	}
+	ft_cursor_moveback_to_cur(env);
 }
