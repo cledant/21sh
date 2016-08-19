@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/19 13:12:21 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/19 16:01:52 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ typedef struct			s_env
 	t_btree				*cpy;
 	size_t				buff_size;
 	char				*buff;
-	size_t				small;
+	size_t				too_small;
 	size_t				cur_buff;
 	size_t				last_buff;
-	size_t				last_clean;
+	size_t				cur_clean;
 }						t_env;
 
 t_env					*ft_env_init(void);
@@ -85,7 +85,7 @@ t_btree					*ft_btree_cpy_cur(t_btree *previous, t_env *env);
 t_btree					*ft_btree_pushback_cpy_node(t_btree *src,
 							t_btree *cpy, t_env *env);
 void					ft_btree_clear_content(t_btree **root);
-int						ft_is_special_char(char s[4], t_env *env);
+int						ft_is_special_char(char s[4], t_env *env); //ok
 void					ft_hist_destroy(t_btree **root);
 void					ft_reprint_prompt(char s[4], t_env *env);
 int						ft_hist_search(t_env *env, int where);
@@ -124,5 +124,8 @@ void					ft_insert_data(char s[4], t_env *env); //ok
 void					ft_create_buffer(t_env *env); //ok
 void					ft_realloc_buff(t_env *env); //ok
 void					ft_print_buffer(t_env *env); //ok
+void					ft_clear_line(t_env *env); //ok
+void					ft_cursor_left_clean(t_env *env); //ok
+void					ft_move_cursor_to_cur_buff(t_env *env); //ok
 
 #endif

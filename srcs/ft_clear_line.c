@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc_buff.c                                  :+:      :+:    :+:   */
+/*   ft_clear_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/19 12:54:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/19 16:05:42 by cledant          ###   ########.fr       */
+/*   Created: 2016/08/19 14:43:15 by cledant           #+#    #+#             */
+/*   Updated: 2016/08/19 15:49:03 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-void	ft_realloc_buff(t_env *env)
+void	ft_clear_line(t_env *env)
 {
-	ft_memdel((void **)&(env->buff));
-	env->buff_size += 2048;
-	if ((env->buff = ft_memalloc(env->buff_size)) == NULL)
-		ft_handler(20000);
+	ft_putstr_fd(env->vi, env->fd_tty);
+	while (env->cur_clean > 0)
+		ft_cursor_left_clean(env);
+	ft_putstr_fd(env->cd, env->fd_tty);
+	ft_putstr_fd(env->ve, env->fd_tty);
 }
