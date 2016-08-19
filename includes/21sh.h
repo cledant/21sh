@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/17 13:27:53 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/19 13:12:21 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ typedef struct			s_env
 	t_btree				*begin_copy;
 	size_t				begin_cur_char;
 	t_btree				*cpy;
+	size_t				buff_size;
+	char				*buff;
+	size_t				small;
+	size_t				cur_buff;
+	size_t				last_buff;
+	size_t				last_clean;
 }						t_env;
 
 t_env					*ft_env_init(void);
@@ -68,12 +74,13 @@ void					ft_init_signal(void);
 void					ft_change_termsize(t_env *env);
 void					ft_background(struct termios cpy_term, t_env **env);
 void					ft_foreground(t_env *env);
+/* SHELL */
 void					ft_read_input(t_env *env);
 void					ft_wputchar_char_fd(char buff[4], int fd);
 void					ft_btree_wputendl_fd(t_btree *root, int fd);
 void					ft_btree_wputstr_fd(t_btree *root, int fd);
-t_btree					*ft_btree_pushback_node(t_btree *node, char s[4]);
-t_btree					*ft_btree_insert_node(t_env *env, char s[4]);
+t_btree					*ft_btree_pushback_node(t_btree *node, char s[4]); //ok
+t_btree					*ft_btree_insert_node(t_env *env, char s[4]); //ok
 t_btree					*ft_btree_cpy_cur(t_btree *previous, t_env *env);
 t_btree					*ft_btree_pushback_cpy_node(t_btree *src,
 							t_btree *cpy, t_env *env);
@@ -84,13 +91,13 @@ void					ft_reprint_prompt(char s[4], t_env *env);
 int						ft_hist_search(t_env *env, int where);
 void					ft_delete_cur_prompt(t_env *env);
 void					ft_move_to_cur_prompt(t_env *env);
-t_btree					*ft_new_right_node(t_env *env);
+t_btree					*ft_new_right_node(t_env *env); //ok
 void					ft_print_n_insert_data(char s[4], t_env *env);
 int						ft_cursor_left(t_env *env);
 void					ft_cursor_left_prompt(t_env *env);
 int						ft_cursor_right(t_env *env);
 void					ft_cursor_right_prompt(t_env *env);
-void					ft_insert_char(char s[4], t_env *env);
+void					ft_insert_char(char s[4], t_env *env); //ok
 void					ft_cursor_moveback_to_cur(t_env *env);
 int						ft_cursor_move_to_end(t_env *env);
 int						ft_cursor_move_to_end_prompt(t_env *env);
@@ -113,5 +120,9 @@ t_btree					*ft_btree_pushback_copy_pasta_node(t_btree *src,
 							t_btree *cpy, size_t sign);
 void					ft_reprint_inverted_selection(t_env *env);
 void					ft_print_line(t_env *env);
+void					ft_insert_data(char s[4], t_env *env); //ok
+void					ft_create_buffer(t_env *env); //ok
+void					ft_realloc_buff(t_env *env); //ok
+void					ft_print_buffer(t_env *env); //ok
 
 #endif

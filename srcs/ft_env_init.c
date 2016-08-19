@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 18:05:17 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/15 20:00:56 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/19 10:03:26 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ static inline void		ft_env_init_val(t_env *new)
 	new->begin_copy = NULL;
 	new->begin_cur_char = 0;
 	new->cpy = NULL;
+	new->buff = NULL;
+	new->buff_size = 2048;
+	new->m_line = 0;
 }
 
 t_env					*ft_env_init(void)
@@ -68,8 +71,14 @@ t_env					*ft_env_init(void)
 	if ((new = (t_env *)malloc(sizeof(t_env))) == NULL)
 		return (NULL);
 	ft_env_init_val(new);
+	if ((env->buff = ft_memalloc(env->buff_size)) == NULL)
+	{
+		free(new);
+		return (NULL);
+	}
 	if (ft_env_init_btree(new) == -1)
 	{
+		ft_memdel(&(env->buff));
 		free(new);
 		return (NULL);
 	}
