@@ -16,6 +16,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
+#include <strings.h>
 
 int			main(void)
 {

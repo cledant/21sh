@@ -16,7 +16,7 @@ static inline void		ft_new_line(t_env *env, size_t *c)
 {
 	while (*c % env->col != 0)
 	{
-		env->buff[*c - 1] = -1;
+		env->buff[*c - 1] = 0;
 		(*c)++;	
 	}
 }
@@ -25,6 +25,7 @@ static inline size_t	ft_calc_last_buff(t_env *env)
 {
 	t_btree		*line;
 	size_t		c;
+	char		*s;
 
 	line = env->last->content;
 	if (line->content == NULL)
@@ -32,15 +33,15 @@ static inline size_t	ft_calc_last_buff(t_env *env)
 	c = 2;
 	while (line != NULL)
 	{
-		if ((char)(line->content) == '\n')
+		s = line->content;
+		line = line->right;
+		if (s[0] == '\n')
 		{
 			while (c % env->col != 0)
 				c++;	
 		}
 		else
 			c++;
-		line = line->right;
-		c++;
 	}
 	return (c);
 }
@@ -49,7 +50,9 @@ void					ft_create_buffer(t_env *env)
 {
 	size_t		c;
 	t_btree		*line;
+	char		*s;
 
+	ft_bzero(env->buff, env->last_buff * sizeof(char));
 	env->last_buff = ft_calc_last_buff(env);
 	if (env->last_buff >= env->buff_size)
 		ft_realloc_buff(env);
@@ -61,11 +64,11 @@ void					ft_create_buffer(t_env *env)
 	c = 3;
 	while (line != NULL)
 	{
-		(env->buff)[c - 1] = ((char)(line->content));
-		if ((char)(line->content) == '\n')
+		s = line->content;
+		if (s[0] == '\n')
 			ft_new_line(env, &c);
 		else
-			c++;
+			(env->buff)[c - 1] = s[0];
 		if (env->cur_il == line)
 			env->cur_buff = c;
 		line = line->right;

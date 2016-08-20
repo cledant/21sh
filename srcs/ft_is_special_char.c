@@ -59,7 +59,10 @@ int		ft_is_special_char(char s[4], t_env *env)
 		}
 		else
 			env->cur = env->last;
-		write(env->fd_tty, "$>", 2);
+		ft_bzero(env->buff, env->last_buff);
+		ft_memcpy(env->buff, "$>", 2);
+		env->cur_buff = 2;
+		env->last_buff = 2;
 		return (1);
 	}
 	else if ((s[0] == 4 && s[1] == 0 && s[2] == 0 && s[3] == 0)

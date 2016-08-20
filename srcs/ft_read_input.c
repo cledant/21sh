@@ -33,7 +33,6 @@ void	ft_read_input(t_env *env)
 				if (env->mode_copy == 0)
 					ft_insert_data(s, env);
 			}
-			ft_clear_line(env);
 			ft_print_buffer(env);
 			ft_move_cursor_to_cur_buff(env);
 			ft_bzero(s, sizeof(char) * 4);
