@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/19 16:01:52 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/20 12:47:22 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void					ft_change_termsize(t_env *env);
 void					ft_background(struct termios cpy_term, t_env **env);
 void					ft_foreground(t_env *env);
 /* SHELL */
-void					ft_read_input(t_env *env);
+void					ft_read_input(t_env *env); //ok
 void					ft_wputchar_char_fd(char buff[4], int fd);
 void					ft_btree_wputendl_fd(t_btree *root, int fd);
 void					ft_btree_wputstr_fd(t_btree *root, int fd);
@@ -86,7 +86,7 @@ t_btree					*ft_btree_pushback_cpy_node(t_btree *src,
 							t_btree *cpy, t_env *env);
 void					ft_btree_clear_content(t_btree **root);
 int						ft_is_special_char(char s[4], t_env *env); //ok
-void					ft_hist_destroy(t_btree **root);
+void					ft_hist_destroy(t_btree **root); //ok
 void					ft_reprint_prompt(char s[4], t_env *env);
 int						ft_hist_search(t_env *env, int where);
 void					ft_delete_cur_prompt(t_env *env);
@@ -127,5 +127,8 @@ void					ft_print_buffer(t_env *env); //ok
 void					ft_clear_line(t_env *env); //ok
 void					ft_cursor_left_clean(t_env *env); //ok
 void					ft_move_cursor_to_cur_buff(t_env *env); //ok
+void					ft_move_cursor_to_end_buff(t_env *env);
+int						ft_cursor_left_new(t_env *env); //ok
+int						ft_cursor_right_new(t_env *env);
 
 #endif

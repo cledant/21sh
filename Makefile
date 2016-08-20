@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/08/19 16:23:30 by cledant          ###   ########.fr        #
+#    Updated: 2016/08/20 12:38:11 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ SRC_NAME = main.c ft_get_term.c ft_get_termcap_function.c ft_init_signal.c \
 		   ft_btree_pushback_copy_pasta_node.c ft_reprint_inverted_selection.c \
 		   ft_print_line.c \
 		   ft_create_buffer.c ft_realloc_buff.c ft_print_buffer.c ft_clear_line.c \
-		   ft_cursor_left_clean.c ft_move_cursor_to_cur_buff.c ft_insert_data.c
+		   ft_cursor_left_clean.c ft_move_cursor_to_cur_buff.c ft_insert_data.c \
+		   ft_cursor_left_new.c
 
 SRC_PATH = ./srcs/
 

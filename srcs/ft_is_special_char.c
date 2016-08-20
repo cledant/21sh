@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/17 15:14:27 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/20 12:56:05 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ static int		ft_test_hist_bis(t_env *env)
 int		ft_is_special_char(char s[4], t_env *env)
 {
 	if ((s[0] == 10 && s[1] == 0 && s[2] == 0 && s[3] == 0)
-			&& env->mode_copy == 0) /*ENTER*/
+			&& env->mode_copy == 0 && env->too_small == 0) /*ENTER*/
 	{
+//		ft_move_cursor_to_end_buff(env);
 		write(env->fd_tty, "\n", 1);
 		if (env->cur_il->content != NULL)
 		{
@@ -63,6 +64,7 @@ int		ft_is_special_char(char s[4], t_env *env)
 		ft_memcpy(env->buff, "$>", 2);
 		env->cur_buff = 2;
 		env->last_buff = 2;
+		ft_print_buffer(env);
 		return (1);
 	}
 	else if ((s[0] == 4 && s[1] == 0 && s[2] == 0 && s[3] == 0)
@@ -84,7 +86,7 @@ int		ft_is_special_char(char s[4], t_env *env)
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 67 && s[3] == 0)) /*RIGHT*/
 		return (ft_cursor_right(env));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 68 && s[3] == 0)) /*LEFT*/
-		return (ft_cursor_left(env));
+		return (ft_cursor_left_new(env));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 72 && s[3] == 0)) /*HOME*/
 		return (ft_cursor_move_to_orig(env));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 70 && s[3] == 0)) /*END*/
@@ -119,6 +121,18 @@ int		ft_is_special_char(char s[4], t_env *env)
 		return (ft_test_hist(env));
 	else if ((s[0] == 18 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*DEBUG 2*/
 		return (ft_test_hist_bis(env));
+	else if ((s[0] == -49 && s[1] == -128 && s[2] == 0 && s[3] == 0)) /*DEBUG 
+																		M-LINE*/
+	{
+		if (env->too_small == 0)
+			env->too_small = 1;
+		else
+			env->too_small = 0;
+		return (1);
+	}
+	else if (s[0] == 10 && s[1] == 0 && s[2] == 0 && s[3] == 0 &&
+				env->too_small == 1) /*DEBUG MULTI LINE*/
+		return (0);
 	else if ((ft_isprint(s[0]) == 0 && s[1] == 0 && s[2] == 0 && s[3] == 0))
 		return (1);
 	else if ((ft_isprint(s[0]) < 0 || s[1] != 0 || s[2] != 0 || s[3] != 0))
