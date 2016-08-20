@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 10:34:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/19 16:43:14 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/20 16:44:06 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ static inline size_t	ft_calc_last_buff(t_env *env)
 	t_btree		*line;
 	size_t		c;
 	char		*s;
+	size_t		c_rl;
 
 	line = env->last->content;
 	if (line->content == NULL)
 		return (2);
 	c = 2;
+	c_rl = 0;
 	while (line != NULL)
 	{
 		s = line->content;
@@ -38,11 +40,13 @@ static inline size_t	ft_calc_last_buff(t_env *env)
 		if (s[0] == '\n')
 		{
 			while (c % env->col != 0)
-				c++;	
+				c++;
+			c_rl++;
 		}
-		else
-			c++;
+		c++;
 	}
+	if (c_rl > 0)
+		return (c - 1);
 	return (c);
 }
 

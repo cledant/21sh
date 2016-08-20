@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/20 12:47:22 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/20 20:07:47 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void					ft_clear_line(t_env *env); //ok
 void					ft_cursor_left_clean(t_env *env); //ok
 void					ft_move_cursor_to_cur_buff(t_env *env); //ok
 void					ft_move_cursor_to_end_buff(t_env *env);
-int						ft_cursor_left_new(t_env *env); //ok
-int						ft_cursor_right_new(t_env *env);
+void					ft_move_cursor_to_begin_buff(t_env *env); //ok
+int						ft_cursor_left_buff(t_env *env); //ok
 
 #endif
