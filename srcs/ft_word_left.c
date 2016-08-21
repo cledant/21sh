@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 21:32:52 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/15 00:55:19 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/21 19:02:13 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,24 @@ static inline size_t	ft_seek_char(char *s, size_t type)
 static inline void		ft_move_cursor(t_env *env, size_t type, size_t dec,
 							t_btree *seek)
 {
-	size_t	bak;
-
 	if (type == 3)
 	{
-		bak = env->cur_char;
-		ft_putstr_fd(env->vi, env->fd_tty);
-		ft_cursor_move_to_end(env);
-		ft_putstr_fd(env->ve, env->fd_tty);
-		env->cur_char = bak - dec;
+		env->cur_char = env->cur_char - dec;
 		env->cur_il = seek;
-		ft_cursor_moveback_to_cur(env);
+		ft_move_cursor_from_cur_buff_to_before_prompt(env);
+		ft_create_buffer(env);
+		ft_print_buffer(env);
+		ft_move_cursor_from_last_buff_to_cur_buff(env);
 	}
 	else if (type == 2 && seek == NULL &&
 				ft_isspace((char)env->last->content) == 0)
 	{
-		bak = env->cur_char;
-		ft_putstr_fd(env->vi, env->fd_tty);
-		ft_cursor_move_to_end(env);
-		ft_putstr_fd(env->ve, env->fd_tty);
 		env->cur_char = 2;
 		env->cur_il = env->last->content;
-		ft_cursor_moveback_to_cur(env);
+		ft_move_cursor_from_cur_buff_to_before_prompt(env);
+		ft_create_buffer(env);
+		ft_print_buffer(env);
+		ft_move_cursor_from_last_buff_to_cur_buff(env);
 	}
 }
 
