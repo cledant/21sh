@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/08/21 14:51:59 by cledant          ###   ########.fr        #
+#    Updated: 2016/08/21 18:32:48 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRC_NAME = main.c ft_get_term.c ft_get_termcap_function.c ft_init_signal.c \
 		   ft_move_cursor_from_last_buff_to_cur_buff.c ft_insert_data.c \
 		   ft_cursor_left_buff.c ft_move_cursor_from_cur_buff_to_end_buff.c \
 		   ft_move_cursor_from_cur_buff_to_before_prompt.c ft_cursor_right_buff.c \
-		   ft_cursor_left_clean.c
+		   ft_cursor_left_clean.c ft_change_cursor_from_cur_buff_to_end_buff.c \
+		   ft_change_cursor_from_cur_buff_to_prompt.c
 
 SRC_PATH = ./srcs/
 

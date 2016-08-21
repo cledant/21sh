@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/21 17:29:26 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/21 18:33:01 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ void					ft_btree_wputendl_fd(t_btree *root, int fd);
 void					ft_btree_wputstr_fd(t_btree *root, int fd);
 t_btree					*ft_btree_pushback_node(t_btree *node, char s[4]); //ok
 t_btree					*ft_btree_insert_node(t_env *env, char s[4]); //ok
-t_btree					*ft_btree_cpy_cur(t_btree *previous, t_env *env);
+t_btree					*ft_btree_cpy_cur(t_btree *previous, t_env *env); //ok
 t_btree					*ft_btree_pushback_cpy_node(t_btree *src,
 							t_btree *cpy, t_env *env);
-void					ft_btree_clear_content(t_btree **root);
+void					ft_btree_clear_content(t_btree **root); //ok
 int						ft_is_special_char(char s[4], t_env *env); //ok
 void					ft_hist_destroy(t_btree **root); //ok
 void					ft_reprint_prompt(char s[4], t_env *env);
@@ -129,6 +129,8 @@ void					ft_cursor_left_clean(t_env *env); //ok
 void					ft_move_cursor_from_last_buff_to_cur_buff(t_env *env); //ok
 void					ft_move_cursor_from_cur_buff_to_end_buff(t_env *env); //ok
 void					ft_move_cursor_from_cur_buff_to_before_prompt(t_env *env); //ok
+int						ft_change_cursor_from_cur_buff_to_end_buff(t_env *env); //ok
+int						ft_change_cursor_from_cur_buff_to_prompt(t_env *env); //ok
 int						ft_cursor_left_buff(t_env *env); //ok
 int						ft_cursor_right_buff(t_env *env); //ok
 
