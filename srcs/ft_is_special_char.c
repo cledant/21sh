@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/20 19:43:34 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/21 13:13:34 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		ft_is_special_char(char s[4], t_env *env)
 	if ((s[0] == 10 && s[1] == 0 && s[2] == 0 && s[3] == 0)
 			&& env->mode_copy == 0 && env->too_small == 0) /*ENTER*/
 	{
-//		ft_move_cursor_to_end_buff(env);
+		ft_move_cursor_from_cur_buff_to_end_buff(env);
 		write(env->fd_tty, "\n", 1);
 		if (env->cur_il->content != NULL)
 		{
@@ -84,7 +84,7 @@ int		ft_is_special_char(char s[4], t_env *env)
 				&& env->mode_copy == 0) /*DOWN*/
 		return (ft_hist_search(env, 1));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 67 && s[3] == 0)) /*RIGHT*/
-		return (ft_cursor_right(env));
+		return (ft_cursor_right_buff(env));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 68 && s[3] == 0)) /*LEFT*/
 		return (ft_cursor_left_buff(env));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 72 && s[3] == 0)) /*HOME*/
