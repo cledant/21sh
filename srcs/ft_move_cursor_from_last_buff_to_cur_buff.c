@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 13:22:13 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/21 13:27:11 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/21 18:00:56 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	ft_move_cursor_from_last_buff_to_cur_buff(t_env *env)
 	ft_max_left_to_nil(env);
 	while (counter < env->cur_buff)
 	{
+		if (env->cur_char == 2 && counter == env->cur_char)
+			break ;
 		if (counter % env->col == (unsigned int)(env->col - 1))
 			write(env->fd_tty, "\n", 1);
 		else

@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/21 13:49:30 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/21 17:29:26 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void					ft_btree_clear_content(t_btree **root);
 int						ft_is_special_char(char s[4], t_env *env); //ok
 void					ft_hist_destroy(t_btree **root); //ok
 void					ft_reprint_prompt(char s[4], t_env *env);
-int						ft_hist_search(t_env *env, int where);
+int						ft_hist_search(t_env *env, int where); //ok
 void					ft_delete_cur_prompt(t_env *env);
 void					ft_move_to_cur_prompt(t_env *env);
 t_btree					*ft_new_right_node(t_env *env); //ok
@@ -102,10 +102,10 @@ void					ft_cursor_moveback_to_cur(t_env *env);
 int						ft_cursor_move_to_end(t_env *env);
 int						ft_cursor_move_to_end_prompt(t_env *env);
 int						ft_cursor_move_to_orig(t_env *env);
-int						ft_delete(t_env *env);
-void					ft_btree_delete_node(t_env *env);
-int						ft_backdelete(t_env *env);
-void					ft_btree_backdelete_node(t_env *env);
+int						ft_delete(t_env *env); //ok
+void					ft_btree_delete_node(t_env *env); //ok
+int						ft_backdelete(t_env *env); //ok
+void					ft_btree_backdelete_node(t_env *env); //ok
 void					ft_sigint_handler(t_env *env);
 int						ft_word_right(t_env *env);
 int						ft_word_left(t_env *env);
