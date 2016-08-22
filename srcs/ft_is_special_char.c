@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/21 18:32:41 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/22 12:23:48 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ int		ft_is_special_char(char s[4], t_env *env)
 			ft_hist_destroy(&(env->first));
 			ft_handler(10000);
 		}
+		return (1);
+	}
+	else if (s[0] == 12 && s[1] == 0 && s[2] == 0 && s[3] == 0) /*CTRL + L*/
+	{
+		ft_change_termsize(env);
 		return (1);
 	}
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 65 && s[3] == 0)

@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 18:17:44 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/17 13:21:07 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/22 12:08:40 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ int		ft_reset_copy(t_env *env, size_t disp)
 	env->begin_copy = NULL;
 	ft_putstr_fd(env->me, env->fd_tty);
 	if (disp == 1)
-		ft_print_line(env);
+	{
+		ft_create_buffer(env);
+		ft_print_buffer(env);
+		ft_move_cursor_from_last_buff_to_cur_buff(env);
+	}
 	return (1);
 }

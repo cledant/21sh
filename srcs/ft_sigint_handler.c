@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 13:05:12 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/17 13:30:55 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/22 12:07:38 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,17 @@ void	ft_sigint_handler(t_env *env)
 	size_t		nb_line;
 
 	ft_reset_copy(env, 0);
-	while (env->cur_char > 0)
-		ft_cursor_left_prompt(env);
-	if (env->last_char % env->col == 0)
-		nb_line = env->last_char / env->col + 2;
+	ft_move_cursor_from_cur_buff_to_before_prompt(env);
+	if (env->last_buff % env->col == 0)
+		nb_line = env->last_buff / env->col + 2;
 	else
-		nb_line = env->last_char / env->col + 1;
+		nb_line = env->last_buff / env->col + 1;
 	while (nb_line)
 	{
 		write(env->fd_tty, "\n", 1);
 		nb_line--;
 	}
-	write(env->fd_tty, "$>", 2);
 	ft_recreate_node(env);
+	ft_create_buffer(env);
+	ft_print_buffer(env);
 }
