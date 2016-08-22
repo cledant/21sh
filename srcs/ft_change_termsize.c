@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/22 14:55:08 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/17 13:28:09 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/22 11:10:02 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	ft_change_termsize(t_env *env)
 	ft_putstr_fd(env->ho, env->fd_tty);
 	ft_putstr_fd(env->cl, env->fd_tty);
 	ft_reset_copy(env, 0);
-	write(env->fd_tty, "$>", 2);
-	ft_btree_wputstr_fd(env->last->content, env->fd_tty);
-	if (env->cur_char != env->last_char)
-		ft_cursor_moveback_to_cur(env);
+	ft_create_buffer(env);
+	ft_print_buffer(env);
+	ft_move_cursor_from_last_buff_to_cur_buff(env);
 }
