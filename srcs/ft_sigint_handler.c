@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 13:05:12 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/22 12:07:38 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/22 14:00:08 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ void	ft_sigint_handler(t_env *env)
 	}
 	ft_recreate_node(env);
 	ft_create_buffer(env);
+	ft_putstr_fd(env->cd, env->fd_tty);
 	ft_print_buffer(env);
 }
