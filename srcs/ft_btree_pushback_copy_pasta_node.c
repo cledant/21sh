@@ -6,13 +6,13 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 12:31:01 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/16 16:55:02 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/23 17:22:37 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-static t_btree		*ft_to_last(size_t sign, t_btree *cpy)
+static inline t_btree		*ft_to_last(size_t sign, t_btree *cpy)
 {
 	if (sign == 0)
 	{
@@ -27,7 +27,7 @@ static t_btree		*ft_to_last(size_t sign, t_btree *cpy)
 	return (cpy);
 }
 
-static void			ft_link(size_t sign, t_btree *cpy, t_btree *new)
+static inline void			ft_link(size_t sign, t_btree *cpy, t_btree *new)
 {
 	if (sign == 0)
 	{

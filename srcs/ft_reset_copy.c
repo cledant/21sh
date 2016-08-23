@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 18:17:44 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/22 12:08:40 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/23 19:08:36 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		ft_reset_copy(t_env *env, size_t disp)
 	env->mode_copy = 0;
 	env->begin_cur_char = 0;
 	env->begin_copy = NULL;
+	env->end_copy = NULL;
 	ft_putstr_fd(env->me, env->fd_tty);
 	if (disp == 1)
 	{

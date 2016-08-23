@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 18:52:37 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/16 16:56:42 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/23 17:14:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_btree		*ft_btree_set_copy_paste(t_btree *first, int len)
 
 	sign = (len < 0) ? 0 : 1;
 	len = (len < 0) ? -len : len;
+	len++;
 	new = NULL;
 	c = 0;
 	while (c < len)

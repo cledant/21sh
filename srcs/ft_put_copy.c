@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 14:54:27 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/16 20:32:55 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/23 17:55:59 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,9 @@ int					ft_put_copy(t_env *env)
 		env->last_char += size;
 		env->cur_char += (env->cur_char == 2) ? size + 1 : size;
 	}
-	write(env->fd_tty, "$>", 2);
-	ft_btree_wputstr_fd(env->last->content, env->fd_tty);
-	ft_cursor_moveback_to_cur(env);
+	ft_move_cursor_from_cur_buff_to_before_prompt(env);
+	ft_create_buffer(env);
+	ft_print_buffer(env);
+	ft_move_cursor_from_last_buff_to_cur_buff(env);
 	return (1);
 }

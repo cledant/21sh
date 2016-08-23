@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 18:05:17 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/19 16:04:44 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/23 19:03:25 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static inline void		ft_env_init_val(t_env *new)
 	new->last_char = 0;
 	new->mode_copy = 0;
 	new->begin_copy = NULL;
+	new->end_copy = NULL;
 	new->begin_cur_char = 0;
 	new->cpy = NULL;
 	new->buff = NULL;

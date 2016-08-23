@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/23 16:25:15 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/23 17:00:43 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,14 @@ int		ft_is_special_char(char s[4], t_env *env)
 		return (ft_line_up(env));
 	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 66)) /*OPT+DOWN*/
 		return (ft_line_down(env));
-	else if ((s[0] == -61  && s[1] == -89 && s[2] == 0 && s[3] == 0) &&
-				env->mode_copy == 0) /*OPT+C start*/
+	else if ((s[0] == -61  && s[1] == -97 && s[2] == 0 && s[3] == 0) &&
+				env->mode_copy == 0) /*OPT+S*/
 		return (ft_start_copy(env));
 	else if ((s[0] == -61  && s[1] == -89 && s[2] == 0 && s[3] == 0) &&
-				env->mode_copy == 1) /*OPT+C set*/
+				env->mode_copy == 1) /*OPT+C*/
+		return (ft_set_copy(env));
+	else if ((s[0] == -30  && s[1] == -119 && s[2] == -120 && s[3] == 0) &&
+				env->mode_copy == 1) /*OPT+X*/
 		return (ft_set_copy(env));
 	else if ((s[0] == 27  && s[1] == 0 && s[2] == 0 && s[3] == 0) &&
 				env->mode_copy == 1) /*ESC copy*/

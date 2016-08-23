@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/23 16:25:00 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/23 19:00:58 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct			s_env
 	size_t				last_char;
 	size_t				mode_copy;
 	t_btree				*begin_copy;
+	t_btree				*end_copy;
 	size_t				begin_cur_char;
 	t_btree				*cpy;
 	size_t				buff_size;
@@ -111,13 +112,13 @@ int						ft_word_right(t_env *env); //ok
 int						ft_word_left(t_env *env); //ok
 int						ft_line_up(t_env *env);
 int						ft_line_down(t_env *env);
-int						ft_start_copy(t_env *env);
-int						ft_set_copy(t_env *env);
+int						ft_start_copy(t_env *env); //ok
+int						ft_set_copy(t_env *env); //ok
 int						ft_reset_copy(t_env *env, size_t disp); //ok
-int						ft_put_copy(t_env *env);
-t_btree					*ft_btree_set_copy_paste(t_btree *first, int len);
+int						ft_put_copy(t_env *env); //ok
+t_btree					*ft_btree_set_copy_paste(t_btree *first, int len); //ok
 t_btree					*ft_btree_pushback_copy_pasta_node(t_btree *src,
-							t_btree *cpy, size_t sign);
+							t_btree *cpy, size_t sign); //ok
 void					ft_reprint_inverted_selection(t_env *env);
 void					ft_print_line(t_env *env);
 void					ft_insert_data(char s[4], t_env *env); //ok
