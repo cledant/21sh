@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/22 12:11:37 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/22 16:27:17 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,7 @@ int						ft_change_cursor_from_cur_buff_to_end_buff(t_env *env); //ok
 int						ft_change_cursor_from_cur_buff_to_prompt(t_env *env); //ok
 int						ft_cursor_left_buff(t_env *env); //ok
 int						ft_cursor_right_buff(t_env *env); //ok
+int						ft_home(t_env *env);
+int						ft_end(t_env *env);
 
 #endif

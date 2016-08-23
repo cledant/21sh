@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 10:34:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/20 16:44:06 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/23 11:03:28 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,13 @@ void					ft_create_buffer(t_env *env)
 	while (line != NULL)
 	{
 		s = line->content;
+		if (env->cur_il == line && env->cur_char == 2)
+			env->cur_buff = c;
 		if (s[0] == '\n')
 			ft_new_line(env, &c);
 		else
 			(env->buff)[c - 1] = s[0];
-		if (env->cur_il == line)
+		if (env->cur_il == line && env->cur_char != 2)
 			env->cur_buff = c;
 		line = line->right;
 		c++;
