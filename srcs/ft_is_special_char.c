@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/22 16:28:16 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/23 16:25:15 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,42 +46,12 @@ int		ft_is_special_char(char s[4], t_env *env)
 {
 	if ((s[0] == 10 && s[1] == 0 && s[2] == 0 && s[3] == 0)
 			&& env->mode_copy == 0 && env->too_small == 0) /*ENTER*/
-	{
-		ft_move_cursor_from_cur_buff_to_end_buff(env);
-		write(env->fd_tty, "\n", 1);
-		if (env->cur_il->content != NULL)
-		{
-			ft_btree_wputendl_fd(env->last->content, env->fd_tty);
-			if ((env->last = ft_new_right_node(env)) == NULL)
-			{
-				ft_hist_destroy(&(env->first));
-				ft_handler(20000);
-			}
-		}
-		else
-			env->cur = env->last;
-		ft_bzero(env->buff, env->last_buff);
-		ft_memcpy(env->buff, "$>", 2);
-		env->cur_buff = 2;
-		env->last_buff = 2;
-		ft_print_buffer(env);
-		return (1);
-	}
+		return (ft_enter(env));
 	else if ((s[0] == 4 && s[1] == 0 && s[2] == 0 && s[3] == 0)
 				&& env->mode_copy == 0) /*CTRL + D*/
-	{
-		if (env->cur_il->content == NULL)
-		{
-			ft_hist_destroy(&(env->first));
-			ft_handler(10000);
-		}
-		return (1);
-	}
+		return (ft_ctrl_d(env));
 	else if (s[0] == 12 && s[1] == 0 && s[2] == 0 && s[3] == 0) /*CTRL + L*/
-	{
-		ft_change_termsize(env);
-		return (1);
-	}
+		return (ft_ctrl_l(env));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 65 && s[3] == 0)
 				&& env->mode_copy == 0) /*UP*/
 		return (ft_hist_search(env, 0));
