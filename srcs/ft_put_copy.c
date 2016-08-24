@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 14:54:27 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/23 17:55:59 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/24 17:14:12 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int					ft_put_copy(t_env *env)
 	t_btree		*end;
 	t_btree		*begin;
 	size_t		size;
-	size_t		bak;
 
 	if (env->cpy == NULL)
 		return (1);
@@ -49,9 +48,7 @@ int					ft_put_copy(t_env *env)
 		env->cur_il->right->left = end;
 		end->right = env->cur_il->right;
 	}
-	bak = env->cur_char;
-	ft_move_to_cur_prompt(env);
-	env->cur_char = bak;
+	ft_move_cursor_from_cur_buff_to_before_prompt(env);
 	if (env->cur_il->content == NULL)
 	{
 		free(env->last->content);
@@ -60,15 +57,24 @@ int					ft_put_copy(t_env *env)
 		env->last_char += size;
 		env->cur_char += size;
 	}
+	else if (env->cur_char == 2)
+	{
+		env->last->content = cpy_cpy;
+		cpy_cpy->left = NULL;
+		end->right = env->cur_il;
+		env->cur_il->left = end;
+		env->cur_il = end;
+		env->last_char += size;
+		env->cur_char += size + 1;
+	}
 	else
 	{
 		env->cur_il->right = cpy_cpy;
 		cpy_cpy->left = env->cur_il;
 		env->cur_il = end;
 		env->last_char += size;
-		env->cur_char += (env->cur_char == 2) ? size + 1 : size;
+		env->cur_char += size;
 	}
-	ft_move_cursor_from_cur_buff_to_before_prompt(env);
 	ft_create_buffer(env);
 	ft_print_buffer(env);
 	ft_move_cursor_from_last_buff_to_cur_buff(env);

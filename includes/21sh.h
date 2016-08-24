@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/23 19:00:58 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/24 15:53:50 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,8 @@ int						ft_start_copy(t_env *env); //ok
 int						ft_set_copy(t_env *env); //ok
 int						ft_reset_copy(t_env *env, size_t disp); //ok
 int						ft_put_copy(t_env *env); //ok
-t_btree					*ft_btree_set_copy_paste(t_btree *first, int len); //ok
+t_btree					*ft_btree_set_copy_paste(t_btree *first, t_btree *end,
+							int len); //ok
 t_btree					*ft_btree_pushback_copy_pasta_node(t_btree *src,
 							t_btree *cpy, size_t sign); //ok
 void					ft_reprint_inverted_selection(t_env *env);

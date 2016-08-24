@@ -6,30 +6,45 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 18:52:37 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/23 17:14:10 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/24 17:06:15 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-t_btree		*ft_btree_set_copy_paste(t_btree *first, int len)
+static inline int		ft_break(t_btree *first, t_btree *end, size_t sign)
+{
+	if (sign == 0)
+	{
+		if (first == end->right)
+			return (1);
+	}
+	else
+	{
+		if (first == end->left)
+			return (1);
+	}
+	return (0);
+}
+
+t_btree					*ft_btree_set_copy_paste(t_btree *first, t_btree *end,
+		int len)
 {
 	size_t		sign;
 	int			c;
 	t_btree		*new;
 
 	sign = (len < 0) ? 0 : 1;
-	len = (len < 0) ? -len : len;
-	len++;
 	new = NULL;
 	c = 0;
-	while (c < len)
+	while (1)
 	{
 		if ((new = ft_btree_pushback_copy_pasta_node(first, new, sign))
 				== NULL)
 			return (NULL);
 		first = (sign == 0) ? first->right : first->left;
-		c++;
+		if (ft_break(first, end, sign) == 1)
+			break ;
 	}
 	return (new);
 }
