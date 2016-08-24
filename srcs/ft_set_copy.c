@@ -6,13 +6,13 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 18:19:50 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/24 16:09:01 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/24 17:50:07 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "21sh.h"
 
-int		ft_set_copy(t_env *env)
+int		ft_set_copy(t_env *env, int cut)
 {
 	int		len;
 
@@ -29,6 +29,8 @@ int		ft_set_copy(t_env *env)
 	if ((env->cpy = ft_btree_set_copy_paste(env->begin_copy, env->end_copy,
 					len)) == NULL)
 		ft_handler(20000);
+	if (cut == 1)
+		ft_btree_cut_nodes(env, len);
 	ft_reset_copy(env, 0);
 //	ft_print_line(env);
 	return (1);
