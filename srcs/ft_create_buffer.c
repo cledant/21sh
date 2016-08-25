@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 10:34:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/23 11:03:28 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/25 13:04:34 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void					ft_create_buffer(t_env *env)
 	char		*s;
 
 	ft_bzero(env->buff, env->last_buff * sizeof(char));
+	ft_bzero(env->inv_buff, env->last_buff * sizeof(char));
 	env->last_buff = ft_calc_last_buff(env);
 	if (env->last_buff >= env->buff_size)
 		ft_realloc_buff(env);
@@ -80,4 +81,6 @@ void					ft_create_buffer(t_env *env)
 		line = line->right;
 		c++;
 	}
+	if (env->mode_copy == 1)
+		ft_set_inv_buffer(env);
 }

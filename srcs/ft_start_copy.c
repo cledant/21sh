@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 18:13:52 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/24 15:43:14 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/25 15:05:04 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int		ft_start_copy(t_env *env)
 		env->begin_copy = env->cur_il;
 	else
 		env->begin_copy = env->cur_il->right;
+	ft_putstr_fd(env->vi, env->fd_tty);
 	return (1);
 }
