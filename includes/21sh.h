@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/25 12:54:13 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/25 22:30:28 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,6 @@ int						ft_enter(t_env *env); //ok
 int						ft_ctrl_d(t_env *env); //ok
 int						ft_ctrl_l(t_env *env); //ok
 void					ft_btree_cut_nodes(t_env *env, int len);
-void					ft_set_inv_buffer(t_env *env);
+void					ft_set_inv_buffer(t_env *env); //ok
 
 #endif

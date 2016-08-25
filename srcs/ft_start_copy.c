@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 18:13:52 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/25 15:05:04 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/25 22:24:18 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int		ft_start_copy(t_env *env)
 		return (1);
 	env->mode_copy = 1;
 	env->begin_cur_char = env->cur_char;
+	if (env->cur_char == env->last_char)
+		ft_cursor_left_buff(env);
 	if (env->cur_char == 2 || env->cur_char == env->last_char)
 		env->begin_copy = env->cur_il;
 	else

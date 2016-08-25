@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 18:19:50 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/24 17:50:07 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/25 22:29:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ int		ft_set_copy(t_env *env, int cut)
 	if (cut == 1)
 		ft_btree_cut_nodes(env, len);
 	ft_reset_copy(env, 0);
-//	ft_print_line(env);
+	ft_move_cursor_from_cur_buff_to_before_prompt(env);
+	ft_create_buffer(env);
+	ft_print_buffer(env);
+	ft_move_cursor_from_last_buff_to_cur_buff(env);
 	return (1);
 }
