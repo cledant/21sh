@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/24 17:28:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/24 21:16:45 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/26 03:11:33 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,25 @@ void		ft_btree_cut_nodes(t_env *env, int len)
 	c = 0;
 	front = (env->begin_copy == env->last->content || env->end_copy ==
 		env->last->content) ? 1 : 0;
-	if (front == 1)
-		first = (sign == 0) ? env->begin_copy->left : env->begin_copy->right;
-	end = (sign == 0) ? env->end_copy->right : env->end_copy->left;
-	ptr = env->begin_copy;
+	first = (sign == 0) ? env->begin_copy->left : env->end_copy->left;
+	end = (sign == 0) ? env->end_copy->right : env->begin_copy->right;
+	ptr = (sign == 0) ? env->begin_copy : env->end_copy;
 	while (ptr != end)
 	{
 		del = ptr;
-		ptr = (sign == 0) ? ptr->right : ptr->left;
+		ptr = ptr->right;
 		ft_btree_delone(&del, ft_lstfree_malloc);
 		c++;
 	}
 	ft_move_cursor_from_cur_buff_to_before_prompt(env);
+	ft_putstr_fd(env->cd, env->fd_tty);
 	if (front == 1)
 	{
 		env->last->content = end;
-		env->cur_char -= c;
 		env->last_char -= c;
+		env->cur_il = end->left;
+		end->left->left = NULL;
+		env->cur_char = 2;
 		if (end == NULL)
 		{
 			env->last->content = ft_btree_new(NULL, 0);
@@ -54,19 +56,11 @@ void		ft_btree_cut_nodes(t_env *env, int len)
 	}
 	else
 	{
-		env->cur_char -= c;
 		env->last_char -= c;
-		if (sign == 0)
-		{
-			env->begin_copy->right = end;
-			env->end_copy->left = first;
-		}
-		else
-		{
-			env->begin_copy->left = end;
-			env->end_copy->right = first;		
-		}
-		env->cur_il = end;
+		env->cur_char = (sign == 0) ? env->cur_char - c : env->cur_char;
+		end->left = first;
+		first->right = end;
+		env->cur_il = (sign == 0) ? first->left : end->left;
 	}
 	ft_create_buffer(env);
 	ft_print_buffer(env);

@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 18:17:44 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/25 11:52:45 by cledant          ###   ########.fr       */
+/*   Updated: 2016/08/26 00:41:44 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		ft_reset_copy(t_env *env, size_t disp)
 	ft_putstr_fd(env->ve, env->fd_tty);
 	if (disp == 1)
 	{
+		ft_move_cursor_from_cur_buff_to_before_prompt(env);
 		ft_create_buffer(env);
 		ft_print_buffer(env);
 		ft_move_cursor_from_last_buff_to_cur_buff(env);
