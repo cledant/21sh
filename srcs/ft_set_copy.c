@@ -30,7 +30,11 @@ int		ft_set_copy(t_env *env, int cut)
 					len)) == NULL)
 		ft_handler(20000);
 	if (cut == 1)
+	{
 		ft_btree_cut_nodes(env, len);
-	ft_reset_copy(env, 1);
+		ft_reset_copy(env, 0);
+	}
+	else
+		ft_reset_copy(env, 1);
 	return (1);
 }

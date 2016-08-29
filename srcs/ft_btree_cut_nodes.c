@@ -62,6 +62,7 @@ void		ft_btree_cut_nodes(t_env *env, int len)
 		first->right = end;
 		env->cur_il = (sign == 0) ? first->left : end->left;
 	}
+	env->mode_copy = 0;
 	ft_create_buffer(env);
 	ft_print_buffer(env);
 	ft_move_cursor_from_last_buff_to_cur_buff(env);

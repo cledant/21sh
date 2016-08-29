@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "21sh.h"
-/*
+
 static int		ft_test_hist(t_env *env)
 {
 	t_btree		*test;
@@ -41,7 +41,7 @@ static int		ft_test_hist_bis(t_env *env)
 	write(env->fd_tty, "$>", 2);
 	return (1);
 }
-*/
+
 int		ft_is_special_char(char s[4], t_env *env)
 {
 	if ((s[0] == 10 && s[1] == 0 && s[2] == 0 && s[3] == 0)
@@ -72,34 +72,34 @@ int		ft_is_special_char(char s[4], t_env *env)
 	else if ((s[0] == 127 && s[1] == 0 && s[2] == 0 && s[3] == 0)
 				&& env->mode_copy == 0) /*BACK DEL*/
 		return (ft_backdelete(env));
-	else if ((s[0] == 27 && s[1] == 114 && s[2] == 0 && s[3] == 0)) /*ALT+R*/
+	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 67)) /*OPT+RIGHT*/
 		return (ft_word_right(env));
-	else if ((s[0] == 27 && s[1] == 116 && s[2] == 0 && s[3] == 0)) /*ALT+T*/
+	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 68)) /*OPT+LEFT*/
 		return (ft_word_left(env));
 	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 65)) /*OPT+UP*/
 		return (ft_line_up(env));
 	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 66)) /*OPT+DOWN*/
 		return (ft_line_down(env));
-	else if ((s[0] == 27  && s[1] == 115 && s[2] == 0 && s[3] == 0) &&
-				env->mode_copy == 0) /*ALT+S*/
+	else if ((s[0] == -61  && s[1] == -97 && s[2] == 0 && s[3] == 0) &&
+				env->mode_copy == 0) /*OPT+S*/
 		return (ft_start_copy(env));
-	else if ((s[0] == 27  && s[1] == 99 && s[2] == 0 && s[3] == 0) &&
-				env->mode_copy == 1) /*ALT+C*/
+	else if ((s[0] == -61  && s[1] == -89 && s[2] == 0 && s[3] == 0) &&
+				env->mode_copy == 1) /*OPT+C*/
 		return (ft_set_copy(env, 0));
-	else if ((s[0] == 27  && s[1] == 120 && s[2] == 0 && s[3] == 0) &&
-				env->mode_copy == 1) /*ALT+X*/
+	else if ((s[0] == -30  && s[1] == -119 && s[2] == -120 && s[3] == 0) &&
+				env->mode_copy == 1) /*OPT+X*/
 		return (ft_set_copy(env, 1));
 	else if ((s[0] == 27  && s[1] == 0 && s[2] == 0 && s[3] == 0) &&
 				env->mode_copy == 1) /*ESC copy*/
 		return (ft_reset_copy(env, 1));
-	else if ((s[0] == 27  && s[1] == 118 && s[2] == 0 && s[3] == 0) &&
-				env->mode_copy == 0) /*ALT+V*/
+	else if ((s[0] == -30  && s[1] == -120 && s[2] == -102 && s[3] == 0) &&
+				env->mode_copy == 0) /*OPT+V*/
 		return (ft_put_copy(env));
-//	else if ((s[0] == 5 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*DEBUG 1*/
-//		return (ft_test_hist(env));
-//	else if ((s[0] == 18 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*DEBUG 2*/
-//		return (ft_test_hist_bis(env));
-	else if ((s[0] == 27 && s[1] == 112 && s[2] == 0 && s[3] == 0)) /*DEBUG 
+	else if ((s[0] == 5 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*DEBUG 1*/
+		return (ft_test_hist(env));
+	else if ((s[0] == 18 && s[1] == 0 && s[2] == 0 && s[3] == 0)) /*DEBUG 2*/
+		return (ft_test_hist_bis(env));
+	else if ((s[0] == -49 && s[1] == -128 && s[2] == 0 && s[3] == 0)) /*DEBUG 
 																		M-LINE*/
 	{
 		if (env->too_small == 0)
