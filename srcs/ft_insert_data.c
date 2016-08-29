@@ -14,10 +14,7 @@
 
 void		ft_insert_data(char s[4], t_env *env)
 {
+	ft_move_cursor_from_cur_buff_to_before_prompt(env);
 	ft_insert_char(s, env);
 	ft_create_buffer(env);
-	ft_putstr_fd(env->vi, env->fd_tty);
-	while (env->cur_clean > 0)
-		ft_cursor_left_clean(env);
-	ft_putstr_fd(env->ve, env->fd_tty);
 }

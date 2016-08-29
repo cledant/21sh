@@ -41,17 +41,29 @@ void		ft_btree_cut_nodes(t_env *env, int len)
 	ft_putstr_fd(env->cd, env->fd_tty);
 	if (front == 1)
 	{
-		env->last->content = end;
-		env->last_char -= c;
-		env->cur_il = end;
-		env->cur_il->left = NULL;
-		env->cur_char = 2;
-		if (end == NULL)
+		if (first == NULL && end == NULL)
 		{
-			env->last->content = ft_btree_new(NULL, 0);
+			if ((env->last->content = ft_btree_new(NULL, 0)) == NULL)
+				ft_handler(20000);
 			env->cur_il = env->last->content;
 			env->cur_char = 2;
-			env->last_char = 2;
+			env->last_char = 2;		
+		}
+		else
+		{
+			env->last->content = end;
+			env->last_char -= c;
+			env->cur_il = end;
+			env->cur_il->left = NULL;
+			env->cur_char = 2;
+			if (end == NULL)
+			{
+				if ((env->last->content = ft_btree_new(NULL, 0)) == NULL)
+					ft_handler(20000);
+				env->cur_il = env->last->content;
+				env->cur_char = 2;
+				env->last_char = 2;
+			}
 		}
 	}
 	else

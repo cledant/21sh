@@ -61,7 +61,6 @@ typedef struct			s_env
 	size_t				too_small;
 	size_t				cur_buff;
 	size_t				last_buff;
-	size_t				cur_clean;
 	char				*inv_buff;
 }						t_env;
 
@@ -127,8 +126,8 @@ void					ft_insert_data(char s[4], t_env *env); //ok
 void					ft_create_buffer(t_env *env); //ok
 void					ft_realloc_buff(t_env *env); //ok
 void					ft_print_buffer(t_env *env); //ok
-void					ft_clear_line(t_env *env); //ok
-void					ft_cursor_left_clean(t_env *env); //ok
+void					ft_clear_line(t_env *env);
+void					ft_cursor_left_clean(t_env *env);
 void					ft_move_cursor_from_last_buff_to_cur_buff(t_env *env); //ok
 void					ft_move_cursor_from_cur_buff_to_end_buff(t_env *env); //ok
 void					ft_move_cursor_from_cur_buff_to_before_prompt(t_env *env); //ok

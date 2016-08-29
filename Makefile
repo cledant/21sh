@@ -37,11 +37,11 @@ SRC_NAME = main.c ft_get_term.c ft_get_termcap_function.c ft_init_signal.c \
 		   ft_set_copy.c ft_reset_copy.c ft_put_copy.c ft_btree_set_copy_paste.c \
 		   ft_btree_pushback_copy_pasta_node.c ft_reprint_inverted_selection.c \
 		   ft_print_line.c \
-		   ft_create_buffer.c ft_realloc_buff.c ft_print_buffer.c ft_clear_line.c \
+		   ft_create_buffer.c ft_realloc_buff.c ft_print_buffer.c \
 		   ft_move_cursor_from_last_buff_to_cur_buff.c ft_insert_data.c \
 		   ft_cursor_left_buff.c ft_move_cursor_from_cur_buff_to_end_buff.c \
 		   ft_move_cursor_from_cur_buff_to_before_prompt.c ft_cursor_right_buff.c \
-		   ft_cursor_left_clean.c ft_change_cursor_from_cur_buff_to_end_buff.c \
+		   ft_change_cursor_from_cur_buff_to_end_buff.c \
 		   ft_change_cursor_from_cur_buff_to_prompt.c ft_btree_clear_content.c \
 		   ft_home.c ft_end.c ft_enter.c ft_ctrl_d.c ft_ctrl_l.c \
 		   ft_btree_cut_nodes.c ft_set_inv_buffer.c

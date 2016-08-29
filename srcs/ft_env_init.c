@@ -65,7 +65,6 @@ static inline void		ft_env_init_val(t_env *new)
 	new->too_small = 0;
 	new->cur_buff = 0;
 	new->last_buff = 0;
-	new->cur_clean = 0;
 	new->inv_buff = NULL;
 }
 
