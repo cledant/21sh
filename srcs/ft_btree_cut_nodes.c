@@ -43,8 +43,8 @@ void		ft_btree_cut_nodes(t_env *env, int len)
 	{
 		env->last->content = end;
 		env->last_char -= c;
-		env->cur_il = end->left;
-		end->left->left = NULL;
+		env->cur_il = end;
+		env->cur_il->left = NULL;
 		env->cur_char = 2;
 		if (end == NULL)
 		{
@@ -58,9 +58,16 @@ void		ft_btree_cut_nodes(t_env *env, int len)
 	{
 		env->last_char -= c;
 		env->cur_char = (sign == 0) ? env->cur_char - c : env->cur_char;
-		end->left = first;
+		if (end != NULL)
+			end->left = first;
 		first->right = end;
-		env->cur_il = (sign == 0) ? first->left : end->left;
+		if (sign == 0)
+		{
+			env->cur_il = first;
+			env->cur_char++;
+		}
+		else
+			env->cur_il = first;
 	}
 	env->mode_copy = 0;
 	ft_create_buffer(env);

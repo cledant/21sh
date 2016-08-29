@@ -78,6 +78,8 @@ void					ft_create_buffer(t_env *env)
 			(env->buff)[c - 1] = s[0];
 		if (env->cur_il == line && env->cur_char != 2)
 			env->cur_buff = c;
+		else if (env->mode_copy == 1 && env->cur_il == line)
+			env->cur_buff = c - 1;
 		line = line->right;
 		c++;
 	}
