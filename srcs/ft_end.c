@@ -25,7 +25,8 @@ int		ft_end(t_env *env)
 	{
 		if (env->cur_il->right == NULL)
 		{
-			env->cur_char++;
+			if (env->cur_char < env->last_char)
+				env->cur_char++;
 			break ;
 		}
 		next = env->cur_il->right;
@@ -34,7 +35,8 @@ int		ft_end(t_env *env)
 			break ;
 		if (env->cur_il->right == NULL)
 			break ;
-		env->cur_char++;
+		if (env->cur_char < env->last_char)
+			env->cur_char++;
 		env->cur_il = env->cur_il->right;
 	}
 	ft_move_cursor_from_cur_buff_to_before_prompt(env);

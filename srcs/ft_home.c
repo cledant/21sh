@@ -26,7 +26,8 @@ int		ft_home(t_env *env)
 		s = env->cur_il->content;
 		if (s[0] == '\n' && s[1] == 0 && s[2] == 0 && s[3] == 0)
 			break ;
-		env->cur_char--;
+		if (env->cur_char > 2)
+			env->cur_char--;
 		if (env->cur_il->left == NULL)
 			break ;
 		env->cur_il = env->cur_il->left;

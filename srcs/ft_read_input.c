@@ -27,9 +27,6 @@ void	ft_read_input(t_env *env)
 	{
 		if (read(0, s, 4) != 0)
 		{
-//			env->cur_clean = env->cur_buff;
-//			ft_putendl("");
-//			ft_putnbrendl(env->cur_buff);
 			if (ft_is_special_char(s, env) != 1)
 			{
 				if (env->mode_copy == 0)
@@ -45,6 +42,9 @@ void	ft_read_input(t_env *env)
 				ft_move_cursor_from_last_buff_to_cur_buff(env);
 				ft_putstr_fd(env->vi, env->fd_tty);
 			}
+	//		ft_putendl("");
+	//		ft_putnbrendl(env->cur_char);
+	//		ft_putnbrendl(env->cur_buff);
 			ft_bzero(s, sizeof(char) * 4);
 		}
 	}

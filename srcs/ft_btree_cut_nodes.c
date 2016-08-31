@@ -76,7 +76,8 @@ void		ft_btree_cut_nodes(t_env *env, int len)
 		if (sign == 0)
 		{
 			env->cur_il = first;
-			env->cur_char++;
+			if (env->cur_char < env->last_char)
+				env->cur_char++;
 		}
 		else
 			env->cur_il = first;

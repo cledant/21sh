@@ -70,13 +70,13 @@ void					ft_create_buffer(t_env *env)
 	while (line != NULL)
 	{
 		s = line->content;
-		if (env->cur_il == line && env->cur_char == 2)
-			env->cur_buff = c;
 		if (s[0] == '\n')
 			ft_new_line(env, &c);
 		else
 			(env->buff)[c - 1] = s[0];
-		if (env->cur_il == line && env->cur_char != 2)
+		if (env->cur_il == line && env->cur_char == 2)
+			env->cur_buff = 2;
+		else if (env->cur_il == line)
 			env->cur_buff = c;
 		else if (env->mode_copy == 1 && env->cur_il == line)
 			env->cur_buff = c - 1;
