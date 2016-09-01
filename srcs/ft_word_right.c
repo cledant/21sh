@@ -30,15 +30,25 @@ static inline size_t	ft_seek_char(char *s, size_t type)
 static inline void		ft_move_cursor(t_env *env, size_t type, size_t dec,
 							t_btree *seek)
 {
+	t_btree		*seek_0;
+
 	if (type == 2)
 	{
 		env->cur_char = env->cur_char + dec;
 		env->cur_il = seek->left;
-		ft_move_cursor_from_cur_buff_to_before_prompt(env);
-		ft_create_buffer(env);
-		ft_print_buffer(env);
-		ft_move_cursor_from_last_buff_to_cur_buff(env);
 	}
+	if (type == 0)
+	{
+		seek_0 = (env->cur_char == 2) ? env->cur_il : env->cur_il->right;
+		while (seek_0->right != NULL)
+			seek_0 = seek_0->right;
+		env->cur_char = env->last_char;
+		env->cur_il = seek_0;
+	}
+	ft_move_cursor_from_cur_buff_to_before_prompt(env);
+	ft_create_buffer(env);
+	ft_print_buffer(env);
+	ft_move_cursor_from_last_buff_to_cur_buff(env);
 }
 
 int						ft_word_right(t_env *env)
