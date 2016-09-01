@@ -14,6 +14,22 @@
 
 int		ft_line_down(t_env *env)
 {
-	env->cur_char = env->cur_char;
+	size_t	bak;
+	int		c;
+
+	c = 0;
+	if (env->cur_char + env->col > env->last_char)
+		return (1);
+	bak = env->cur_char;
+	ft_cursor_move_to_end_prompt(env);
+	env->cur_char = bak + env->col;
+	ft_cursor_moveback_to_cur(env);
+	if (env->cur_char - env->col == 2)
+		c++;
+	while (c < env->col)
+	{
+		env->cur_il = env->cur_il->right;
+		c++;
+	}
 	return (1);
 }
