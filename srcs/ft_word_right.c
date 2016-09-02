@@ -74,5 +74,6 @@ int						ft_word_right(t_env *env)
 		seek = seek->right;
 	}
 	ft_move_cursor(env, type, dec, seek);
+	ft_set_pos_col(env);
 	return (1);
 }

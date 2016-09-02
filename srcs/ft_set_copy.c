@@ -36,6 +36,7 @@ int		ft_set_copy(t_env *env, int cut)
 	}
 	else
 		ft_reset_copy(env, 1);
+	ft_set_pos_col(env);
 //	if (env->cur_il == env->last->content && env->cur_buff == 3)
 //		env->cur_buff = 2;
 	return (1);

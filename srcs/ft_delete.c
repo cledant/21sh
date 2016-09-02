@@ -22,5 +22,6 @@ int		ft_delete(t_env *env)
 	ft_putstr_fd(env->cd, env->fd_tty);
 	ft_print_buffer(env);
 	ft_move_cursor_from_last_buff_to_cur_buff(env);
+	ft_set_pos_col(env);
 	return (1);
 }

@@ -78,5 +78,6 @@ int					ft_put_copy(t_env *env)
 	ft_create_buffer(env);
 	ft_print_buffer(env);
 	ft_move_cursor_from_last_buff_to_cur_buff(env);
+	ft_set_pos_col(env);
 	return (1);
 }

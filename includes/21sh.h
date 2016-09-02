@@ -62,6 +62,7 @@ typedef struct			s_env
 	size_t				cur_buff;
 	size_t				last_buff;
 	char				*inv_buff;
+	size_t				pos_col;
 }						t_env;
 
 t_env					*ft_env_init(void);
@@ -126,5 +127,6 @@ int						ft_ctrl_d(t_env *env); //ok
 int						ft_ctrl_l(t_env *env); //ok
 void					ft_btree_cut_nodes(t_env *env, int len);
 void					ft_set_inv_buffer(t_env *env); //ok
+void					ft_set_pos_col(t_env *env);
 
 #endif

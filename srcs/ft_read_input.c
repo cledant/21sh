@@ -42,9 +42,9 @@ void	ft_read_input(t_env *env)
 				ft_move_cursor_from_last_buff_to_cur_buff(env);
 				ft_putstr_fd(env->vi, env->fd_tty);
 			}
-	//		ft_putendl("");
+//			ft_putendl("");
 	//		ft_putnbrendl(env->cur_char);
-	//		ft_putnbrendl(env->cur_buff);
+//			ft_putnbrendl(env->pos_col);
 			ft_bzero(s, sizeof(char) * 4);
 		}
 	}

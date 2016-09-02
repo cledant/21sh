@@ -38,5 +38,6 @@ int		ft_hist_search(t_env *env, int where)
 	ft_putstr_fd(env->cd, env->fd_tty);
 	ft_create_buffer(env);
 	ft_print_buffer(env);
+	ft_set_pos_col(env);
 	return (1);
 }

@@ -88,6 +88,7 @@ int		ft_cursor_right_buff(t_env *env)
 		line = line->right;
 	}
 	env->cur_buff = c;
+	ft_set_pos_col(env);
 	ft_putstr_fd(env->ve, env->fd_tty);
 	return (1);
 }

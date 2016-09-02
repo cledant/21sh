@@ -17,4 +17,5 @@ void		ft_insert_data(char s[4], t_env *env)
 	ft_move_cursor_from_cur_buff_to_before_prompt(env);
 	ft_insert_char(s, env);
 	ft_create_buffer(env);
+	ft_set_pos_col(env);
 }

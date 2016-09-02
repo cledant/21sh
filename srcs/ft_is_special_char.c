@@ -72,13 +72,13 @@ int		ft_is_special_char(char s[4], t_env *env)
 	else if ((s[0] == 127 && s[1] == 0 && s[2] == 0 && s[3] == 0)
 				&& env->mode_copy == 0) /*BACK DEL*/
 		return (ft_backdelete(env));
-	else if ((s[0] == 27 && s[1] == 114 && s[2] == 0 && s[3] == 0)) /*ALT+R*/
-		return (ft_word_right(env));
 	else if ((s[0] == 27 && s[1] == 116 && s[2] == 0 && s[3] == 0)) /*ALT+T*/
+		return (ft_word_right(env));
+	else if ((s[0] == 27 && s[1] == 114 && s[2] == 0 && s[3] == 0)) /*ALT+R*/
 		return (ft_word_left(env));
-	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 65)) /*OPT+UP*/
+	else if ((s[0] == 27 && s[1] == 105 && s[2] == 0 && s[3] == 0)) /*ALT+I*/
 		return (ft_line_up(env));
-	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 66)) /*OPT+DOWN*/
+	else if ((s[0] == 27 && s[1] == 117 && s[2] == 0 && s[3] == 0)) /*ALT+U*/
 		return (ft_line_down(env));
 	else if ((s[0] == 27  && s[1] == 115 && s[2] == 0 && s[3] == 0) &&
 				env->mode_copy == 0) /*ALT+S*/

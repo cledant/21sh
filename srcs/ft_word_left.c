@@ -78,5 +78,6 @@ int						ft_word_left(t_env *env)
 		seek = seek->left;
 	}
 	ft_move_cursor(env, type, dec, seek);
+	ft_set_pos_col(env);
 	return (1);
 }

@@ -66,6 +66,7 @@ static inline void		ft_env_init_val(t_env *new)
 	new->cur_buff = 0;
 	new->last_buff = 0;
 	new->inv_buff = NULL;
+	new->pos_col = 0;
 }
 
 t_env					*ft_env_init(void)
