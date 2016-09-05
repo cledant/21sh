@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/25 22:30:28 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/05 19:16:39 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void					ft_sigint_handler(t_env *env); //ok
 int						ft_word_right(t_env *env); //ok
 int						ft_word_left(t_env *env); //ok
 int						ft_line_up(t_env *env); //a faire
-int						ft_line_down(t_env *env); //a faire
+int						ft_line_down(t_env *env);
 int						ft_start_copy(t_env *env); //ok
 int						ft_set_copy(t_env *env, int cut); //ok
 int						ft_reset_copy(t_env *env, size_t disp); //ok
@@ -125,7 +125,7 @@ int						ft_end(t_env *env); //ok
 int						ft_enter(t_env *env); //ok
 int						ft_ctrl_d(t_env *env); //ok
 int						ft_ctrl_l(t_env *env); //ok
-void					ft_btree_cut_nodes(t_env *env, int len);
+void					ft_btree_cut_nodes(t_env *env, int len); //ok
 void					ft_set_inv_buffer(t_env *env); //ok
 void					ft_set_pos_col(t_env *env);
 
