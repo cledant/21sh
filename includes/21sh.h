@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/05 19:16:39 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/11 18:05:28 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct			s_env
 	size_t				last_buff;
 	char				*inv_buff;
 	size_t				pos_col;
+	size_t				nb_rl;
+	size_t				max_rl;
 }						t_env;
 
 t_env					*ft_env_init(void);
@@ -128,5 +130,7 @@ int						ft_ctrl_l(t_env *env); //ok
 void					ft_btree_cut_nodes(t_env *env, int len); //ok
 void					ft_set_inv_buffer(t_env *env); //ok
 void					ft_set_pos_col(t_env *env);
+int						ft_cursor_left_buff_no_set(t_env *env); //ok
+int						ft_cursor_right_buff_no_set(t_env *env); //ok
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 14:58:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/11 19:20:33 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/06 20:26:42 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,53 +17,65 @@ int		ft_line_down(t_env *env)
 	t_btree		*cmd;
 	char		*s;
 	size_t		c;
-	size_t		rl;
+	size_t		gc;
+	size_t		type;
+	size_t		flag;
 
-	if (env->cur_il->content == NULL || env->max_rl == env->nb_rl)
+	if (env->cur_il->content == NULL)
 		return (1);
 	c = 0;
-	rl = 0;
-	while (env->cur_il != env->last->content)
-		ft_cursor_left_buff_no_set(env);
-	cmd = env->last->content;
-	while (rl < env->nb_rl + 1)
-	{
-		s = cmd->content;
-		if (s[0] == '\n')
-			rl++;
-		if (cmd->right != NULL)
-		{
-			ft_cursor_right_buff_no_set(env);
-			cmd = cmd->right;
-		}
-		else
-			return (1);
-	}
+	gc = 0;
+	type = 0;
+	flag = 0;
+	cmd = env->cur_il;
 	while (1)
 	{
 		s = cmd->content;
-		if (s[0] == '\n')
+		if (type == 0)
 		{
-			env->nb_rl++;
-			ft_cursor_left_buff_no_set(env);
-			return (1);
+			if (s[0] == '\n' && s[1] == 0 && s[2] == 0 && s[3] == 0)
+			{
+				type++;
+				flag++;
+			}
 		}
-		else if (c == env->pos_col)
+		else if (type == 1)
 		{
-			env->nb_rl++;
-			return (1);
+			if ((s[0] == '\n' && s[1] == 0 && s[2] == 0 && s[3] == 0) ||
+					env->pos_col == 0)
+			{
+				type++;
+//				if (flag == 0)
+					cmd = cmd->left;
+				if (env->pos_col != 0)
+					gc--;
+				break ;
+			}
+			else if (c == env->pos_col)
+			{
+				type++;
+				break ;
+			}
+			c++;
+			if (flag == 1)
+				flag = 0;
 		}
-		c++;
 		if (cmd->right != NULL)
 		{
-			ft_cursor_right_buff_no_set(env);
 			cmd = cmd->right;
+			gc++;
 		}
 		else
-		{
-			env->nb_rl++;
-			return (1);
-		}
+			break ;
+	}
+	if (type == 1 || type == 2)
+	{
+		env->cur_il = cmd;
+		env->cur_char += gc;
+		ft_move_cursor_from_cur_buff_to_before_prompt(env);
+		ft_create_buffer(env);
+		ft_print_buffer(env);
+		ft_move_cursor_from_last_buff_to_cur_buff(env);
 	}
 	return (1);
 }
