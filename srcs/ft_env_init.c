@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 18:05:17 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/11 18:41:44 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/17 13:20:16 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ static inline void		ft_env_init_val(t_env *new)
 	new->last_buff = 0;
 	new->inv_buff = NULL;
 	new->pos_col = 0;
-	new->nb_rl = 0;
-	new->max_rl = 0;
 }
 
 t_env					*ft_env_init(void)

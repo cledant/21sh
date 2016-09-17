@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 15:04:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/11 21:12:02 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/17 13:56:48 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ typedef struct			s_env
 	size_t				last_buff;
 	char				*inv_buff;
 	size_t				pos_col;
-	size_t				nb_rl;
-	size_t				max_rl;
 }						t_env;
 
 t_env					*ft_env_init(void);
