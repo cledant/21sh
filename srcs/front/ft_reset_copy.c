@@ -6,11 +6,11 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 18:17:44 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/26 00:41:44 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/17 20:48:59 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "21sh.h"
+#include "shell.h"
 
 int		ft_reset_copy(t_env *env, size_t disp)
 {

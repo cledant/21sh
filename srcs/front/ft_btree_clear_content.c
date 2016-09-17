@@ -6,11 +6,11 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 12:15:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/22 12:15:36 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/17 20:48:34 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "21sh.h"
+#include "shell.h"
 
 void		ft_btree_clear_content(t_btree **root)
 {

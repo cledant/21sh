@@ -6,11 +6,11 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 14:18:30 by cledant           #+#    #+#             */
-/*   Updated: 2016/07/12 15:53:27 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/17 20:46:59 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "21sh.h"
+#include "shell.h"
 
 static void		main_part2(t_env *env)
 {

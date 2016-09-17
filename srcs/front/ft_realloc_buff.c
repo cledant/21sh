@@ -6,11 +6,11 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 12:54:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/25 12:21:05 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/17 20:48:19 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "21sh.h"
+#include "shell.h"
 
 void	ft_realloc_buff(t_env *env)
 {

@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/09/17 19:21:08 by cledant          ###   ########.fr        #
+#    Updated: 2016/09/17 20:46:27 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,18 +38,18 @@ FRONT_NAME =	ft_read_input.c ft_wputchar_char_fd.c ft_new_right_node.c \
 			ft_set_inv_buffer.c ft_set_pos_col.c ft_cursor_left_buff_no_set.c \
 			ft_cursor_right_buff_no_set.c
 
-FRONT_PATH = ./srcs/front
+FRONT_PATH = ./srcs/front/
 
 INIT_NAME =	main.c ft_get_term.c ft_get_termcap_function.c ft_init_signal.c \
 			ft_handler.c ft_env_init.c ft_env_destroy.c ft_prog_main.c \
 			ft_change_termsize.c ft_exit_mess.c ft_background.c ft_foreground.c \
 			ft_sigint_handler.c
 
-INIT_PATH = ./srcs/init
+INIT_PATH = ./srcs/init/
 
-FRONT =	$(addprefix $(FRONT_PATH),$(FRONT_NAME))
+SRC_FRONT =	$(addprefix $(FRONT_PATH),$(FRONT_NAME))
 
-INIT =	$(addprefix $(INIT_PATH),$(INIT_NAME))
+SRC_INIT = $(addprefix $(INIT_PATH),$(INIT_NAME))
 
 OBJ_FRONT =	$(FRONT_NAME:.c=.o)
 

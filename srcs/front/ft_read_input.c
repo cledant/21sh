@@ -6,11 +6,11 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 18:53:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/25 15:57:03 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/17 20:47:50 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "21sh.h"
+#include "shell.h"
 
 void	ft_read_input(t_env *env)
 {
@@ -42,9 +42,6 @@ void	ft_read_input(t_env *env)
 				ft_move_cursor_from_last_buff_to_cur_buff(env);
 				ft_putstr_fd(env->vi, env->fd_tty);
 			}
-//			ft_putendl("");
-	//		ft_putnbrendl(env->cur_char);
-//			ft_putnbrendl(env->pos_col);
 			ft_bzero(s, sizeof(char) * 4);
 		}
 	}
