@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 19:14:24 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/18 14:26:49 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/18 17:39:31 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		ft_cursor_left_buff(t_env *env)
 		}
 		else if (s[0] == '\t')
 		{
-			while (counter < TAB_LEN + 1)
+			while (counter < TAB_LEN)
 			{
 				if (c % env->col == (unsigned int)(env->col - 1))
 					ft_putchar_fd('\n', env->fd_tty);

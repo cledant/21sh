@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 10:34:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/18 13:40:47 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/18 17:40:12 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static inline void		ft_add_tab(t_env *env, size_t *c)
 		(*c)++;
 		counter++;
 	}
+	(*c)--;
 }
 
 static inline size_t	ft_calc_last_buff(t_env *env)
@@ -57,7 +58,7 @@ static inline size_t	ft_calc_last_buff(t_env *env)
 			c_rl++;
 		}
 		else if (s[0] == '\t')
-			c += TAB_LEN;
+			c += TAB_LEN - 1;
 		c++;
 	}
 	if (c_rl > 0)

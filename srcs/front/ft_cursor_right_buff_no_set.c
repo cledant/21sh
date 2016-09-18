@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 11:49:00 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:13:35 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/18 17:44:11 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ int		ft_cursor_right_buff_no_set(t_env *env)
 	t_btree		*target;
 	size_t		c;
 	char		*s;
-	size_t		flag ;
+	size_t		flag;
+	size_t		counter;
 
 	if (env->cur_char == env->last_char)
 			return (1);
 	if ((env->cur_char == env->last_char - 1) && env->mode_copy == 1)
 			return (1);
 	flag = 0;
+	counter = 0;
 	ft_move_cursor_from_cur_buff_to_before_prompt(env);
 	if (env->cur_char != 2)
 		env->cur_il = env->cur_il->right;
@@ -54,6 +56,19 @@ int		ft_cursor_right_buff_no_set(t_env *env)
 			ft_putchar_fd('\n', env->fd_tty);
 			c++;
 		}
+		else if (s[0] == '\t')
+		{
+			while (counter < TAB_LEN)
+			{
+				if (c % env->col == (unsigned int)(env->col - 1))
+					ft_putchar_fd('\n', env->fd_tty);
+				else
+					ft_putstr_fd(env->nd, env->fd_tty);
+				c++;
+				counter++;
+			}
+			counter = 0;
+		}
 		else
 		{
 			if (c % env->col == (unsigned int)(env->col - 1))
@@ -76,6 +91,19 @@ int		ft_cursor_right_buff_no_set(t_env *env)
 			}
 			ft_putchar_fd('\n', env->fd_tty);
 			c++;
+		}
+		else if (s[0] == '\t')
+		{
+			while (counter < TAB_LEN)
+			{
+				if (c % env->col == (unsigned int)(env->col - 1))
+					ft_putchar_fd('\n', env->fd_tty);
+				else
+					ft_putstr_fd(env->nd, env->fd_tty);
+				c++;
+				counter++;
+			}
+			counter = 0;
 		}
 		else
 		{
