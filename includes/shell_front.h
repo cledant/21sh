@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 18:25:25 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 18:46:41 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/18 11:51:13 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ void		ft_set_inv_buffer(t_env *env);
 void		ft_set_pos_col(t_env *env);
 int			ft_cursor_left_buff_no_set(t_env *env);
 int			ft_cursor_right_buff_no_set(t_env *env);
+int			ft_mline(t_env *env);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:17:08 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/18 11:50:43 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_is_special_char(char s[4], t_env *env)
 {
 	if ((s[0] == 10 && s[1] == 0 && s[2] == 0 && s[3] == 0)
-			&& env->mode_copy == 0 && env->too_small == 0) /*ENTER*/
+			&& env->mode_copy == 0 && env->mline == 0) /*ENTER*/
 		return (ft_enter(env));
 	else if ((s[0] == 4 && s[1] == 0 && s[2] == 0 && s[3] == 0)
 				&& env->mode_copy == 0) /*CTRL + D*/
@@ -23,10 +23,10 @@ int		ft_is_special_char(char s[4], t_env *env)
 	else if (s[0] == 12 && s[1] == 0 && s[2] == 0 && s[3] == 0) /*CTRL + L*/
 		return (ft_ctrl_l(env));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 65 && s[3] == 0)
-				&& env->mode_copy == 0) /*UP*/
+				&& env->mode_copy == 0 && env->mline == 0) /*UP*/
 		return (ft_hist_search(env, 0));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 66 && s[3] == 0)
-				&& env->mode_copy == 0) /*DOWN*/
+				&& env->mode_copy == 0 && env->mline == 0) /*DOWN*/
 		return (ft_hist_search(env, 1));
 	else if ((s[0] == 27 && s[1] == 91 && s[2] == 67 && s[3] == 0)) /*RIGHT*/
 		return (ft_cursor_right_buff(env));
@@ -65,17 +65,10 @@ int		ft_is_special_char(char s[4], t_env *env)
 	else if ((s[0] == -30  && s[1] == -120 && s[2] == -102 && s[3] == 0) &&
 				env->mode_copy == 0) /*OPT+V*/
 		return (ft_put_copy(env));
-	else if ((s[0] == -49 && s[1] == -128 && s[2] == 0 && s[3] == 0)) /*DEBUG 
-																		M-LINE*/
-	{
-		if (env->too_small == 0)
-			env->too_small = 1;
-		else
-			env->too_small = 0;
-		return (1);
-	}
+	else if ((s[0] == -62 && s[1] == -75 && s[2] == 0 && s[3] == 0)) /*M-LINE*/
+		return (ft_mline(env));
 	else if (s[0] == 10 && s[1] == 0 && s[2] == 0 && s[3] == 0 &&
-				env->too_small == 1) /*DEBUG MULTI LINE*/
+				env->mline == 1) /*SKIP ENTER IN MULTI LINE*/
 		return (0);
 	else if ((ft_isprint(s[0]) == 0 && s[1] == 0 && s[2] == 0 && s[3] == 0))
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 18:23:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 18:24:06 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/18 11:50:56 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct			s_env
 	t_btree				*cpy;
 	size_t				buff_size;
 	char				*buff;
-	size_t				too_small;
+	size_t				mline;
 	size_t				cur_buff;
 	size_t				last_buff;
 	char				*inv_buff;

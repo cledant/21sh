@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 18:05:17 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 19:45:15 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/18 11:49:41 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static inline void		ft_env_init_next(t_env *new)
 	new->cpy = NULL;
 	new->buff = NULL;
 	new->buff_size = 2048;
-	new->too_small = 0;
+	new->mline = 0;
 	new->cur_buff = 0;
 	new->last_buff = 0;
 	new->inv_buff = NULL;
