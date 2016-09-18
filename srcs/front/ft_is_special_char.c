@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/18 11:50:43 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/18 13:27:53 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int		ft_is_special_char(char s[4], t_env *env)
 	else if (s[0] == 10 && s[1] == 0 && s[2] == 0 && s[3] == 0 &&
 				env->mline == 1) /*SKIP ENTER IN MULTI LINE*/
 		return (0);
+	else if (s[0] == '\t'  && s[1] == 0 && s[2] == 0 && s[3] == 0)
+		return (0); /*SKIP TAB*/
 	else if ((ft_isprint(s[0]) == 0 && s[1] == 0 && s[2] == 0 && s[3] == 0))
 		return (1);
 	else if ((ft_isprint(s[0]) < 0 || s[1] != 0 || s[2] != 0 || s[3] != 0))

@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/20 19:14:24 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:12:42 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/18 14:26:49 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int		ft_cursor_left_buff(t_env *env)
 	t_btree		*target;
 	size_t		c;
 	char		*s;
+	size_t		counter;
 
 	if (env->cur_char == 2)
 		return (1);
@@ -28,6 +29,7 @@ int		ft_cursor_left_buff(t_env *env)
 	line = env->last->content;
 	env->cur_char--;
 	c = 2;
+	counter = 0;
 	ft_putstr_fd(env->vi, env->fd_tty);
 	ft_putstr_fd(env->nd, env->fd_tty);
 	ft_putstr_fd(env->nd, env->fd_tty);
@@ -43,6 +45,19 @@ int		ft_cursor_left_buff(t_env *env)
 			}
 			ft_putchar_fd('\n', env->fd_tty);
 			c++;
+		}
+		else if (s[0] == '\t')
+		{
+			while (counter < TAB_LEN + 1)
+			{
+				if (c % env->col == (unsigned int)(env->col - 1))
+					ft_putchar_fd('\n', env->fd_tty);
+				else
+					ft_putstr_fd(env->nd, env->fd_tty);
+				c++;
+				counter++;
+			}
+			counter = 0;
 		}
 		else
 		{

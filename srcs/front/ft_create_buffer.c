@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 10:34:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:11:58 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/18 13:40:47 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,19 @@ static inline void		ft_new_line(t_env *env, size_t *c)
 	{
 		env->buff[*c - 1] = 0;
 		(*c)++;	
+	}
+}
+
+static inline void		ft_add_tab(t_env *env, size_t *c)
+{
+	size_t	counter;
+
+	counter = 0;
+	while (counter < TAB_LEN)
+	{
+		env->buff[*c - 1] = 0;
+		(*c)++;
+		counter++;
 	}
 }
 
@@ -43,6 +56,8 @@ static inline size_t	ft_calc_last_buff(t_env *env)
 				c++;
 			c_rl++;
 		}
+		else if (s[0] == '\t')
+			c += TAB_LEN;
 		c++;
 	}
 	if (c_rl > 0)
@@ -72,6 +87,8 @@ void					ft_create_buffer(t_env *env)
 		s = line->content;
 		if (s[0] == '\n')
 			ft_new_line(env, &c);
+		else if (s[0] == '\t')
+			ft_add_tab(env, &c);
 		else
 			(env->buff)[c - 1] = s[0];
 		if (env->cur_il == line && env->cur_char == 2)

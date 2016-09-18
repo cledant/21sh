@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 18:33:53 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 18:35:08 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/18 13:34:35 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@
 # ifndef SIGEMT
 #  define SIGEMT 20000
 # endif
+
+# define TAB_LEN 4
 
 #endif
