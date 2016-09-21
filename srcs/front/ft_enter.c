@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 16:21:19 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/21 19:46:30 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/21 19:55:18 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ int						ft_enter(t_env *env)
 	{
 		ft_create_n_display_str(env);
 		if ((env->last = ft_new_right_node(env)) == NULL)
-		{
-			ft_hist_destroy(&(env->first));
 			ft_handler(20000);
-		}
 	}
 	else
 		env->cur = env->last;
