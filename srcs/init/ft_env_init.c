@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 18:05:17 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/18 11:49:41 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/21 19:09:12 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static inline int		ft_env_init_btree(t_env *new)
 
 static inline void		ft_env_init_next(t_env *new)
 {
+	new->cur_char = 0;
 	new->first_char = 0;
 	new->last_char = 0;
 	new->mode_copy = 0;
@@ -43,6 +44,7 @@ static inline void		ft_env_init_next(t_env *new)
 	new->last_buff = 0;
 	new->inv_buff = NULL;
 	new->pos_col = 0;
+	new->cmd_line = NULL;
 }
 
 static inline void		ft_env_init_val(t_env *new)
@@ -63,6 +65,7 @@ static inline void		ft_env_init_val(t_env *new)
 	new->cd = NULL;
 	new->up = NULL;
 	new->le = NULL;
+	new->sr = NULL;
 	new->fd_tty = -1;
 	new->col = 0;
 	new->line = 0;
@@ -70,7 +73,6 @@ static inline void		ft_env_init_val(t_env *new)
 	new->last = NULL;
 	new->cur = NULL;
 	new->cur_il = NULL;
-	new->cur_char = 0;
 	ft_env_init_next(new);
 }
 

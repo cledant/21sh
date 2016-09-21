@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 13:32:19 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:21:27 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/19 20:15:02 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_move_cursor_from_cur_buff_to_before_prompt(t_env *env)
 		i_col = 0;
 		if (cpy % env->col == 0)
 		{
-			ft_putstr_fd(env->up, env->fd_tty);
+			ft_putstr_fd(env->sr, env->fd_tty);
 			while (i_col <= env->col)
 			{
 				ft_putstr_fd(env->nd, env->fd_tty);

@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 18:14:34 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 19:44:59 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/21 19:10:16 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ void	ft_env_destroy(t_env *env)
 		ft_memdel((void **)&(env->buff));
 	if (env->inv_buff != NULL)
 		ft_memdel((void **)&(env->inv_buff));
+	if (env->cmd_line != NULL)
+		ft_strdel(&(env->cmd_line));
 	ft_memdel((void **)&env);
 }

@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 18:25:25 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/18 16:17:12 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/21 19:43:38 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define SHELL_FRONT_H
 
 void		ft_read_input(t_env *env);
-void		ft_wputchar_char_fd(char buff[4], int fd); //debug
-void		ft_btree_wputendl_fd(t_btree *root, int fd); //debug
-void		ft_btree_wputstr_fd(t_btree *root, int fd); //debug
 t_btree		*ft_btree_pushback_node(t_btree *node, char s[4]);
 t_btree		*ft_btree_insert_node(t_env *env, char s[4]);
 t_btree		*ft_btree_cpy_cur(t_btree *previous, t_env *env);
@@ -64,5 +61,6 @@ void		ft_set_pos_col(t_env *env);
 int			ft_cursor_left_buff_no_set(t_env *env);
 int			ft_cursor_right_buff_no_set(t_env *env);
 int			ft_mline(t_env *env);
+char		*ft_convert_btree_to_str(t_btree *root, size_t size);
 
 #endif

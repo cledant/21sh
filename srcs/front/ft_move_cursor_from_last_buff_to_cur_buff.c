@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 13:22:13 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:22:40 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/19 20:15:20 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static inline void		ft_max_left_to_nil(t_env *env)
 		i_col = 0;
 		if (bak % env->col == 0)
 		{
-			ft_putstr_fd(env->up, env->fd_tty);
+			ft_putstr_fd(env->sr, env->fd_tty);
 			while (i_col <= env->col)
 			{
 				ft_putstr_fd(env->nd, env->fd_tty);

@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/02 14:25:48 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 19:46:24 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/19 20:56:23 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static inline void		ft_get_termcap_next(t_env *env)
 	if ((env->up = tgetstr("up", NULL)) == NULL)
 		ft_error(env);
 	if ((env->le = tgetstr("le", NULL)) == NULL)
+		ft_error(env);
+	if ((env->sr = tgetstr("sr", NULL)) == NULL)
 		ft_error(env);
 }
 
