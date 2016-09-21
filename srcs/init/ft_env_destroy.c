@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 18:14:34 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/21 19:10:16 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/21 19:54:17 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_env_destroy(t_env *env)
 	if (env->term_cap != NULL)
 		ft_strdel(&(env->term_cap));
 	if (env->first != NULL)
-		ft_hist_destroy(&(env->last));
+		ft_hist_destroy(&(env->first));
 	if (env->cpy != NULL)
 		ft_btree_clear_content(&env->cpy);
 	if (env->buff != NULL)
