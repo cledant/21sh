@@ -33,7 +33,7 @@ typedef struct			s_env
 	char				*up;
 	char				*le;
 	char				*sr;
-	int					col;
+	int					cl;
 	int					line;
 	t_btree				*first;
 	t_btree				*last;
@@ -54,6 +54,7 @@ typedef struct			s_env
 	size_t				last_buff;
 	char				*inv_buff;
 	size_t				pos_col;
+	size_t				pos_line;
 	char				*cmd_line;
 }						t_env;
 

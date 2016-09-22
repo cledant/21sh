@@ -44,6 +44,7 @@ static inline void		ft_env_init_next(t_env *new)
 	new->last_buff = 0;
 	new->inv_buff = NULL;
 	new->pos_col = 0;
+	new->pos_line = 0;
 	new->cmd_line = NULL;
 }
 

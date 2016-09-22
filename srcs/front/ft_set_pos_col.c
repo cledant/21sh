@@ -18,4 +18,5 @@ void			ft_set_pos_col(t_env *env)
 		env->pos_col = env->cur_buff % env->col - 2;
 	else
 		env->pos_col = env->cur_buff % env->col;
+	env->pos_line = env->cur_buff / env->col;
 }
