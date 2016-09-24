@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 18:33:53 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/18 13:34:35 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/24 15:58:13 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "shell_struct.h"
 # include "shell_init.h"
 # include "shell_front.h"
+# include "shell_key.h"
 
 # ifndef SIGEMT
 #  define SIGEMT 20000

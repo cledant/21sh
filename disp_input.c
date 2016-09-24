@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/20 10:32:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/08/08 12:43:11 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/24 16:09:11 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int			main(void)
 {
 	struct termios	term;
 	char			s[4];
+	int				nb;
 
 	tcgetattr(0, &term);
 	term.c_lflag &= ~(ICANON);
@@ -37,6 +38,8 @@ int			main(void)
 		printf("%d\n", s[1]);
 		printf("%d\n", s[2]);
 		printf("%d\n", s[3]);
+		memcpy(&nb, s, 4);
+		printf("INT : %d\n", nb);
 		bzero(s, 4);
 	}
 	return (0);

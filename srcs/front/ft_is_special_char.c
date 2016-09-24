@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/19 21:10:55 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/24 16:36:49 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,64 +14,55 @@
 
 int		ft_is_special_char(char s[4], t_env *env)
 {
-	if ((s[0] == 10 && s[1] == 0 && s[2] == 0 && s[3] == 0)
-			&& env->mode_copy == 0 && env->mline == 0) /*ENTER*/
+	int		key;
+
+	ft_memcpy(&key, s, sizeof(int));
+	if (key == ENTER && env->mode_copy == 0 && env->mline == 0)
 		return (ft_enter(env));
-	else if ((s[0] == 4 && s[1] == 0 && s[2] == 0 && s[3] == 0)
-				&& env->mode_copy == 0) /*CTRL + D*/
+	else if (key == CTRL_D && env->mode_copy == 0)
 		return (ft_ctrl_d(env));
-	else if (s[0] == 12 && s[1] == 0 && s[2] == 0 && s[3] == 0) /*CTRL + L*/
+	else if (key == CLEAR_WIN)
 		return (ft_ctrl_l(env));
-	else if ((s[0] == 27 && s[1] == 91 && s[2] == 65 && s[3] == 0)
-				&& env->mode_copy == 0 && env->mline == 0) /*UP*/
+	else if (key == HIST_UP && env->mode_copy == 0 && env->mline == 0)
 		return (ft_hist_search(env, 0));
-	else if ((s[0] == 27 && s[1] == 91 && s[2] == 66 && s[3] == 0)
-				&& env->mode_copy == 0 && env->mline == 0) /*DOWN*/
+	else if (key == HIST_DOWN && env->mode_copy == 0 && env->mline == 0)
 		return (ft_hist_search(env, 1));
-	else if ((s[0] == 27 && s[1] == 91 && s[2] == 67 && s[3] == 0)) /*RIGHT*/
+	else if (key == CHAR_RIGHT)
 		return (ft_cursor_right_buff(env));
-	else if ((s[0] == 27 && s[1] == 91 && s[2] == 68 && s[3] == 0)) /*LEFT*/
+	else if (key == CHAR_LEFT)
 		return (ft_cursor_left_buff(env));
-	else if ((s[0] == 27 && s[1] == 91 && s[2] == 72 && s[3] == 0)) /*HOME*/
+	else if (key == LINE_UP)
 		return (ft_home(env));
-	else if ((s[0] == 27 && s[1] == 91 && s[2] == 70 && s[3] == 0)) /*END*/
+	else if (key == LINE_DOWN)
 		return (ft_end(env));
-	else if ((s[0] == 27 && s[1] == 91 && s[2] == 51 && s[3] == 126)
-				&& env->mode_copy == 0) /*DELETE*/
+	else if (key == CUR_DEL && env->mode_copy == 0)
 		return (ft_delete(env));
-	else if ((s[0] == 127 && s[1] == 0 && s[2] == 0 && s[3] == 0)
-				&& env->mode_copy == 0) /*BACK DEL*/
+	else if (key == BACK_DEL && env->mode_copy == 0)
 		return (ft_backdelete(env));
-	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 67)) /*OPT+RIGHT*/
+	else if (key == WORD_RIGHT)
 		return (ft_word_right(env));
-	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 68)) /*OPT+LEFT*/
+	else if (key == WORD_LEFT)
 		return (ft_word_left(env));
-	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 65)) /*OPT+UP*/
+	else if (key == BUFF_UP)
 		return (ft_line_up(env));
-	else if ((s[0] == 27 && s[1] == 27 && s[2] == 91 && s[3] == 66)) /*OPT+DOWN*/
+	else if (key == BUFF_DOWN)
 		return (ft_line_down(env));
-	else if ((s[0] == -61  && s[1] == -97 && s[2] == 0 && s[3] == 0) &&
-				env->mode_copy == 0) /*OPT+S*/
+	else if (key == SELECT_MODE  && env->mode_copy == 0)
 		return (ft_start_copy(env));
-	else if ((s[0] == -61  && s[1] == -89 && s[2] == 0 && s[3] == 0) &&
-				env->mode_copy == 1) /*OPT+C*/
+	else if (key == COPY && env->mode_copy == 1)
 		return (ft_set_copy(env, 0));
-	else if ((s[0] == -30  && s[1] == -119 && s[2] == -120 && s[3] == 0) &&
-				env->mode_copy == 1) /*OPT+X*/
+	else if (key == CUT && env->mode_copy == 1)
 		return (ft_set_copy(env, 1));
-	else if ((s[0] == 27  && s[1] == 0 && s[2] == 0 && s[3] == 0) &&
-				env->mode_copy == 1) /*ESC copy*/
+	else if (key == ESC && env->mode_copy == 1)
 		return (ft_reset_copy(env, 1));
-	else if ((s[0] == -30  && s[1] == -120 && s[2] == -102 && s[3] == 0) &&
-				env->mode_copy == 0) /*OPT+V*/
+	else if (key == PASTE && env->mode_copy == 0)
 		return (ft_put_copy(env));
-	else if ((s[0] == -62 && s[1] == -75 && s[2] == 0 && s[3] == 0)) /*M-LINE*/
+	else if (key == M_LINE)
 		return (ft_mline(env));
-	else if (s[0] == 10 && s[1] == 0 && s[2] == 0 && s[3] == 0 &&
-				env->mline == 1) /*SKIP ENTER IN MULTI LINE*/
+	else if (key == ENTER && env->mline == 1) /*SKIP ENTER IN MULTI LINE*/
 		return (0);
-	else if (s[0] == '\t'  && s[1] == 0 && s[2] == 0 && s[3] == 0)
-		return (0); /*SKIP TAB*/
+	else if (key == TAB) /*SKIP TAB*/
+		return (0);
 	else if ((ft_isprint(s[0]) == 0 && s[1] == 0 && s[2] == 0 && s[3] == 0))
 		return (1);
 	else if ((ft_isprint(s[0]) < 0 || s[1] != 0 || s[2] != 0 || s[3] != 0))

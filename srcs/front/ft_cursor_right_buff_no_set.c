@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 11:49:00 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/18 17:44:11 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/24 15:49:06 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ int		ft_cursor_right_buff_no_set(t_env *env)
 		line = line->right;
 	}
 	env->cur_buff = c;
+	env->pos_line = env->cur_buff / env->col;
 	ft_putstr_fd(env->ve, env->fd_tty);
 	return (1);
 }
