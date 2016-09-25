@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 10:34:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/18 17:40:12 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 20:11:13 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static inline void		ft_new_line(t_env *env, size_t *c)
 	while (*c % env->col != 0)
 	{
 		env->buff[*c - 1] = 0;
-		(*c)++;	
+		(*c)++;
 	}
 }
 

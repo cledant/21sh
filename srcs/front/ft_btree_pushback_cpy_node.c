@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/12 15:52:13 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:08:51 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 20:09:53 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_btree		*ft_btree_pushback_cpy_node(t_btree *src, t_btree *cpy, t_env *env)
 {
 	t_btree		*new;
 	t_btree		*first;
-	
+
 	if (cpy == NULL)
 	{
 		if ((first = ft_btree_new(src->content, 4)) == NULL)
@@ -26,7 +26,7 @@ t_btree		*ft_btree_pushback_cpy_node(t_btree *src, t_btree *cpy, t_env *env)
 	else
 	{
 		first = cpy;
-		while(cpy->right != NULL)
+		while (cpy->right != NULL)
 			cpy = cpy->right;
 		if ((new = ft_btree_new(src->content, 4)) == NULL)
 		{

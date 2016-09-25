@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 13:08:48 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:23:17 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 20:11:55 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_print_buffer(t_env *env)
 {
-	size_t 		c;
+	size_t		c;
 	char		rl;
 	char		space;
 

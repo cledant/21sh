@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 11:49:00 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/24 15:49:06 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 20:21:14 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int		ft_cursor_right_buff_no_set(t_env *env)
 	size_t		counter;
 
 	if (env->cur_char == env->last_char)
-			return (1);
+		return (1);
 	if ((env->cur_char == env->last_char - 1) && env->mode_copy == 1)
-			return (1);
+		return (1);
 	flag = 0;
 	counter = 0;
 	ft_move_cursor_from_cur_buff_to_before_prompt(env);

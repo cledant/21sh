@@ -6,13 +6,13 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 14:54:27 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:23:42 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 20:19:03 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static inline t_btree		*ft_get_end(t_btree *begin, size_t	*size)
+static inline t_btree		*ft_get_end(t_btree *begin, size_t *size)
 {
 	(*size)++;
 	while (begin->right != NULL)

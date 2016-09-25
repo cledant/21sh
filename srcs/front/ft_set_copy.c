@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/15 18:19:50 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:48:03 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 20:13:21 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,5 @@ int		ft_set_copy(t_env *env, int cut)
 	else
 		ft_reset_copy(env, 1);
 	ft_set_pos_col(env);
-//	if (env->cur_il == env->last->content && env->cur_buff == 3)
-//		env->cur_buff = 2;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 12:31:01 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:08:32 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 20:08:50 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static inline t_btree	*ft_to_last(size_t sign, t_btree *cpy)
 {
 	if (sign == 0)
 	{
-		while(cpy->right != NULL)
+		while (cpy->right != NULL)
 			cpy = cpy->right;
 	}
 	else
 	{
-		while(cpy->left != NULL)
+		while (cpy->left != NULL)
 			cpy = cpy->left;
 	}
 	return (cpy);
@@ -37,7 +37,7 @@ static inline void		ft_link(size_t sign, t_btree *cpy, t_btree *new)
 	else
 	{
 		new->right = cpy;
-		cpy->left = new;	
+		cpy->left = new;
 	}
 }
 
@@ -46,7 +46,7 @@ t_btree					*ft_btree_pushback_copy_pasta_node(t_btree *src,
 {
 	t_btree		*new;
 	t_btree		*first;
-	
+
 	if (cpy == NULL)
 	{
 		if ((first = ft_btree_new(src->content, 4)) == NULL)

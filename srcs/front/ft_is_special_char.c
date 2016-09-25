@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/24 16:36:49 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 20:16:42 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		ft_is_special_char(char s[4], t_env *env)
 		return (ft_line_up(env));
 	else if (key == BUFF_DOWN)
 		return (ft_line_down(env));
-	else if (key == SELECT_MODE  && env->mode_copy == 0)
+	else if (key == SELECT_MODE && env->mode_copy == 0)
 		return (ft_start_copy(env));
 	else if (key == COPY && env->mode_copy == 1)
 		return (ft_set_copy(env, 0));
@@ -59,9 +59,9 @@ int		ft_is_special_char(char s[4], t_env *env)
 		return (ft_put_copy(env));
 	else if (key == M_LINE)
 		return (ft_mline(env));
-	else if (key == ENTER && env->mline == 1) /*SKIP ENTER IN MULTI LINE*/
+	else if (key == ENTER && env->mline == 1)
 		return (0);
-	else if (key == TAB) /*SKIP TAB*/
+	else if (key == TAB)
 		return (0);
 	else if ((ft_isprint(s[0]) == 0 && s[1] == 0 && s[2] == 0 && s[3] == 0))
 		return (1);

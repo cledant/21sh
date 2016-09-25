@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 12:37:30 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:07:29 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 20:05:00 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static inline void		ft_right_nok(t_env *env, t_btree *del)
 }
 
 static inline size_t	ft_change_first(t_env *env, t_btree *del)
-{	
+{
 	if (del->right != NULL)
 	{
 		env->last->content = del->right;

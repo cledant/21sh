@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/24 17:28:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:06:28 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 20:10:32 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		ft_btree_cut_nodes(t_env *env, int len)
 				ft_handler(20000);
 			env->cur_il = env->last->content;
 			env->cur_char = 2;
-			env->last_char = 2;		
+			env->last_char = 2;
 		}
 		else
 		{

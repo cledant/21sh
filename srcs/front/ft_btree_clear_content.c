@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/22 12:15:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:48:34 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 20:03:58 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ void		ft_btree_clear_content(t_btree **root)
 		prev = *root;
 		*root = (*root)->right;
 		free(prev);
-		prev= NULL;
+		prev = NULL;
 	}
 }
