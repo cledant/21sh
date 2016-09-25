@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 10:34:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/25 20:18:08 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 20:32:08 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,15 @@ static inline void		ft_add_tab(t_env *env, size_t *c, char state)
 	(*c)--;
 }
 
-static inline t_btree	*ft_set_stop(t_env *env)
+static inline void		ft_init(t_env *env, size_t *c, char *state,
+							t_btree **stop)
 {
+	*c = 3;
+	*state = 0;
 	if (env->cur_char == 2 || env->cur_char == env->last_char)
-		return (env->cur_il);
+		*stop = env->cur_il;
 	else
-		return (env->cur_il->right);
+		*stop = env->cur_il->right;
 }
 
 void					ft_set_inv_buffer(t_env *env)
@@ -82,9 +85,7 @@ void					ft_set_inv_buffer(t_env *env)
 	line = env->last->content;
 	if (line->content == NULL)
 		return ;
-	c = 3;
-	state = 0;
-	stop = ft_set_stop(env);
+	ft_init(env, &c, &state, &stop);
 	while (line != NULL)
 	{
 		s = line->content;

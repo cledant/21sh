@@ -6,13 +6,22 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/15 11:03:04 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:14:41 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 20:46:47 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int		ft_hist_search(t_env *env, int where)
+static inline void		ft_display(t_env *env)
+{
+	ft_move_cursor_from_cur_buff_to_before_prompt(env);
+	ft_putstr_fd(env->cd, env->fd_tty);
+	ft_create_buffer(env);
+	ft_print_buffer(env);
+	ft_set_pos_col(env);
+}
+
+int						ft_hist_search(t_env *env, int where)
 {
 	t_btree		*previous;
 
@@ -34,10 +43,6 @@ int		ft_hist_search(t_env *env, int where)
 	ft_hist_destroy(&(env->last));
 	if ((env->last = ft_btree_cpy_cur(previous, env)) == NULL)
 		ft_handler(20000);
-	ft_move_cursor_from_cur_buff_to_before_prompt(env);
-	ft_putstr_fd(env->cd, env->fd_tty);
-	ft_create_buffer(env);
-	ft_print_buffer(env);
-	ft_set_pos_col(env);
+	ft_display(env);
 	return (1);
 }

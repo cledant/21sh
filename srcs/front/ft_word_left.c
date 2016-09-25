@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 21:32:52 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:25:06 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 20:42:03 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,16 @@ static inline void		ft_move_cursor(t_env *env, size_t type, size_t dec,
 	}
 }
 
+static inline void		ft_init(t_env *env, t_btree *seek, size_t *dec,
+							size_t *type)
+{
+	*dec = 0;
+	*type = 0;
+	if (env->cur_char == env->last_char && ft_seek_char(seek->content,
+			*type) == 1)
+		*type = 2;
+}
+
 int						ft_word_left(t_env *env)
 {
 	size_t		dec;
@@ -60,10 +70,7 @@ int						ft_word_left(t_env *env)
 	seek = env->cur_il;
 	if (seek->content == NULL)
 		return (1);
-	dec = 0;
-	type = 0;
-	if (env->cur_char == env->last_char && ft_seek_char(seek->content, type) == 1)
-		type = 2;
+	ft_init(env, seek, &dec, &type);
 	while (seek != NULL)
 	{
 		if (type == 0)
