@@ -6,13 +6,56 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 10:06:23 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/25 20:16:42 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 21:10:17 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int		ft_is_special_char(char s[4], t_env *env)
+static inline int		ft_next_2(char *s, int key, t_env *env)
+{
+	if (key == ENTER && env->mline == 1)
+		return (0);
+	else if (key == TAB)
+		return (0);
+	else if ((ft_isprint(s[0]) == 0 && s[1] == 0 && s[2] == 0 && s[3] == 0))
+		return (1);
+	else if ((ft_isprint(s[0]) < 0 || s[1] != 0 || s[2] != 0 || s[3] != 0))
+		return (1);
+	if (env->mode_copy == 1)
+		return (1);
+	return (0);
+}
+
+static inline int		ft_next(char *s, int key, t_env *env)
+{
+	if (key == BACK_DEL && env->mode_copy == 0)
+		return (ft_backdelete(env));
+	else if (key == WORD_RIGHT)
+		return (ft_word_right(env));
+	else if (key == WORD_LEFT)
+		return (ft_word_left(env));
+	else if (key == BUFF_UP)
+		return (ft_line_up(env));
+	else if (key == BUFF_DOWN)
+		return (ft_line_down(env));
+	else if (key == SELECT_MODE && env->mode_copy == 0)
+		return (ft_start_copy(env));
+	else if (key == COPY && env->mode_copy == 1)
+		return (ft_set_copy(env, 0));
+	else if (key == CUT && env->mode_copy == 1)
+		return (ft_set_copy(env, 1));
+	else if (key == ESC && env->mode_copy == 1)
+		return (ft_reset_copy(env, 1));
+	else if (key == PASTE && env->mode_copy == 0)
+		return (ft_put_copy(env));
+	else if (key == M_LINE)
+		return (ft_mline(env));
+	else
+		return (ft_next_2(s, key, env));
+}
+
+int						ft_is_special_char(char s[4], t_env *env)
 {
 	int		key;
 
@@ -37,37 +80,6 @@ int		ft_is_special_char(char s[4], t_env *env)
 		return (ft_end(env));
 	else if (key == CUR_DEL && env->mode_copy == 0)
 		return (ft_delete(env));
-	else if (key == BACK_DEL && env->mode_copy == 0)
-		return (ft_backdelete(env));
-	else if (key == WORD_RIGHT)
-		return (ft_word_right(env));
-	else if (key == WORD_LEFT)
-		return (ft_word_left(env));
-	else if (key == BUFF_UP)
-		return (ft_line_up(env));
-	else if (key == BUFF_DOWN)
-		return (ft_line_down(env));
-	else if (key == SELECT_MODE && env->mode_copy == 0)
-		return (ft_start_copy(env));
-	else if (key == COPY && env->mode_copy == 1)
-		return (ft_set_copy(env, 0));
-	else if (key == CUT && env->mode_copy == 1)
-		return (ft_set_copy(env, 1));
-	else if (key == ESC && env->mode_copy == 1)
-		return (ft_reset_copy(env, 1));
-	else if (key == PASTE && env->mode_copy == 0)
-		return (ft_put_copy(env));
-	else if (key == M_LINE)
-		return (ft_mline(env));
-	else if (key == ENTER && env->mline == 1)
-		return (0);
-	else if (key == TAB)
-		return (0);
-	else if ((ft_isprint(s[0]) == 0 && s[1] == 0 && s[2] == 0 && s[3] == 0))
-		return (1);
-	else if ((ft_isprint(s[0]) < 0 || s[1] != 0 || s[2] != 0 || s[3] != 0))
-		return (1);
-	if (env->mode_copy == 1)
-		return (1);
-	return (0);
+	else
+		return (ft_next(s, key, env));
 }
