@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 10:34:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/25 20:11:13 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 21:31:21 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,12 @@ static inline void		ft_add_tab(t_env *env, size_t *c)
 	(*c)--;
 }
 
-static inline size_t	ft_calc_last_buff(t_env *env)
+static inline size_t	ft_calc_last_buff(t_env *env, t_btree *line)
 {
-	t_btree		*line;
 	size_t		c;
 	char		*s;
 	size_t		c_rl;
 
-	line = env->last->content;
 	if (line->content == NULL)
 		return (2);
 	c = 2;
@@ -66,23 +64,10 @@ static inline size_t	ft_calc_last_buff(t_env *env)
 	return (c);
 }
 
-void					ft_create_buffer(t_env *env)
+static inline void		ft_while(t_env *env, t_btree *line, size_t c)
 {
-	size_t		c;
-	t_btree		*line;
-	char		*s;
+	char	*s;
 
-	ft_bzero(env->buff, env->last_buff * sizeof(char));
-	ft_bzero(env->inv_buff, env->last_buff * sizeof(char));
-	env->last_buff = ft_calc_last_buff(env);
-	if (env->last_buff >= env->buff_size)
-		ft_realloc_buff(env);
-	line = env->last->content;
-	ft_memcpy(env->buff, "$>", 2);
-	env->cur_buff = 2;
-	if (line->content == NULL)
-		return ;
-	c = 3;
 	while (line != NULL)
 	{
 		s = line->content;
@@ -101,6 +86,25 @@ void					ft_create_buffer(t_env *env)
 		line = line->right;
 		c++;
 	}
+}
+
+void					ft_create_buffer(t_env *env)
+{
+	size_t		c;
+	t_btree		*line;
+
+	ft_bzero(env->buff, env->last_buff * sizeof(char));
+	ft_bzero(env->inv_buff, env->last_buff * sizeof(char));
+	env->last_buff = ft_calc_last_buff(env, env->last->content);
+	if (env->last_buff >= env->buff_size)
+		ft_realloc_buff(env);
+	line = env->last->content;
+	ft_memcpy(env->buff, "$>", 2);
+	env->cur_buff = 2;
+	if (line->content == NULL)
+		return ;
+	c = 3;
+	ft_while(env, line, c);
 	if (env->mode_copy == 1)
 		ft_set_inv_buffer(env);
 }
