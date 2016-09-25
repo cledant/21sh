@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 12:49:22 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 19:47:24 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/25 19:57:35 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static inline void		ft_else(struct termios cpy_term, t_env **env,
 		ft_change_termsize(*env);
 }
 
-void			ft_handler(unsigned long int sig)
+void					ft_handler(unsigned long int sig)
 {
 	static struct termios		cpy_term;
 	static t_env				*env = NULL;
