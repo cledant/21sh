@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 14:54:27 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/25 20:19:03 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/26 20:47:34 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,46 @@ static inline t_btree		*ft_get_end(t_btree *begin, size_t *size)
 		(*size)++;
 	}
 	return (begin);
+}
+
+static inline void			ft_case_else(t_env *env, t_btree *cpy_cpy,
+								t_btree *end, size_t size)
+{
+	env->cur_il->right = cpy_cpy;
+	cpy_cpy->left = env->cur_il;
+	env->cur_il = end;
+	env->last_char += size;
+	env->cur_char += size;
+}
+
+static inline void			ft_put_copy_case(t_env *env, t_btree *cpy_cpy,
+								t_btree *end, size_t size)
+{
+	ft_move_cursor_from_cur_buff_to_before_prompt(env);
+	if (env->cur_il->content == NULL)
+	{
+		free(env->last->content);
+		env->last->content = cpy_cpy;
+		env->cur_il = end;
+		env->last_char += size;
+		env->cur_char += size;
+	}
+	else if (env->cur_char == 2)
+	{
+		env->last->content = cpy_cpy;
+		cpy_cpy->left = NULL;
+		end->right = env->cur_il;
+		env->cur_il->left = end;
+		env->cur_il = end;
+		env->last_char += size;
+		env->cur_char += size + 1;
+	}
+	else
+		ft_case_else(env, cpy_cpy, end, size);
+	ft_create_buffer(env);
+	ft_print_buffer(env);
+	ft_move_cursor_from_last_buff_to_cur_buff(env);
+	ft_set_pos_col(env);
 }
 
 int							ft_put_copy(t_env *env)
@@ -48,36 +88,6 @@ int							ft_put_copy(t_env *env)
 		env->cur_il->right->left = end;
 		end->right = env->cur_il->right;
 	}
-	ft_move_cursor_from_cur_buff_to_before_prompt(env);
-	if (env->cur_il->content == NULL)
-	{
-		free(env->last->content);
-		env->last->content = cpy_cpy;
-		env->cur_il = end;
-		env->last_char += size;
-		env->cur_char += size;
-	}
-	else if (env->cur_char == 2)
-	{
-		env->last->content = cpy_cpy;
-		cpy_cpy->left = NULL;
-		end->right = env->cur_il;
-		env->cur_il->left = end;
-		env->cur_il = end;
-		env->last_char += size;
-		env->cur_char += size + 1;
-	}
-	else
-	{
-		env->cur_il->right = cpy_cpy;
-		cpy_cpy->left = env->cur_il;
-		env->cur_il = end;
-		env->last_char += size;
-		env->cur_char += size;
-	}
-	ft_create_buffer(env);
-	ft_print_buffer(env);
-	ft_move_cursor_from_last_buff_to_cur_buff(env);
-	ft_set_pos_col(env);
+	ft_put_copy_case(env, cpy_cpy, end, size);
 	return (1);
 }
