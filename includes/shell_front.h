@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 18:25:25 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/21 19:43:38 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/27 19:28:21 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,8 @@ int			ft_cursor_left_buff_no_set(t_env *env);
 int			ft_cursor_right_buff_no_set(t_env *env);
 int			ft_mline(t_env *env);
 char		*ft_convert_btree_to_str(t_btree *root, size_t size);
+void		ft_cursor_case_one(t_env *env, size_t *c);
+void		ft_cursor_case_two(t_env *env, size_t *c);
+void		ft_cursor_case_three(t_env *env, size_t *c);
 
 #endif

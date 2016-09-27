@@ -6,12 +6,11 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/24 17:28:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/25 20:10:32 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/27 18:42:13 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
-
 
 static inline void		ft_case_one(t_env *env, t_btree *first, t_btree *end,
 							size_t c)
@@ -60,8 +59,8 @@ static inline void		ft_case_two(t_env *env, t_btree *first, t_btree *end,
 		env->cur_il = first;
 }
 
-static inline void		ft_cut_node_end(t_env *env, t_btree *first, t_btree *end,
-							size_t c[3])
+static inline void		ft_cut_node_end(t_env *env, t_btree *first,
+							t_btree *end, size_t c[3])
 {
 	ft_move_cursor_from_cur_buff_to_before_prompt(env);
 	ft_putstr_fd(env->cd, env->fd_tty);
@@ -97,5 +96,5 @@ void					ft_btree_cut_nodes(t_env *env, int len)
 		ft_btree_delone(&del, ft_lstfree_malloc);
 		c[0]++;
 	}
-	ft_cut_node_end(env, first, end , c);
+	ft_cut_node_end(env, first, end, c);
 }
