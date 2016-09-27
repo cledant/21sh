@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/16 14:54:27 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/26 20:47:34 by cledant          ###   ########.fr       */
+/*   Updated: 2016/09/27 20:12:24 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,10 @@ static inline void			ft_put_copy_case(t_env *env, t_btree *cpy_cpy,
 	else if (env->cur_char == 2)
 	{
 		env->last->content = cpy_cpy;
-		cpy_cpy->left = NULL;
 		end->right = env->cur_il;
 		env->cur_il->left = end;
 		env->cur_il = end;
-		env->last_char += size;
+		env->last_char += size + 1;
 		env->cur_char += size + 1;
 	}
 	else
