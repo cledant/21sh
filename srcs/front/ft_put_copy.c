@@ -26,6 +26,11 @@ static inline t_btree		*ft_get_end(t_btree *begin, size_t *size)
 static inline void			ft_case_else(t_env *env, t_btree *cpy_cpy,
 								t_btree *end, size_t size)
 {
+	if (env->cur_il->right != NULL)
+	{
+		env->cur_il->right->left = end;
+		end->right = env->cur_il->right;
+	}
 	env->cur_il->right = cpy_cpy;
 	cpy_cpy->left = env->cur_il;
 	env->cur_il = end;
@@ -51,8 +56,8 @@ static inline void			ft_put_copy_case(t_env *env, t_btree *cpy_cpy,
 		end->right = env->cur_il;
 		env->cur_il->left = end;
 		env->cur_il = end;
-		env->last_char += size + 1;
-		env->cur_char += size + 1;
+		env->last_char += size;
+		env->cur_char += size;
 	}
 	else
 		ft_case_else(env, cpy_cpy, end, size);
@@ -82,11 +87,6 @@ int							ft_put_copy(t_env *env)
 		begin = begin->right;
 	}
 	end = ft_get_end(cpy_cpy, &size);
-	if (env->cur_il->right != NULL)
-	{
-		env->cur_il->right->left = end;
-		end->right = env->cur_il->right;
-	}
 	ft_put_copy_case(env, cpy_cpy, end, size);
 	return (1);
 }
