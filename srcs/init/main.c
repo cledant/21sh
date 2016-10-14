@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 14:18:30 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 20:46:59 by cledant          ###   ########.fr       */
+/*   Updated: 2016/10/14 20:45:19 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 static void		main_part2(t_env *env)
 {
+	extern char		**environ;
+
 	if ((env->term_cap = ft_get_term()) == NULL)
 	{
 		ft_env_destroy(env);
 		ft_exit_mess(2);
+	}
+	if ((env->env = ft_strdup_char2(environ)) == NULL)
+	{
+		ft_env_destroy(env);
+		ft_exit_mess(1);
 	}
 	ft_get_termcap_function(env);
 	ft_handler((unsigned long int)env);

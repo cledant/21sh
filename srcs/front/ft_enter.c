@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 16:21:19 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/21 19:55:18 by cledant          ###   ########.fr       */
+/*   Updated: 2016/10/14 21:22:09 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static inline void		ft_create_n_display_str(t_env *env)
 	if ((env->cmd_line = ft_convert_btree_to_str(env->last->content,
 			env->last_char)) == NULL)
 		ft_handler(20000);
-	ft_putendl_fd(env->cmd_line, env->fd_tty);
 }
 
 int						ft_enter(t_env *env)
@@ -38,6 +37,6 @@ int						ft_enter(t_env *env)
 	ft_memcpy(env->buff, "$>", 2);
 	env->cur_buff = 2;
 	env->last_buff = 2;
-	ft_print_buffer(env);
+	ft_main_shell(env);
 	return (1);
 }

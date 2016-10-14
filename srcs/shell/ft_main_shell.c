@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env_destroy.c                                   :+:      :+:    :+:   */
+/*   ft_main_shell.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/17 18:14:34 by cledant           #+#    #+#             */
-/*   Updated: 2016/10/14 20:44:41 by cledant          ###   ########.fr       */
+/*   Created: 2016/10/14 20:49:14 by cledant           #+#    #+#             */
+/*   Updated: 2016/10/14 21:26:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	ft_env_destroy(t_env *env)
+void	ft_main_shell(t_env *env)
 {
-	if (env->term_cap != NULL)
-		ft_strdel(&(env->term_cap));
-	if (env->first != NULL)
-		ft_hist_destroy(&(env->first));
-	if (env->cpy != NULL)
-		ft_btree_clear_content(&env->cpy);
-	if (env->buff != NULL)
-		ft_memdel((void **)&(env->buff));
-	if (env->inv_buff != NULL)
-		ft_memdel((void **)&(env->inv_buff));
+	ft_putendl_char2(env->env); //faut une version sur fd
+	ft_putendl_fd("=====", env->fd_tty);
+	if (env->cmd_line != NULL)
+		ft_putendl_fd(env->cmd_line, env->fd_tty);
+	ft_putendl_fd("=====", env->fd_tty);
 	if (env->cmd_line != NULL)
 		ft_strdel(&(env->cmd_line));
-	if (env->env != NULL)
-		ft_strdel_char2(&(env->env));
-	ft_memdel((void **)&env);
+	write(env->fd_tty, "$>", 2);
 }

@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 18:23:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/24 16:01:48 by cledant          ###   ########.fr       */
+/*   Updated: 2016/10/14 20:45:36 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct			s_env
 	size_t				pos_col;
 	size_t				pos_line;
 	char				*cmd_line;
+	char				**env;
 }						t_env;
 
 #endif

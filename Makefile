@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/09/27 19:26:37 by cledant          ###   ########.fr        #
+#    Updated: 2016/10/14 21:01:52 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,13 +47,21 @@ INIT_NAME =	main.c ft_get_term.c ft_get_termcap_function.c ft_init_signal.c \
 
 INIT_PATH = ./srcs/init/
 
+SHELL_NAME = ft_main_shell.c
+
+SHELL_PATH = ./srcs/shell/
+
 SRC_FRONT =	$(addprefix $(FRONT_PATH),$(FRONT_NAME))
 
 SRC_INIT = $(addprefix $(INIT_PATH),$(INIT_NAME))
 
-OBJ_FRONT =	$(FRONT_NAME:.c=.o)
+SRC_SHELL = $(addprefix $(SHELL_PATH),$(SHELL_NAME))
 
-OBJ_INIT =	$(INIT_NAME:.c=.o)
+OBJ_FRONT = $(FRONT_NAME:.c=.o)
+
+OBJ_INIT = $(INIT_NAME:.c=.o)
+
+OBJ_SHELL = $(SHELL_NAME:.c=.o)
 
 NAME = 21sh
 
@@ -62,8 +70,8 @@ all :	libft $(NAME)
 libft :
 	make -C $(LIBFT_PATH)
 
-$(NAME) : $(OBJ_INIT) $(OBJ_FRONT)
-	$(CC) $(OBJ_INIT) $(OBJ_FRONT) -o $(NAME) $(CFLAGS) -lft -I$(INCLUDES) -I$(INCLUDES_LIBFT) -L$(LIBFT_PATH) -ltermcap
+$(NAME) : $(OBJ_INIT) $(OBJ_FRONT) $(OBJ_SHELL)
+	$(CC) $(OBJ_INIT) $(OBJ_FRONT) $(OBJ_SHELL) -o $(NAME) $(CFLAGS) -lft -I$(INCLUDES) -I$(INCLUDES_LIBFT) -L$(LIBFT_PATH) -ltermcap
 
 $(OBJ_INIT) :
 	$(CC) -c $(SRC_INIT) $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT)
@@ -71,8 +79,11 @@ $(OBJ_INIT) :
 $(OBJ_FRONT) :
 	$(CC) -c $(SRC_FRONT) $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT)
 
+$(OBJ_SHELL) :
+	$(CC) -c $(SRC_SHELL) $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT)
+
 clean :
-	rm -rf $(OBJ_FRONT) $(OBJ_INIT)
+	rm -rf $(OBJ_FRONT) $(OBJ_INIT) $(OBJ_SHELL)
 	make -C $(LIBFT_PATH) clean
 
 fclean : clean
