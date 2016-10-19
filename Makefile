@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/10/14 21:01:52 by cledant          ###   ########.fr        #
+#    Updated: 2016/10/19 19:03:51 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ INIT_NAME =	main.c ft_get_term.c ft_get_termcap_function.c ft_init_signal.c \
 
 INIT_PATH = ./srcs/init/
 
-SHELL_NAME = ft_main_shell.c
+SHELL_NAME = ft_main_shell.c ft_putendl_fd_char2.c
 
 SHELL_PATH = ./srcs/shell/
 

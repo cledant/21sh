@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_shell.h                                      :+:      :+:    :+:   */
+/*   ft_putendl_fd_char2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/14 20:45:50 by cledant           #+#    #+#             */
-/*   Updated: 2016/10/19 18:57:39 by cledant          ###   ########.fr       */
+/*   Created: 2016/01/26 16:17:54 by cledant           #+#    #+#             */
+/*   Updated: 2016/10/19 19:05:46 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHELL_SHELL_H
-# define SHELL_SHELL_H
+#include "shell.h"
 
-void	ft_main_shell(t_env *env);
-void	ft_putendl_fd_char2(char **str, int fd);
-
-#endif
+void	ft_putendl_fd_char2(char **str, int fd)
+{
+	while (*str != '\0')
+	{
+		write(fd, *str, ft_strlen(*str));
+		write(fd, "\n", 1);
+		str++;
+	}
+}
