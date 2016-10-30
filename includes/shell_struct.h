@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 18:23:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/10/14 20:45:36 by cledant          ###   ########.fr       */
+/*   Updated: 2016/10/30 19:12:51 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,18 @@ typedef struct			s_env
 	char				*cmd_line;
 	char				**env;
 }						t_env;
+
+typedef struct			s_stack_elmt
+{
+	void				*elmt;
+	size_t				size;
+}						t_stack_elmt;
+
+typedef struct			s_stack
+{
+	t_stack_elmt		*list;
+	size_t				max_size;
+	size_t				cur_size;
+}						t_stack;
 
 #endif

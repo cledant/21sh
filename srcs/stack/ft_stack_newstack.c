@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell.h                                            :+:      :+:    :+:   */
+/*   ft_stack_newstack.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/17 18:33:53 by cledant           #+#    #+#             */
-/*   Updated: 2016/10/30 17:00:32 by cledant          ###   ########.fr       */
+/*   Created: 2016/10/30 14:54:26 by cledant           #+#    #+#             */
+/*   Updated: 2016/10/30 15:32:12 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "shell.h"
 
-# include "libft.h"
-# include <term.h>
-# include <sys/ioctl.h>
-# include <signal.h>
-# include <fcntl.h>
-# include "shell_struct.h"
-# include "shell_init.h"
-# include "shell_front.h"
-# include "shell_key.h"
-# include "shell_shell.h"
-# include "shell_stack.h"
+t_stack		*ft_stack_newstack(size_t size)
+{
+	t_stack			*newstack;
+	t_stack_elmt	*newlst;
 
-# ifndef SIGEMT
-#  define SIGEMT 20000
-# endif
-
-# define TAB_LEN 4
-# define STACK_SIZE 1024
-
-#endif
+	if ((newstack = (t_stack *)malloc(sizeof(t_stack))) == NULL)
+		return (NULL);
+	if ((newlst = ft_stack_elmt_newlist(size)) == NULL)
+	{
+		free(newstack);
+		return (NULL);
+	}
+	newstack->list = newlst;
+	newstack->max_size = size;
+	newstack->cur_size = 0;
+	return (newstack);
+}

@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell.h                                            :+:      :+:    :+:   */
+/*   ft_stack_deletestack.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/17 18:33:53 by cledant           #+#    #+#             */
-/*   Updated: 2016/10/30 17:00:32 by cledant          ###   ########.fr       */
+/*   Created: 2016/10/30 15:48:03 by cledant           #+#    #+#             */
+/*   Updated: 2016/10/30 19:11:50 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "shell.h"
 
-# include "libft.h"
-# include <term.h>
-# include <sys/ioctl.h>
-# include <signal.h>
-# include <fcntl.h>
-# include "shell_struct.h"
-# include "shell_init.h"
-# include "shell_front.h"
-# include "shell_key.h"
-# include "shell_shell.h"
-# include "shell_stack.h"
+void	ft_stack_deletestack(t_stack **stack)
+{
+	size_t	i;
 
-# ifndef SIGEMT
-#  define SIGEMT 20000
-# endif
-
-# define TAB_LEN 4
-# define STACK_SIZE 1024
-
-#endif
+	i = 0;
+	while (ft_stack_pop(*stack) != 1)
+		i++;
+	free((*stack)->list);
+	free(*stack);
+	*stack = NULL;
+}

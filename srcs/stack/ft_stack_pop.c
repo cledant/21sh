@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell.h                                            :+:      :+:    :+:   */
+/*   ft_stack_pop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/17 18:33:53 by cledant           #+#    #+#             */
-/*   Updated: 2016/10/30 17:00:32 by cledant          ###   ########.fr       */
+/*   Created: 2016/10/30 15:27:16 by cledant           #+#    #+#             */
+/*   Updated: 2016/10/30 17:13:17 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "shell.h"
 
-# include "libft.h"
-# include <term.h>
-# include <sys/ioctl.h>
-# include <signal.h>
-# include <fcntl.h>
-# include "shell_struct.h"
-# include "shell_init.h"
-# include "shell_front.h"
-# include "shell_key.h"
-# include "shell_shell.h"
-# include "shell_stack.h"
-
-# ifndef SIGEMT
-#  define SIGEMT 20000
-# endif
-
-# define TAB_LEN 4
-# define STACK_SIZE 1024
-
-#endif
+int		ft_stack_pop(t_stack *stack)
+{
+	if (stack->cur_size == 0)
+		return (0);
+	stack->list[stack->cur_size - 1].size = 0;
+	free(stack->list[stack->cur_size - 1].elmt);
+	stack->list[stack->cur_size - 1].elmt = NULL;
+	stack->cur_size--;
+	return (1);
+}

@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/10/19 19:03:51 by cledant          ###   ########.fr        #
+#    Updated: 2016/10/30 18:15:59 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,17 +51,27 @@ SHELL_NAME = ft_main_shell.c ft_putendl_fd_char2.c
 
 SHELL_PATH = ./srcs/shell/
 
+STACK_PATH = ./srcs/stack/
+
+STACK_NAME = ft_stack_deletestack.c ft_stack_newstack.c ft_stack_top.c \
+			 ft_stack_pop.c ft_stack_push.c ft_stack_elmt_initlist.c \
+			 ft_stack_elmt_newlist.c ft_stack_increasesize.c
+
 SRC_FRONT =	$(addprefix $(FRONT_PATH),$(FRONT_NAME))
 
 SRC_INIT = $(addprefix $(INIT_PATH),$(INIT_NAME))
 
 SRC_SHELL = $(addprefix $(SHELL_PATH),$(SHELL_NAME))
 
+SRC_STACK = $(addprefix $(STACK_PATH),$(STACK_NAME))
+
 OBJ_FRONT = $(FRONT_NAME:.c=.o)
 
 OBJ_INIT = $(INIT_NAME:.c=.o)
 
 OBJ_SHELL = $(SHELL_NAME:.c=.o)
+
+OBJ_STACK = $(STACK_NAME:.c=.o)
 
 NAME = 21sh
 
@@ -70,8 +80,8 @@ all :	libft $(NAME)
 libft :
 	make -C $(LIBFT_PATH)
 
-$(NAME) : $(OBJ_INIT) $(OBJ_FRONT) $(OBJ_SHELL)
-	$(CC) $(OBJ_INIT) $(OBJ_FRONT) $(OBJ_SHELL) -o $(NAME) $(CFLAGS) -lft -I$(INCLUDES) -I$(INCLUDES_LIBFT) -L$(LIBFT_PATH) -ltermcap
+$(NAME) : $(OBJ_INIT) $(OBJ_FRONT) $(OBJ_SHELL) $(OBJ_STACK)
+	$(CC) $(OBJ_INIT) $(OBJ_FRONT) $(OBJ_SHELL) $(OBJ_STACK) -o $(NAME) $(CFLAGS) -lft -I$(INCLUDES) -I$(INCLUDES_LIBFT) -L$(LIBFT_PATH) -ltermcap
 
 $(OBJ_INIT) :
 	$(CC) -c $(SRC_INIT) $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT)
@@ -82,8 +92,11 @@ $(OBJ_FRONT) :
 $(OBJ_SHELL) :
 	$(CC) -c $(SRC_SHELL) $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT)
 
+$(OBJ_STACK) :
+	$(CC) -c $(SRC_STACK) $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT)
+
 clean :
-	rm -rf $(OBJ_FRONT) $(OBJ_INIT) $(OBJ_SHELL)
+	rm -rf $(OBJ_FRONT) $(OBJ_INIT) $(OBJ_SHELL) $(OBJ_STACK)
 	make -C $(LIBFT_PATH) clean
 
 fclean : clean

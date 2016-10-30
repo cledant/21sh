@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell.h                                            :+:      :+:    :+:   */
+/*   ft_stack_elmt_newlist.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/17 18:33:53 by cledant           #+#    #+#             */
-/*   Updated: 2016/10/30 17:00:32 by cledant          ###   ########.fr       */
+/*   Created: 2016/10/30 14:39:34 by cledant           #+#    #+#             */
+/*   Updated: 2016/10/30 17:46:01 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "shell.h"
 
-# include "libft.h"
-# include <term.h>
-# include <sys/ioctl.h>
-# include <signal.h>
-# include <fcntl.h>
-# include "shell_struct.h"
-# include "shell_init.h"
-# include "shell_front.h"
-# include "shell_key.h"
-# include "shell_shell.h"
-# include "shell_stack.h"
+inline t_stack_elmt		*ft_stack_elmt_newlist(size_t size)
+{
+	t_stack_elmt	*list;
 
-# ifndef SIGEMT
-#  define SIGEMT 20000
-# endif
-
-# define TAB_LEN 4
-# define STACK_SIZE 1024
-
-#endif
+	if ((list = (t_stack_elmt *)malloc(size * sizeof(t_stack_elmt))) == NULL)
+		return (NULL);
+	ft_stack_elmt_initlist(list, size);
+	return (list);
+}

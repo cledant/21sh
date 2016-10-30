@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell.h                                            :+:      :+:    :+:   */
+/*   ft_stack_top.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/17 18:33:53 by cledant           #+#    #+#             */
-/*   Updated: 2016/10/30 17:00:32 by cledant          ###   ########.fr       */
+/*   Created: 2016/10/30 15:40:46 by cledant           #+#    #+#             */
+/*   Updated: 2016/10/30 17:10:16 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHELL_H
-# define SHELL_H
+#include "shell.h"
 
-# include "libft.h"
-# include <term.h>
-# include <sys/ioctl.h>
-# include <signal.h>
-# include <fcntl.h>
-# include "shell_struct.h"
-# include "shell_init.h"
-# include "shell_front.h"
-# include "shell_key.h"
-# include "shell_shell.h"
-# include "shell_stack.h"
-
-# ifndef SIGEMT
-#  define SIGEMT 20000
-# endif
-
-# define TAB_LEN 4
-# define STACK_SIZE 1024
-
-#endif
+t_stack_elmt	*ft_stack_top(const t_stack *stack)
+{
+	if (stack->cur_size == 0)
+		return (NULL);
+	return (&(stack->list[stack->cur_size - 1]));
+}
