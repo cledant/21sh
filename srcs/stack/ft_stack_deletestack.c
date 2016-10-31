@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 15:48:03 by cledant           #+#    #+#             */
-/*   Updated: 2016/10/30 19:11:50 by cledant          ###   ########.fr       */
+/*   Updated: 2016/10/31 20:48:46 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_stack_deletestack(t_stack **stack)
 	size_t	i;
 
 	i = 0;
-	while (ft_stack_pop(*stack) != 1)
+	while (ft_stack_pop(*stack) == 1)
 		i++;
 	free((*stack)->list);
 	free(*stack);

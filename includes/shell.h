@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 18:33:53 by cledant           #+#    #+#             */
-/*   Updated: 2016/10/30 17:00:32 by cledant          ###   ########.fr       */
+/*   Updated: 2016/10/31 19:15:16 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@
 # endif
 
 # define TAB_LEN 4
-# define STACK_SIZE 1024
+# define STACK_INCREMENT 512
 
 #endif
