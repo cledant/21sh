@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_deletestack.c                             :+:      :+:    :+:   */
+/*   ft_stack_delete.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 15:48:03 by cledant           #+#    #+#             */
-/*   Updated: 2016/10/31 20:48:46 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/01 16:30:59 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	ft_stack_deletestack(t_stack **stack)
+void	ft_stack_delete(t_stack **stack)
 {
 	size_t	i;
 

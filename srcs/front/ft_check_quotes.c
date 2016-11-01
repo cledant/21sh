@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_newstack.c                                :+:      :+:    :+:   */
+/*   ft_check_quotes.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/30 14:54:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/10/30 15:32:12 by cledant          ###   ########.fr       */
+/*   Created: 2016/11/01 16:36:18 by cledant           #+#    #+#             */
+/*   Updated: 2016/11/01 16:55:22 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-t_stack		*ft_stack_newstack(size_t size)
+int			ft_check_quotes(t_stack *stack, t_btree *to_check)
 {
-	t_stack			*newstack;
-	t_stack_elmt	*newlst;
+	size_t		i;
 
-	if ((newstack = (t_stack *)malloc(sizeof(t_stack))) == NULL)
-		return (NULL);
-	if ((newlst = ft_stack_elmt_newlist(size)) == NULL)
-	{
-		free(newstack);
-		return (NULL);
-	}
-	newstack->list = newlst;
-	newstack->max_size = size;
-	newstack->cur_size = 0;
-	return (newstack);
+	i = 0;
+	while (ft_stack_pop(stack) == 1)
+		i++;
+	if (to_check == NULL)
+		return (0);
+	if (stack->cur_size == 0)
+		return (1);
+	return (0);
 }

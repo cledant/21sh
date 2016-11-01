@@ -6,14 +6,14 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 17:47:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/10/30 19:24:51 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/01 15:20:22 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-static inline void	ft_stack_elmt_cpy(t_stack_elmt *dst, const t_stack_elmt *src,
-						size_t size)
+static inline void	ft_stack_elmt_cpy(t_stack_elmt *dst,
+						const t_stack_elmt *src, size_t size)
 {
 	size_t	i;
 

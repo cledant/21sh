@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 18:25:25 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/27 19:28:21 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/01 16:54:00 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ char		*ft_convert_btree_to_str(t_btree *root, size_t size);
 void		ft_cursor_case_one(t_env *env, size_t *c);
 void		ft_cursor_case_two(t_env *env, size_t *c);
 void		ft_cursor_case_three(t_env *env, size_t *c);
+int			ft_check_quotes(t_stack *stack, t_btree *to_check);
 
 #endif

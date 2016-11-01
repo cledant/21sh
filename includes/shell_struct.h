@@ -6,12 +6,25 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 18:23:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/10/30 19:12:51 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/01 16:50:29 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHELL_STRUCT_H
 # define SHELL_STRUCT_H
+
+typedef struct			s_stack_elmt
+{
+	void				*elmt;
+	size_t				size;
+}						t_stack_elmt;
+
+typedef struct			s_stack
+{
+	t_stack_elmt		*list;
+	size_t				max_size;
+	size_t				cur_size;
+}						t_stack;
 
 typedef struct			s_env
 {
@@ -57,19 +70,7 @@ typedef struct			s_env
 	size_t				pos_line;
 	char				*cmd_line;
 	char				**env;
+	t_stack				*stack_quote;
 }						t_env;
-
-typedef struct			s_stack_elmt
-{
-	void				*elmt;
-	size_t				size;
-}						t_stack_elmt;
-
-typedef struct			s_stack
-{
-	t_stack_elmt		*list;
-	size_t				max_size;
-	size_t				cur_size;
-}						t_stack;
 
 #endif

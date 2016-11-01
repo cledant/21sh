@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_main_shell.c                                    :+:      :+:    :+:   */
+/*   ft_stack_new.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/14 20:49:14 by cledant           #+#    #+#             */
-/*   Updated: 2016/11/01 16:27:35 by cledant          ###   ########.fr       */
+/*   Created: 2016/10/30 14:54:26 by cledant           #+#    #+#             */
+/*   Updated: 2016/11/01 16:30:09 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-void	ft_main_shell(t_env *env)
+t_stack		*ft_stack_new(size_t size)
 {
-	ft_putendl_fd("=====", env->fd_tty);
-	if (env->cmd_line != NULL)
-		ft_putendl_fd(env->cmd_line, env->fd_tty);
-	ft_putendl_fd("=====", env->fd_tty);
+	t_stack			*newstack;
+	t_stack_elmt	*newlst;
+
+	if ((newstack = (t_stack *)malloc(sizeof(t_stack))) == NULL)
+		return (NULL);
+	if ((newlst = ft_stack_elmt_newlist(size)) == NULL)
+	{
+		free(newstack);
+		return (NULL);
+	}
+	newstack->list = newlst;
+	newstack->max_size = size;
+	newstack->cur_size = 0;
+	return (newstack);
 }
