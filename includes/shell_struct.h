@@ -71,6 +71,7 @@ typedef struct			s_env
 	char				*cmd_line;
 	char				**env;
 	t_stack				*stack_quote;
+	t_btree				*err_quote;
 }						t_env;
 
 #endif

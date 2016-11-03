@@ -66,5 +66,8 @@ void		ft_cursor_case_one(t_env *env, size_t *c);
 void		ft_cursor_case_two(t_env *env, size_t *c);
 void		ft_cursor_case_three(t_env *env, size_t *c);
 int			ft_check_quotes(t_stack *stack, t_btree *to_check);
+int			ft_new_right_node_error_quote(t_env *env, int type);
+void		ft_add_to_err_quote(t_env *env);
+void		ft_clear_err_quote(t_env *env);
 
 #endif

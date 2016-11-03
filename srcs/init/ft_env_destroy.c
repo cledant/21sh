@@ -30,5 +30,7 @@ void	ft_env_destroy(t_env *env)
 		ft_strdel_char2(&(env->env));
 	if (env->stack_quote != NULL)
 		ft_stack_delete(&(env->stack_quote));
+	if (env->err_quote != NULL)
+		ft_btree_clear_content(&env->err_quote);
 	ft_memdel((void **)&env);
 }

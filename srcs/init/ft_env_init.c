@@ -47,6 +47,7 @@ static inline void		ft_env_init_next(t_env *new)
 	new->pos_line = 0;
 	new->cmd_line = NULL;
 	new->env = NULL;
+	new->err_quote = NULL;
 }
 
 static inline void		ft_env_init_val(t_env *new)

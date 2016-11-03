@@ -71,3 +71,5 @@ void					ft_sigint_handler(t_env *env)
 	ft_putstr_fd(env->cd, env->fd_tty);
 	ft_print_buffer(env);
 }
+
+//pas oublier ici de reset si y a qqch dans err_quote
