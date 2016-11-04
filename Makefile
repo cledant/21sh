@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/11/01 16:34:39 by cledant          ###   ########.fr        #
+#    Updated: 2016/11/04 19:11:18 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ FRONT_NAME =	ft_read_input.c ft_new_right_node.c ft_hist_destroy.c \
 			ft_enter.c ft_ctrl_d.c ft_ctrl_l.c ft_btree_cut_nodes.c \
 			ft_set_inv_buffer.c ft_set_pos_col.c ft_cursor_left_buff_no_set.c \
 			ft_cursor_right_buff_no_set.c ft_mline.c ft_convert_btree_to_str.c \
-			ft_cursor_routine.c ft_check_quotes.c ft_new_right_node_error_quote.c
+			ft_cursor_routine.c ft_check_quotes.c ft_new_right_node_error_quote.c \
+			ft_clear_err_quote.c ft_add_to_err_quote.c
 
 FRONT_PATH = ./srcs/front/
 

@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_right_node_error_quote.c                    :+:      :+:    :+:   */
+/*   ft_add_to_err_quote.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/14 11:58:18 by cledant           #+#    #+#             */
-/*   Updated: 2016/11/04 19:26:02 by cledant          ###   ########.fr       */
+/*   Created: 2016/11/04 18:31:00 by cledant           #+#    #+#             */
+/*   Updated: 2016/11/04 19:13:32 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int		ft_new_right_node_error_quote(t_env *env, int type)
+void	ft_add_to_err_quote(t_env *env)
 {
+	t_btree		*cpy_err;
 	t_btree		*cont;
 
-	if ((cont = ft_btree_new(NULL, 0)) == NULL)
-		return (0);
-	if (type == 1)
-		env->err_quote = env->last->content;
-	env->last->content = cont;
-	env->cur = env->last;
-	env->cur_char = 2;
-	env->last_char = 2;
-	env->cur_il = cont;
-	return (1);
+	cpy_err = env->err_quote;
+	while (cpy_err->right != NULL)
+		cpy_err = cpy_err->right;
+	cpy_err->right = env->last->content;
+	cont = env->last->content;
+	cont->left = cpy_err;
 }

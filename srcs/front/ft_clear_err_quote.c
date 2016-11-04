@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_right_node_error_quote.c                    :+:      :+:    :+:   */
+/*   ft_clear_err_quote.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/14 11:58:18 by cledant           #+#    #+#             */
-/*   Updated: 2016/11/04 19:26:02 by cledant          ###   ########.fr       */
+/*   Created: 2016/11/04 18:34:08 by cledant           #+#    #+#             */
+/*   Updated: 2016/11/04 19:12:45 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
 
-int		ft_new_right_node_error_quote(t_env *env, int type)
+void	ft_clear_err_quote(t_env *env)
 {
-	t_btree		*cont;
-
-	if ((cont = ft_btree_new(NULL, 0)) == NULL)
-		return (0);
-	if (type == 1)
-		env->err_quote = env->last->content;
-	env->last->content = cont;
-	env->cur = env->last;
-	env->cur_char = 2;
-	env->last_char = 2;
-	env->cur_il = cont;
-	return (1);
+	env->last->content = env->err_quote;
+	env->err_quote = NULL;
 }
