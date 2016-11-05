@@ -14,6 +14,10 @@ CC = gcc
 
 CFLAGS = -Werror -Wall -Wextra -O2 -fsigned-char
 
+OBJ_DIR_NAME = obj
+
+LIBS = -lft -ltermcap
+
 INCLUDES = ./includes
 
 INCLUDES_LIBFT = ./libft/includes
@@ -39,65 +43,60 @@ FRONT_NAME =	ft_read_input.c ft_new_right_node.c ft_hist_destroy.c \
 			ft_cursor_routine.c ft_check_quotes.c ft_new_right_node_error_quote.c \
 			ft_clear_err_quote.c ft_add_to_err_quote.c
 
-FRONT_PATH = ./srcs/front/
+FRONT_PATH = ./srcs/front
 
 INIT_NAME =	main.c ft_get_term.c ft_get_termcap_function.c ft_init_signal.c \
 			ft_handler.c ft_env_init.c ft_env_destroy.c ft_prog_main.c \
 			ft_change_termsize.c ft_exit_mess.c ft_background.c ft_foreground.c \
 			ft_sigint_handler.c
 
-INIT_PATH = ./srcs/init/
+INIT_PATH = ./srcs/init
 
 SHELL_NAME = ft_main_shell.c ft_putendl_fd_char2.c
 
-SHELL_PATH = ./srcs/shell/
+SHELL_PATH = ./srcs/shell
 
-STACK_PATH = ./srcs/stack/
+STACK_PATH = ./srcs/stack
 
 STACK_NAME = ft_stack_delete.c ft_stack_new.c ft_stack_top.c \
 			 ft_stack_pop.c ft_stack_push.c ft_stack_elmt_initlist.c \
 			 ft_stack_elmt_newlist.c ft_stack_increasesize.c
 
-SRC_FRONT =	$(addprefix $(FRONT_PATH),$(FRONT_NAME))
+OBJ_FRONT = $(FRONT_NAME:%.c=$(OBJ_DIR_NAME)/%.o)
 
-SRC_INIT = $(addprefix $(INIT_PATH),$(INIT_NAME))
+OBJ_INIT = $(INIT_NAME:%.c=$(OBJ_DIR_NAME)/%.o)
 
-SRC_SHELL = $(addprefix $(SHELL_PATH),$(SHELL_NAME))
+OBJ_SHELL = $(SHELL_NAME:%.c=$(OBJ_DIR_NAME)/%.o)
 
-SRC_STACK = $(addprefix $(STACK_PATH),$(STACK_NAME))
-
-OBJ_FRONT = $(FRONT_NAME:.c=.o)
-
-OBJ_INIT = $(INIT_NAME:.c=.o)
-
-OBJ_SHELL = $(SHELL_NAME:.c=.o)
-
-OBJ_STACK = $(STACK_NAME:.c=.o)
+OBJ_STACK = $(STACK_NAME:%.c=$(OBJ_DIR_NAME)/%.o)
 
 NAME = 21sh
 
-all :	libft $(NAME)
+all :	libft $(OBJ_DIR_NAME) $(NAME)
 
 libft :
 	make -C $(LIBFT_PATH)
 
+$(OBJ_DIR_NAME) :
+	mkdir $(OBJ_DIR_NAME)
+
 $(NAME) : $(OBJ_INIT) $(OBJ_FRONT) $(OBJ_SHELL) $(OBJ_STACK)
-	$(CC) $(OBJ_INIT) $(OBJ_FRONT) $(OBJ_SHELL) $(OBJ_STACK) -o $(NAME) $(CFLAGS) -lft -I$(INCLUDES) -I$(INCLUDES_LIBFT) -L$(LIBFT_PATH) -ltermcap
+	$(CC) $^ -o $@ $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT) -L$(LIBFT_PATH) $(LIBS)
 
-$(OBJ_INIT) :
-	$(CC) -c $(SRC_INIT) $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT)
+$(OBJ_DIR_NAME)/%.o : $(INIT_PATH)/%.c
+	$(CC) -o $@ -c $< $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT)
 
-$(OBJ_FRONT) :
-	$(CC) -c $(SRC_FRONT) $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT)
+$(OBJ_DIR_NAME)/%.o : $(FRONT_PATH)/%.c
+	$(CC) -o $@ -c $< $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT)
 
-$(OBJ_SHELL) :
-	$(CC) -c $(SRC_SHELL) $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT)
+$(OBJ_DIR_NAME)/%.o : $(SHELL_PATH)/%.c
+	$(CC) -o $@ -c $< $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT)
 
-$(OBJ_STACK) :
-	$(CC) -c $(SRC_STACK) $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT)
+$(OBJ_DIR_NAME)/%.o : $(STACK_PATH)/%.c
+	$(CC) -o $@ -c $< $(CFLAGS) -I$(INCLUDES) -I$(INCLUDES_LIBFT)
 
 clean :
-	rm -rf $(OBJ_FRONT) $(OBJ_INIT) $(OBJ_SHELL) $(OBJ_STACK)
+	rm -rf $(OBJ_DIR_NAME)
 	make -C $(LIBFT_PATH) clean
 
 fclean : clean
