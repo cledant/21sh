@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 10:34:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/25 21:31:21 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/06 14:24:03 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void					ft_create_buffer(t_env *env)
 	if (env->last_buff >= env->buff_size)
 		ft_realloc_buff(env);
 	line = env->last->content;
-	ft_memcpy(env->buff, "$>", 2);
+	(env->err_quote == NULL) ? ft_memcpy(env->buff, "$>", 2) :
+		ft_memcpy(env->buff, "*>", 2);
 	env->cur_buff = 2;
 	if (line->content == NULL)
 		return ;

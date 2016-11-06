@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 18:53:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/25 20:02:24 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/06 14:20:57 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void					ft_read_input(t_env *env)
 	char	s[4];
 
 	ft_init(env, &s);
-	write(env->fd_tty, "$>", 2);
+	(env->err_quote == NULL) ? write(env->fd_tty, "$>", 2) :
+		write(env->fd_tty, "*>", 2);
 	while (1)
 	{
 		if (read(0, s, sizeof(char) * 4) != 0)

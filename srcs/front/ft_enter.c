@@ -6,18 +6,31 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 16:21:19 by cledant           #+#    #+#             */
-/*   Updated: 2016/11/04 19:22:00 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/06 15:13:45 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+static inline size_t	ft_btree_length(t_btree *tree)
+{
+	size_t	len;
+
+	len = 0;
+	while (tree != NULL)
+	{
+		tree = tree->right;
+		len++;
+	}
+	return (len);
+}
 
 static inline void		ft_convert_list_into_str(t_env *env)
 {
 	if (env->cmd_line != NULL)
 		ft_strdel(&(env->cmd_line));
 	if ((env->cmd_line = ft_convert_btree_to_str(env->last->content,
-			env->last_char)) == NULL)
+			ft_btree_length(env->last->content))) == NULL)
 		ft_handler(20000);
 }
 
@@ -33,7 +46,7 @@ int						ft_enter(t_env *env)
 		if (env->err_quote != NULL)
 		{
 			ft_add_to_err_quote(env);
-			if ((ret = ft_check_quotes(env->stack_quote, env->err_quote->content))
+			if ((ret = ft_check_quotes(env->stack_quote, env->err_quote))
 					== 1)
 			{
 				ft_clear_err_quote(env);
