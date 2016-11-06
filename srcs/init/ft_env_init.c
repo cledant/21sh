@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 18:05:17 by cledant           #+#    #+#             */
-/*   Updated: 2016/11/01 16:53:12 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/06 16:25:44 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static inline void		ft_env_init_next(t_env *new)
 	new->pos_line = 0;
 	new->cmd_line = NULL;
 	new->env = NULL;
+	new->stack_quote = NULL;
 	new->err_quote = NULL;
 }
 
@@ -79,6 +80,18 @@ static inline void		ft_env_init_val(t_env *new)
 	ft_env_init_next(new);
 }
 
+static inline void		*ft_clean_malloc(t_env *new)
+{
+	if (new->buff != NULL)
+		ft_memdel((void **)&(new->buff));
+	if (new->inv_buff != NULL)
+		ft_memdel((void **)&(new->inv_buff));
+	if (new->stack_quote != NULL)
+		ft_stack_delete(&(new->stack_quote));
+	free(new);
+	return (NULL);
+}
+
 t_env					*ft_env_init(void)
 {
 	t_env	*new;
@@ -87,30 +100,12 @@ t_env					*ft_env_init(void)
 		return (NULL);
 	ft_env_init_val(new);
 	if ((new->buff = ft_memalloc(new->buff_size)) == NULL)
-	{
-		free(new);
-		return (NULL);
-	}
+		return (ft_clean_malloc(new));
 	if ((new->inv_buff = ft_memalloc(new->buff_size)) == NULL)
-	{
-		free(new);
-		ft_memdel((void **)&(new->buff));
-		return (NULL);
-	}
+		return (ft_clean_malloc(new));
 	if ((new->stack_quote = ft_stack_new(STACK_INCREMENT)) == NULL)
-	{
-		ft_memdel((void **)&(new->buff));
-		ft_memdel((void **)&(new->inv_buff));
-		free(new);
-		return (NULL);
-	}
+		return (ft_clean_malloc(new));
 	if (ft_env_init_btree(new) == -1)
-	{
-		ft_memdel((void **)&(new->buff));
-		ft_memdel((void **)&(new->inv_buff));
-		ft_stack_delete(&(new->stack_quote));
-		free(new);
-		return (NULL);
-	}
+		return (ft_clean_malloc(new));
 	return (new);
 }
