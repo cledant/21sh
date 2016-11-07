@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 13:05:12 by cledant           #+#    #+#             */
-/*   Updated: 2016/09/17 19:48:22 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/07 23:21:08 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ static inline void		ft_new_first(t_env *env)
 	env->cur = new;
 	env->last = new;
 	env->cur_il = new->content;
+	if (env->err_quote != NULL)
+	{
+		free(new->content);
+		new->content = env->err_quote;
+		env->err_quote = NULL;
+		if ((env->last = ft_new_right_node(env)) == NULL)
+			ft_handler(20000);
+	}
 	env->cur_char = 2;
 	env->last_char = 2;
 }
@@ -46,6 +54,14 @@ static inline void		ft_recreate_node(t_env *env)
 		ft_hist_destroy(&del);
 		if ((env->last = ft_new_right_node(env)) == NULL)
 			ft_handler(20000);
+		if (env->err_quote != NULL)
+		{
+			free(env->last->content);
+			env->last->content = env->err_quote;
+			env->err_quote = NULL;
+			if ((env->last = ft_new_right_node(env)) == NULL)
+				ft_handler(20000);
+		}
 	}
 	else
 		ft_new_first(env);
@@ -71,5 +87,3 @@ void					ft_sigint_handler(t_env *env)
 	ft_putstr_fd(env->cd, env->fd_tty);
 	ft_print_buffer(env);
 }
-
-//pas oublier ici de reset si y a qqch dans err_quote
