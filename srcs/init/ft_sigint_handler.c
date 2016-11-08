@@ -67,16 +67,40 @@ static inline void		ft_recreate_node(t_env *env)
 		ft_new_first(env);
 }
 
+static inline size_t	ft_nb_line(t_env *env)
+{
+	size_t	nb_line;
+	t_btree	*check;
+	char	*s;
+
+	if (env->last_buff % env->col == 0)
+	{
+		nb_line = env->last_buff / env->col + 2;
+		if (env->last != NULL && env->last->content != NULL)
+		{
+			check = env->last->content;
+			while (check->right != NULL)
+				check = check->right;
+			if (check->content != NULL)
+			{
+				s = check->content;
+				if (s[0] == '\n')
+					nb_line--;	
+			}
+		}
+	}	
+	else
+		nb_line = env->last_buff / env->col + 1;
+	return (nb_line);
+}
+
 void					ft_sigint_handler(t_env *env)
 {
 	size_t		nb_line;
 
 	ft_reset_copy(env, 0);
 	ft_move_cursor_from_cur_buff_to_before_prompt(env);
-	if (env->last_buff % env->col == 0)
-		nb_line = env->last_buff / env->col + 2;
-	else
-		nb_line = env->last_buff / env->col + 1;
+	nb_line = ft_nb_line(env);
 	while (nb_line)
 	{
 		write(env->fd_tty, "\n", 1);
