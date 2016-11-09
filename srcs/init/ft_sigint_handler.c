@@ -6,11 +6,17 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/13 13:05:12 by cledant           #+#    #+#             */
-/*   Updated: 2016/11/07 23:21:08 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/09 21:35:18 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shell.h"
+
+static inline void		ft_set_at_two(t_env *env)
+{
+	env->cur_char = 2;
+	env->last_char = 2;
+}
 
 static inline void		ft_new_first(t_env *env)
 {
@@ -38,8 +44,7 @@ static inline void		ft_new_first(t_env *env)
 		if ((env->last = ft_new_right_node(env)) == NULL)
 			ft_handler(20000);
 	}
-	env->cur_char = 2;
-	env->last_char = 2;
+	ft_set_at_two(env);
 }
 
 static inline void		ft_recreate_node(t_env *env)
@@ -85,10 +90,10 @@ static inline size_t	ft_nb_line(t_env *env)
 			{
 				s = check->content;
 				if (s[0] == '\n')
-					nb_line--;	
+					nb_line--;
 			}
 		}
-	}	
+	}
 	else
 		nb_line = env->last_buff / env->col + 1;
 	return (nb_line);

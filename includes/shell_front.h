@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 18:25:25 by cledant           #+#    #+#             */
-/*   Updated: 2016/11/01 16:54:00 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/09 22:00:09 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ int			ft_check_quotes(t_stack *stack, t_btree *to_check);
 int			ft_new_right_node_error_quote(t_env *env, int type);
 void		ft_add_to_err_quote(t_env *env);
 void		ft_clear_err_quote(t_env *env);
+void		ft_enter_content_not_null(t_env *env);
 
 #endif
