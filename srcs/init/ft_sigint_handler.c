@@ -115,4 +115,5 @@ void					ft_sigint_handler(t_env *env)
 	ft_create_buffer(env);
 	ft_putstr_fd(env->cd, env->fd_tty);
 	ft_print_buffer(env);
+	signal(SIGINT, (void (*)(int))ft_handler);
 }
