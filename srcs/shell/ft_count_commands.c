@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 12:13:18 by cledant           #+#    #+#             */
-/*   Updated: 2016/11/13 16:13:22 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/13 16:35:28 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int		ft_count_commands(char *cmd)
 
 	nb = 1;
 	last_char = NULL;
-	if (cmd == NULL)
-		return (0);
 	while (*cmd != '\0')
 	{
 		if (last_char != NULL && *last_char == ';' && *cmd == ';')

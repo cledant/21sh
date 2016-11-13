@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/14 20:49:14 by cledant           #+#    #+#             */
-/*   Updated: 2016/11/13 16:12:06 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/13 16:35:26 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ void	ft_main_shell(t_env *env)
 {
 	int		nb_cmd;
 
-	if ((nb_cmd = ft_count_commands(env->cmd_line)) <= 0)
+	if (env->cmd_line == NULL)
+		return ;
+	if ((nb_cmd = ft_count_commands(env->cmd_line)) < 0)
 	{
-		if (nb_cmd < 0)
-			ft_putendl_fd("21sh : parse error near ;;", env->fd_tty);
+		ft_putendl_fd("21sh : parse error near ;;", env->fd_tty);
 		ft_debug_cmd(env, nb_cmd);
 		if (env->cmd_line != NULL)
 			ft_strdel(&env->cmd_line);
