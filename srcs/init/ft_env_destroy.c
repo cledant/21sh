@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/17 18:14:34 by cledant           #+#    #+#             */
-/*   Updated: 2016/11/01 16:52:50 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/13 17:38:24 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ void	ft_env_destroy(t_env *env)
 		ft_stack_delete(&(env->stack_quote));
 	if (env->err_quote != NULL)
 		ft_btree_clear_content(&env->err_quote);
+	if (env->split_cmd != NULL)
+		ft_strdel_char2(&env->split_cmd);
 	ft_memdel((void **)&env);
 }

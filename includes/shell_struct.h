@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 18:23:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/11/01 16:50:29 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/13 17:32:51 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct			s_env
 	char				**env;
 	t_stack				*stack_quote;
 	t_btree				*err_quote;
+	char				**split_cmd;
 }						t_env;
 
 #endif
