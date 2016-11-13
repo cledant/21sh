@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_shell.h                                      :+:      :+:    :+:   */
+/*   ft_is_ds_quote.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/14 20:45:50 by cledant           #+#    #+#             */
-/*   Updated: 2016/11/13 15:29:23 by cledant          ###   ########.fr       */
+/*   Created: 2016/11/13 15:59:10 by cledant           #+#    #+#             */
+/*   Updated: 2016/11/13 15:59:16 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHELL_SHELL_H
-# define SHELL_SHELL_H
+#include "shell.h"
 
-void	ft_main_shell(t_env *env);
-void	ft_putendl_fd_char2(char **str, int fd);
-char	**ft_split_commands(char *cmd);
-int		ft_count_commands(char *cmd);
-int		ft_is_ds_quote(int c);
-
-#endif
+int		ft_is_ds_quote(int c)
+{
+	if (c == 34 || c == 39)
+		return (1);
+	return (0);
+}
