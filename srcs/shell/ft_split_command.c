@@ -6,7 +6,7 @@
 /*   By: cledant <cledant@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 22:54:32 by cledant           #+#    #+#             */
-/*   Updated: 2016/11/13 20:09:14 by cledant          ###   ########.fr       */
+/*   Updated: 2016/11/16 21:19:24 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	**ft_split_command(char *cmd, size_t nb)
 {
 	char	**split;
 	char	*cpy_cmd;
+	char	*quote;
 	size_t	i;
 	size_t	size;
 
@@ -30,8 +31,16 @@ char	**ft_split_command(char *cmd, size_t nb)
 		{
 			if (ft_is_ds_quote(*cmd) == 1)
 			{
-				while (*cmd != '\0' && ft_is_ds_quote(*cmd) == 0)
+				quote = cmd;
+				cmd++;
+				size++;
+				while (*cmd != '\0' && ft_strncmp(cmd, quote, 1) != 0)
+				{
 					cmd++;
+					size++;
+				}
+				if (*cmd == '\0')
+					break ;
 			}
 			if (*cmd == ';')
 				break ;
